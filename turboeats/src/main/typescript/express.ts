@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import errorHandler = require("errorhandler");
 
 export interface ServerOptions {
