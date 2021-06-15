@@ -10,14 +10,37 @@ import 'express-async-errors';
 import BaseRouter from './routes';
 import logger from '@shared/Logger';
 
-const app = express();
-const { BAD_REQUEST } = StatusCodes;
 
+/************************************************************************************
+ *                              Set up mongoose connection
+ ***********************************************************************************/
+
+// La variable mongoose nous permettra d'utiliser les fonctionnalités du module mongoose.
+var mongoose = require('mongoose'); 
+ 
+//URL de notre base
+var urlmongo = "mongodb+srv://Admin:admin@turbocluster.n0lcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"; 
+ 
+// Nous connectons l'API à notre base de données
+mongoose.connect(urlmongo, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  });
+ 
+var db = mongoose.connection; 
+db.on('error', console.error.bind(console, 'Erreur lors de la connexion')); 
+db.once('open', function (){
+    console.log("Connexion à la base OK"); 
+}); 
 
 
 /************************************************************************************
  *                              Set basic express settings
  ***********************************************************************************/
+
+const app = express();
+const { BAD_REQUEST } = StatusCodes;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -44,8 +67,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         error: err.message,
     });
 });
-
-
 
 /************************************************************************************
  *                              Serve front-end content
