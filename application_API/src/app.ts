@@ -10,10 +10,16 @@ import helmet from 'helmet';
 
 import connect from './config/mongoose.config';
 
-import { userRouter } from './routers/user.router';
-
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/notFound.middleware';
+
+import { userRouter } from './routers/user.router';
+import {menuRouter} from './routers/menu.router';
+import {productRouter} from './routers/product.router';
+import {commandRouter} from './routers/command.router';
+import {restaurantRouter} from './routers/restaurant.router';
+
+
 
 
 dotenv.config();
@@ -43,6 +49,10 @@ app.use(express.json());
 
 // Routes de l'API
 app.use('/users', userRouter);
+app.use('/menus', menuRouter);
+app.use('/products', productRouter);
+app.use('/commands', commandRouter);
+app.use('/restaurants', restaurantRouter);
 
 // Routes d'erreur, à laisser après les routes d'API
 app.use(errorHandler);

@@ -3,30 +3,30 @@
  */
 
 import express from 'express';
-import * as ProductController from '../controllers/product.controller';
+import * as RestaurantController from '../controllers/restaurant.controller';
 
 /**
  * Router Definition
  */
 
-export const productRouter = express.Router();
+export const restaurantRouter = express.Router();
 
 
 /**
  * Controller Definitions
  */
 
-// GET products/
-productRouter.get('/', ProductController.getAllProducts)
+// GET restaurants/
+restaurantRouter.get('/', RestaurantController.getAllRestaurants)
 
-// GET products/:id
-productRouter.get('/:id', ProductController.getOneProduct);
+// GET restaurants/:id
+restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
 
-// POST products/
-productRouter.post('/', ProductController.createProduct);
+// POST restaurants/
+restaurantRouter.post('/', RestaurantController.createRestaurant);
 
-// PUT products/:id
-productRouter.put('/:id', ProductController.updateProduct);
+// PUT restaurants/:id
+restaurantRouter.put('/:id', RestaurantController.updateRestaurant);
 
-// DELETE products/:id
-productRouter.delete('/:id', ProductController.deleteProduct);
+// DELETE restaurants/:id
+restaurantRouter.delete('/:id', RestaurantController.deleteRestaurant);

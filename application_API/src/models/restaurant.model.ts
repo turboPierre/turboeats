@@ -1,15 +1,17 @@
 import mongoose, {Schema, Document} from 'mongoose';
 
-export interface ProductInterface extends Document {
+export interface RestaurantInterface extends Document {
     name: string,
     price: string
 }
 
-export const productSchema = new Schema({
+export const restaurantSchema = new Schema({
     name: { type: String, required: true },
-    price:  { type: Number, required: true }
+    _userId:[
+        {type: Schema.Types.ObjectId, ref: 'User', required:true}
+    ]
 });
 
-const Product = mongoose.model<ProductInterface>('Product', productSchema);
+const Restaurant = mongoose.model<RestaurantInterface>('Restaurant', restaurantSchema);
 
-export default Product;
+export default Restaurant;
