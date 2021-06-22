@@ -19,6 +19,6 @@ export const clientSchema = new Schema({
     phone:{ type: String, required: true}
 });
 
-const Client = mongoose.model<ClientInterface>('Client', clientSchema);
+const Client = mongoose.model<ClientInterface>('Product', clientSchema);
 
 export default Client;

@@ -10,7 +10,7 @@ import helmet from 'helmet';
 
 import connect from './config/mongoose.config';
 
-import { clientRouter } from './routers/client.router';
+import { userRouter } from './routers/user.router';
 
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/notFound.middleware';
@@ -42,7 +42,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes de l'API
-app.use('/clients', clientRouter);
+app.use('/users', userRouter);
 
 // Routes d'erreur, à laisser après les routes d'API
 app.use(errorHandler);

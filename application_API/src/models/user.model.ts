@@ -1,23 +1,24 @@
 import mongoose, {Schema, Document} from 'mongoose';
 
-export interface RestaurantInterface extends Document {
+export interface UserInterface extends Document {
+    id: string,
     name: string,
-    surname: string,
+    nickname: string,
     address: string,
     city: string,
     mail: string,
     phone: string
 }
 
-export const restaurantSchema = new Schema({
+export const userSchema = new Schema({
     name: { type: String, required: true },
-    surname: { type: String, required: true },
+    nickname: { type: String, required: true },
     address: { type: String, required: true },
     city: {type : String, required : true},
     mail: { type: String, required: true },
     phone:{ type: String, required: true}
 });
 
-const Restaurant = mongoose.model<RestaurantInterface>('Restaurant', restaurantSchema);
+const User = mongoose.model<UserInterface>('User', userSchema);
 
-export default Restaurant;
+export default User;
