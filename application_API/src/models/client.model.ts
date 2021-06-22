@@ -20,6 +20,6 @@ export const clientSchema = new Schema({
     phone:{ type: Number, required: true}
 });
 
-const User = mongoose.model<UserInterafce>('Client', clientSchema);
+const Client = mongoose.model<ClientInterface>('Client', clientSchema);
 
-export default User;
+export default Client;

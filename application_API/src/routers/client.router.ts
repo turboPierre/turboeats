@@ -2,31 +2,31 @@
  * Required External Modules and Interfaces
  */
 
-import express from "express";
-import * as ItemController from '../controllers/item.controller';
+import express from 'express';
+import * as ClientController from '../controllers/client.controller';
 
 /**
  * Router Definition
  */
 
-export const itemRouter = express.Router();
+export const clientRouter = express.Router();
 
 
 /**
  * Controller Definitions
  */
 
-// GET items/
-itemRouter.get('/', ItemController.getAllItems)
+// GET clients/
+clientRouter.get('/', ClientController.getAllClients)
 
-// GET items/:id
-itemRouter.get("/:id", ItemController.getOneItem);
+// GET clients/:id
+clientRouter.get('/:id', ClientController.getOneClient);
 
-// POST items/
-itemRouter.post("/", ItemController.createItem);
+// POST clients/
+clientRouter.post('/', ClientController.createClient);
 
-// PUT items/:id
-itemRouter.put("/:id", ItemController.updateItem);
+// PUT clients/:id
+clientRouter.put('/:id', ClientController.updateClient);
 
-// DELETE items/:id
-itemRouter.delete("/:id", ItemController.deleteItem);
+// DELETE clients/:id
+clientRouter.delete('/:id', ClientController.deleteClient);

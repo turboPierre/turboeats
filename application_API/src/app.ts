@@ -2,17 +2,17 @@
  * Required External Modules
  */
 
-import * as dotenv from "dotenv";
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
+import * as dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 
 import connect from './config/mongoose.config';
 
-import { itemRouter } from "./routers/item.router";
+import { clientRouter } from './routers/client.router';
 
-import { errorHandler } from "./middleware/error.middleware";
-import { notFoundHandler } from "./middleware/notFound.middleware";
+import { errorHandler } from './middleware/error.middleware';
+import { notFoundHandler } from './middleware/notFound.middleware';
 
 dotenv.config();
 
@@ -40,7 +40,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes de l'API
-app.use('/items', itemRouter);
+app.use('/clients', clientRouter);
 
 // Routes d'erreur, à laisser après les routes d'API
 app.use(errorHandler);
