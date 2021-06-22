@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <img width="50%" alt="Vue logo" src="./assets/logo.svg">
-    <HelloWorld msg="Authentification"/>
+    <img width="30%" alt="Vue logo" src="./assets/logo.svg">
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+export default { }
+
 </script>
 
 <style>
@@ -25,4 +21,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+* {
+  border-radius: 0 !important;
+}
+
+.button {
+  border : none;
+}
+
+
 </style>
