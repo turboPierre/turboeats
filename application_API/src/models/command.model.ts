@@ -1,6 +1,7 @@
 import mongoose, {Schema, Document} from 'mongoose';
 
 export interface CommandInterface extends Document {
+    name: string,
     price: string
 }
 
@@ -17,7 +18,10 @@ export const commandSchema = new Schema({
         {type: Schema.Types.ObjectId, ref: 'User', required:true}
     ],
     _menuId:[
-        {type: Schema.Types.ObjectId, ref: 'Menu', required:true}
+        {type: Schema.Types.ObjectId, ref: 'Menu'}
+    ],
+    _productId:[
+        {type: Schema.Types.ObjectId, ref: 'Product'}
     ]
 });
 
