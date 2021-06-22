@@ -8,9 +8,7 @@ export interface ProductInterface extends Document {
 export const productSchema = new Schema({
     name: { type: String, required: true },
     price:  { type: Number, required: true },
-    _restaurantId:[
-        {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true}
-    ]
+    _restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true}
 });
 
 const Product = mongoose.model<ProductInterface>('Product', productSchema);

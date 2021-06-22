@@ -10,9 +10,7 @@ export const menuSchema = new Schema({
     _productId:[
         {type: Schema.Types.ObjectId, ref: 'Product', required:true}
     ],
-    _restaurantId:[
-        {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true}
-    ],
+    _restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true},
     price: { type: String, required: true }
 });
 
