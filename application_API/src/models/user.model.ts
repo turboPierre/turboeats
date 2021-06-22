@@ -1,13 +1,13 @@
 import mongoose, {Schema, Document} from 'mongoose';
 
 export interface UserInterface extends Document {
-    id: string,
     name: string,
     nickname: string,
     address: string,
     city: string,
     mail: string,
-    phone: string
+    phone: string,
+    role: string
 }
 
 export const userSchema = new Schema({
@@ -16,7 +16,8 @@ export const userSchema = new Schema({
     address: { type: String, required: true },
     city: {type : String, required : true},
     mail: { type: String, required: true },
-    phone:{ type: String, required: true}
+    phone:{ type: String, required: true},
+    role:{ type: String, required: true}
 });
 
 const User = mongoose.model<UserInterface>('User', userSchema);
