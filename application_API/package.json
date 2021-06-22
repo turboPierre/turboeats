@@ -14,7 +14,7 @@
 		"env": {
 			"NODE_ENV": "development",
 			"PORT" : "8080",
-			"MONGO_URI" : "mongodb+srv://Admin:admin@turbocluster.n0lcr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+			"MONGO_URI" : "mongodb+srv://Admin:admin@turbocluster.n0lcr.mongodb.net/turboeats?retryWrites=true&w=majority"
 		}
 	},
 	"dependencies": {

@@ -11,13 +11,12 @@ export interface ClientInterface extends Document {
 }
 
 export const clientSchema = new Schema({
-    id: { type: String, required: true },
     name: { type: String, required: true },
     nickname: { type: String, required: true },
     address: { type: String, required: true },
     city: {type : String, required : true},
     mail: { type: String, required: true },
-    phone:{ type: Number, required: true}
+    phone:{ type: String, required: true}
 });
 
 const Client = mongoose.model<ClientInterface>('Client', clientSchema);
