@@ -2,6 +2,7 @@
  * Required External Modules
  */
 
+
 import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -14,8 +15,8 @@ import { clientRouter } from './routers/client.router';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/notFound.middleware';
 
-dotenv.config();
 
+dotenv.config();
 
 /**
  * App Variables
@@ -24,8 +25,9 @@ dotenv.config();
 if (!process.env.PORT) {
     process.exit(1);
 }
-
+console.log('started!');
 const PORT: number = parseInt(process.env.PORT as string, 10);
+
 
 const app = express();
 
@@ -53,7 +55,6 @@ app.use(notFoundHandler);
 
 // Connexion à la base de donnée via Mongoose
 connect();
-
 const server = app.listen(PORT, () => {
     console.log(`[Express] Listening on port ${PORT}`);
 });

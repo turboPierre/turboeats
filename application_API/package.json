@@ -1,7 +1,7 @@
 {
 	"name": "application_API",
 	"version": "1.0.0",
-	"description": "A minimal ts-express project structure",
+	"description": "application API",
 	"license": "",
 	"scripts": {
 		"start": "npm run build && node dist/app.js",
@@ -10,8 +10,13 @@
 		"test": "echo run some tests!"
 	},
 	"author": "turboeats",
+	"nodemonConfig": {
+		"env": {
+			"NODE_ENV": "development",
+			"PORT" : "8080"
+		}
+	},
 	"dependencies": {
-		"cors": "^2.8.5",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
