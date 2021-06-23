@@ -1,10 +1,10 @@
-import User, { UserInterface } from '../models/user.model';
+import { User } from '../models/user.model';
 import { Request, Response, NextFunction} from 'express';
 
 
 export let getAllUsers = (req: Request, res: Response, next: NextFunction) => {
 
-    User.find()
+    User.findAll()
         .then((users) => {
             res.status(200).send(users);
         }).catch((err) => {
