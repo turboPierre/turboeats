@@ -13,14 +13,17 @@
 	"nodemonConfig": {
 		"env": {
 			"NODE_ENV": "development",
+			"MSSQL_IP": "172.16.41.21",
 			"PORT": "8080"
 		}
 	},
 	"dependencies": {
+		"cors": "^2.8.5",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
-		"sequelize": "^6.6.2"
+		"sequelize": "^6.6.2",
+		"tedious": "^11.0.9"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.10",
