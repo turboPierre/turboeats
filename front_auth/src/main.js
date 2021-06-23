@@ -1,16 +1,28 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router';
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import VueRouter from 'vue-router';
+
+
+Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: 'history',
-  routes: [{
-    path: '/',
-    component: require('./components/HelloWorld')
-  }]
+  routes: [
+    {
+      path: '/login',
+      component: require('./components/Login.vue'),
+      name: 'login'
+    },
+    {
+      path: '/register',
+      component: require('./components/Register.vue'),
+      name: 'register'
+    },
+    { path: '*', redirect: '/login' }
+  ]
 })
 
 Vue.use(BootstrapVue);
@@ -19,5 +31,5 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App),
-}).$mount(require('./App'))
+  render: h => h(App)
+}).$mount('#app')
