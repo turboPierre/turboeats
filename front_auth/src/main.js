@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Login from './components/Login.vue';
 import Register from './components/Register.vue';
+import DelivererRegister from './components/DelivererRegister.vue';
+import RestaurantRegister from './components/RestaurantRegister.vue';
 
 Vue.use(VueRouter);
 
@@ -22,6 +24,16 @@ const router = new VueRouter({
       path: '/register',
       component: Register,
       name: 'register'
+    },
+    {
+      path: '/deliverer_register',
+      component: DelivererRegister,
+      name: 'deliverer_register'
+    },
+    {
+      path: '/restaurant_register',
+      component: RestaurantRegister,
+      name: 'restaurant_register'
     },
     { path: '*', redirect: '/login' }
   ]
