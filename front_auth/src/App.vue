@@ -2,6 +2,8 @@
   <div id="app">
     <img width="30%" alt="Vue logo" src="./assets/logo.svg">
     <div>
+      <router-link to="/login">login</router-link>
+      <router-link to="/register">register</router-link>
       <router-view></router-view>
     </div>
   </div>

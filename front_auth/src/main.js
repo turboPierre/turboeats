@@ -5,6 +5,8 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import Login from './components/Login.vue';
+import Register from './components/Register.vue';
 
 Vue.use(VueRouter);
 
@@ -13,17 +15,18 @@ const router = new VueRouter({
   routes: [
     {
       path: '/login',
-      component: require('./components/Login.vue'),
+      component: Login,
       name: 'login'
     },
     {
       path: '/register',
-      component: require('./components/Register.vue'),
+      component: Register,
       name: 'register'
     },
     { path: '*', redirect: '/login' }
   ]
 })
+
 
 Vue.use(BootstrapVue);
 
