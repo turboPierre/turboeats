@@ -1,20 +1,18 @@
-import mongoose, {Schema, Document} from 'mongoose';
+import { DataTypes, Model }  from 'sequelize';
 
-export interface UserInterface extends Document {
-    id: string,
-    name: string,
-    nickname: string,
-    address: string,
-    city: string,
-    mail: string,
-    phone: string
-}
+export class User extends Model {}
 
-export const userSchema = new Schema({
-    mail: { type: String, required: true },
-    password: { type: String, required: true }
+User.init({
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastName: {
+        type: DataTypes.STRING
+    }
+}, {
+    sequelize,
+    modelName: 'User'
 });
-
-const User = mongoose.model<UserInterface>('User', userSchema);
 
 export default User;

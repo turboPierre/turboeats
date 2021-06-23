@@ -9,7 +9,10 @@ import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import DelivererRegister from './components/DelivererRegister.vue';
 import RestaurantRegister from './components/RestaurantRegister.vue';
-import MonCompte from './components/MonCompte.vue';
+
+import MyAccount from './components/MyAccount.vue';
+import Basket from './components/Basket.vue';
+import OrderedHistory from './components/OrderedHistory.vue'
 
 Vue.use(VueRouter);
 
@@ -37,9 +40,19 @@ const router = new VueRouter({
       name: 'restaurant_register'
     },
     {
-      path: '/moncompte',
-      component: MonCompte,
-      name: 'MonCompte'
+      path: '/myaccount',
+      component: MyAccount,
+      name: 'MyAccount'
+    },
+    {
+      path: '/basket',
+      component: Basket,
+      name: 'Basket'
+    },
+    {
+      path: '/orderedhistory',
+      component: OrderedHistory,
+      name: 'OrderedHistory'
     },
     { path: '*', redirect: '/login' }
   ]
