@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <h4><strong>Inscription d'un rit estaurant</strong></h4>
+      <h4><strong>Inscription d'un restaurant</strong></h4>
       <b-form-group
         id="input-group-1"
         label="Email :"

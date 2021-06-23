@@ -17,7 +17,7 @@ export default { }
 
 <style>
 #app {
-  font-family: sans-serif;
+  font-family: Gill Sans, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

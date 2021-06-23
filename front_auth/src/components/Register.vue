@@ -4,7 +4,7 @@
       <h4><strong>Content de vous revoir !</strong></h4>
       <b-form-group
         id="input-group-1"
-        label="Email:"
+        label="Email :"
         label-for="input-1"
       >
         <b-form-input

@@ -4,7 +4,7 @@
       <h4><strong>Inscription Livreur</strong></h4>
       <b-form-group
         id="input-group-1"
-        label="Email propriétaire:"
+        label="Email propriétaire :"
         label-for="input-1"
       >
         <b-form-input

@@ -13,13 +13,14 @@
 	"nodemonConfig": {
 		"env": {
 			"NODE_ENV": "development",
-			"PORT" : "8080",
+			"PORT": "8080"
 		}
 	},
 	"dependencies": {
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
-		"helmet": "^4.6.0"
+		"helmet": "^4.6.0",
+		"sequelize": "^6.6.2"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.10",
