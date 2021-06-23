@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class='container mt-5'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <h4><strong>Content de vous revoir !</strong></h4>
       <b-form-group
@@ -16,7 +16,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group class="mt-3" id="input-group-2" label="Mot de passe:" label-for="password">
+      <b-form-group class="mt-3" id="input-group-2" label="Mot de passe:" label-for="password1">
         <b-form-input
             id="password1"
             v-model="form.password1"
@@ -24,6 +24,8 @@
             placeholder="Mot de passe"
             required
         ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Mot de passe:" label-for="password2">
         <b-form-input
           id="password2"
           v-model="form.password2"

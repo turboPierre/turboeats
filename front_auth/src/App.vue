@@ -1,14 +1,13 @@
 <template>
-  <div id="app">
-    <img width="30%" alt="Vue logo" src="./assets/logo.svg">
+  <div id="app" style="overflow-x:hidden">
+    <img width="200px" alt="Vue logo" src="./assets/logo.svg">
     <div>
-      <router-link to="/login">login</router-link>
-      <router-link to="/register">register</router-link>
+<!--      <router-link to="/login">login</router-link>-->
+<!--      <router-link to="/register">register</router-link>-->
       <router-view></router-view>
     </div>
   </div>
 </template>
-
 <script>
 
 export default { }
