@@ -48,3 +48,23 @@
   </div>
 </template>
 
+<script>
+  export default {
+    data() {
+      return {
+        form: {
+          email: '',
+          password1: '',
+          password2: '',
+        },
+        show: true
+      }
+    },
+    methods: {
+      onSubmit(event) {
+        event.preventDefault()
+        alert(JSON.stringify(this.form))
+      },
+    }
+  }
+</script>
