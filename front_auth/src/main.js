@@ -9,7 +9,7 @@ import Login from './components/Login.vue';
 import Register from './components/Register.vue';
 import DelivererRegister from './components/DelivererRegister.vue';
 import RestaurantRegister from './components/RestaurantRegister.vue';
-import MonCompte from './components/MonCompte.vue'
+import MonCompte from './components/MonCompte.vue';
 
 Vue.use(VueRouter);
 
