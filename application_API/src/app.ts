@@ -13,7 +13,6 @@ import connect from './config/mongoose.config';
 import { errorHandler } from './middleware/error.middleware';
 import { notFoundHandler } from './middleware/notFound.middleware';
 
-import { userRouter } from './routers/user.router';
 import {menuRouter} from './routers/menu.router';
 import {productRouter} from './routers/product.router';
 import {commandRouter} from './routers/command.router';
@@ -48,7 +47,6 @@ app.use(cors());
 app.use(express.json());
 
 // Routes de l'API
-app.use('/users', userRouter);
 app.use('/menus', menuRouter);
 app.use('/products', productRouter);
 app.use('/commands', commandRouter);

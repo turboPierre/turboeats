@@ -8,9 +8,9 @@ export interface CommandInterface extends Document {
 export const commandSchema = new Schema({
     name: { type: String, required: true },
     price: { type: String, required: true },
-    _clientId: {type: Schema.Types.ObjectId, ref: 'User', required:true},
-    _restaurantId: {type: Schema.Types.ObjectId, ref: 'User', required:true},
-    _delivererId: {type: Schema.Types.ObjectId, ref: 'User', required:true},
+    _clientId: {type: Number, required:true},
+    _restaurantId: {type: Number, required:true},
+    _delivererId: {type: Number, required:true},
     _menuId:[
         {type: Schema.Types.ObjectId, ref: 'Menu'}
     ],
