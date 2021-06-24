@@ -48,7 +48,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
   export default {
     data() {
       return {
@@ -68,25 +67,3 @@
     }
   }
 </script>
-=======
-export default {
-  data() {
-    return {
-      form: {
-        email: '',
-        password: '',
-      },
-      show: true
-    }
-  },
-  methods: {
-    onSubmit(event) {
-      event.preventDefault()
-      alert(JSON.stringify(this.form))
-    },
-  }
-}
-</script>
-
-
->>>>>>> 5ad7940f484fa48b882cd3ff52e7a87730a71cb8
