@@ -14,7 +14,7 @@ export class User extends Model {
 
 User.init({
     id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER.UNSIGNED,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false

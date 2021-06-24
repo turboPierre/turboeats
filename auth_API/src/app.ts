@@ -42,8 +42,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes de l'API
-
-// app.use('/clients', userRouter);
+app.use('/users', userRouter);
 
 // Routes d'erreur, à laisser après les routes d'API
 app.use(errorHandler);
