@@ -13,8 +13,8 @@
 	"nodemonConfig": {
 		"env": {
 			"NODE_ENV": "development",
-			"PORT" : "8081",
-			"MONGO_URI" : "mongodb+srv://Admin:admin@turbocluster.n0lcr.mongodb.net/turboeats?retryWrites=true&w=majority"
+			"PORT": "8081",
+			"MONGO_URI": "mongodb+srv://Admin:admin@turbocluster.n0lcr.mongodb.net/turboeats?retryWrites=true&w=majority"
 		}
 	},
 	"dependencies": {
