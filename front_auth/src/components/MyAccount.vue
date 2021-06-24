@@ -48,7 +48,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD:front_auth/src/components/MonCompte.vue
 export default {
   data() {
     return {
@@ -68,24 +67,4 @@ export default {
 }
 </script>
 
-=======
-  export default {
-    data() {
-      return {
-        form: {
-          email: '',
-          password1: '',
-          password2: '',
-        },
-        show: true
-      }
-    },
-    methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
-    }
-  }
-</script>
->>>>>>> d9023e913b3ee371046a424f61abb9b2d95d1244:front_auth/src/components/MyAccount.vue
+
