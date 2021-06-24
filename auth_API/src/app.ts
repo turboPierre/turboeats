@@ -8,7 +8,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import connect from './config/sqlserv.config';
+import testConnection from './config/sqlserv.config';
 
 import { userRouter } from './routers/user.router';
 
@@ -55,7 +55,7 @@ app.use(notFoundHandler);
  */
 
 // Connexion à la base de donnée via Mongoose
-connect();
+testConnection();
 const server = app.listen(PORT, () => {
     console.log(`[Express] Listening on port ${PORT}`);
 });
