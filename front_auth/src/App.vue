@@ -1,6 +1,6 @@
 <template>
   <div v-if="loged" id="app" style="overflow-x:hidden">
-    <img width="200px" alt="Vue logo" src="./assets/logo.svg">
+    <router-link to="/login"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
     <div><strong>Loged</strong></div>
     <router-link to="/myaccount" tag="button" class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>Acceuil</strong></router-link>
     <router-view></router-view>
