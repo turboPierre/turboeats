@@ -1,19 +1,22 @@
 <template>
-  <div v-if="loged" id="app" style="overflow-x:hidden">
+  <div v-if="loged" id="app" style="overflow-x:hidden; margin-top: 5px">
+    <div class="nav">
+      <router-link to="/login"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+    </div>
+
+  </div>
+
+  <div v-else id="app" style="overflow-x:hidden">
     <router-link to="/login"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
-    <div><strong>Loged</strong></div>
+      <div>
+        <strong>Loged</strong>
+      </div>
     <router-link to="/myaccount" tag="button" class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>Acceuil</strong></router-link>
     <router-view></router-view>
   </div>
-  <div v-else id="app" style="overflow-x:hidden">
-    <img width="200px" alt="Vue logo" src="./assets/logo.svg">
-    <div>
-<!--      <router-link to="/login">login</router-link>-->
-<!--      <router-link to="/register">register</router-link>-->
-      <router-view></router-view>
-    </div>
-  </div>
+
 </template>
+
 <script>
 
 export default { 
