@@ -23,7 +23,7 @@ export default {
   data(){
     return{
       // Value for change header
-      loged : true
+      loged : false
     }
   }
 }
