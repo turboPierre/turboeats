@@ -3,7 +3,13 @@ import mongoose, {Schema, Document} from 'mongoose';
 
 export interface RestaurantInterface extends Document {
     name: string,
-    price: string
+    price: string,
+    describe: String,
+    picture: File,
+    adress: String,
+    lunch_hours: Number,
+    dinner_hours: Number,
+    open_days: String
 }
 
 export const restaurantSchema = new Schema({
@@ -14,7 +20,7 @@ export const restaurantSchema = new Schema({
     adress : { type: String, required: true },
     lunch_hours : { type: Number, required:false},
     dinner_hours : { type: Number, required:false},
-    open_days : { type: String, required: true },
+    open_days : { type: String, required: true }
 });
 
 const Restaurant = mongoose.model<RestaurantInterface>('Restaurant', restaurantSchema);
