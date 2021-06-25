@@ -68,7 +68,7 @@ User.init({
         allowNull: false
     },
     active: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         allowNull: false
     },
     sponsor: {
