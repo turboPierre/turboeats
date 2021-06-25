@@ -12,7 +12,7 @@ export interface UserInterface {
     password: string;
     address: string;
     role: string;
-    active: string;
+    active: boolean;
     sponsor: string;
 }
 
@@ -26,7 +26,7 @@ export class User extends Model {
     public password!: string;
     public address!: string;
     public role!: string;
-    public active!: string;
+    public active!: boolean;
     public sponsor!: string;
 }
 
