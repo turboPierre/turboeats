@@ -16,17 +16,23 @@ export const userRouter = express.Router();
  * Controller Definitions
  */
 
-// GET clients/
+// GET users/
 userRouter.get('/', UserController.getAllUsers)
 
-// GET clients/:id
-userRouter.get('/:id', UserController.getOneUser);
+// GET users/:id
+// @Unused
+// userRouter.get('/:id', UserController.getOneUser);
 
-// POST clients/
-userRouter.post('/', UserController.createUser);
+// PUT users/:id
+// @Unused
+// userRouter.put('/:id', UserController.updateUser);
 
-// PUT clients/:id
-userRouter.put('/:id', UserController.updateUser);
+// DELETE users/:id
+// @Unused
+// userRouter.delete('/:id', UserController.deleteUser);
 
-// DELETE clients/:id
-userRouter.delete('/:id', UserController.deleteUser);
+// SIGNUP
+userRouter.post('/signup', UserController.signup);
+
+// LOGIN
+userRouter.post('/login', UserController.login);

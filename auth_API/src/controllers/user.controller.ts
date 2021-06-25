@@ -1,6 +1,7 @@
 import { User, UserInterface } from '../models/user.model';
 import { Request, Response, NextFunction} from 'express';
 import {DestroyOptions, UpdateOptions} from 'sequelize';
+import bcrypt from 'bcrypt';
 
 
 export let getAllUsers = (req: Request, res: Response, next: NextFunction) => {
@@ -25,16 +26,6 @@ export let getOneUser = (req: Request, res: Response, next: NextFunction) => {
         })
         .catch((err: Error) => res.status(500).json(err));
 
-
-};
-
-export let createUser = (req: Request, res: Response, next: NextFunction) => {
-
-    const params: UserInterface = req.body;
-
-    User.create<User>(params)
-        .then((users: User) => res.status(201).json(users))
-        .catch((err: Error) => res.status(500).json(err));
 
 };
 
@@ -64,4 +55,47 @@ export let deleteUser = (req: Request, res: Response, next: NextFunction) => {
     User.destroy(options)
         .then(() => res.status(204).json({data: 'success'}))
         .catch((err: Error) => res.status(500).json(err));
+};
+
+export let signup = (req: Request, res: Response, next: NextFunction) => {
+    bcrypt.hash(req.body.password, 10)
+        .then(hash => {
+            const user = new User({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                phone: req.body.phone,
+                avatar: req.body.avatar,
+                password: hash,
+                address: req.body.address,
+                role: req.body.role,
+                active: req.body.active,
+                sponsor: req.body.sponsor
+            });
+            user.save()
+                .then(() => res.status(201).json({ message: 'User registered' }))
+                .catch(error => res.status(400).json({ error }));
+        })
+        .catch(error => res.status(500).json({ error }));
+};
+
+export let login = (req: Request, res: Response, next: NextFunction) => {
+    User.findOne({ where: { email: req.body.email}})
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({ error: 'Incorrect user/pass' });
+            }
+            bcrypt.compare(req.body.password, user.password)
+                .then(valid => {
+                    if (!valid) {
+                        return res.status(401).json({ error: 'Incorrect user/pass' });
+                    }
+                    res.status(200).json({
+                        userId: user.id,
+                        token: 'TOKEN'
+                    });
+                })
+                .catch(error => res.status(500).json({ error }));
+        })
+        .catch(error => res.status(500).json({ error }));
 };
