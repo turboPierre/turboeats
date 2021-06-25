@@ -3,7 +3,7 @@ import mongoose, {Schema, Document} from 'mongoose';
 export interface MenuInterface extends Document {
     name: string,
     price: string,
-    describe: String,
+    describe: string,
     picture: File
 }
 

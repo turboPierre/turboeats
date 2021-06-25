@@ -4,12 +4,12 @@ import mongoose, {Schema, Document} from 'mongoose';
 export interface RestaurantInterface extends Document {
     name: string,
     price: string,
-    describe: String,
+    describe: string,
     picture: File,
-    adress: String,
-    lunch_hours: Number,
-    dinner_hours: Number,
-    open_days: String
+    adress: string,
+    lunch_hours: number,
+    dinner_hours: number,
+    open_days: string
 }
 
 export const restaurantSchema = new Schema({
