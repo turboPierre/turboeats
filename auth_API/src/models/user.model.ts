@@ -4,12 +4,30 @@ import {sequelize} from '../config/sqlserv.config';
 
 export interface UserInterface {
     id: number;
-    name: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    avatar: string;
+    password: string;
+    address: string;
+    role: string;
+    active: string;
+    sponsor: string;
 }
 
 export class User extends Model {
     public id!: number;
-    public name!: string;
+    public firstName!: string;
+    public lastName!: string;
+    public email!: string;
+    public phone!: string;
+    public avatar!: string;
+    public password!: string;
+    public address!: string;
+    public role!: string;
+    public active!: string;
+    public sponsor!: string;
 }
 
 User.init({
@@ -24,6 +42,36 @@ User.init({
         allowNull: false
     },
     lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: DataTypes.STRING
+    },
+    avatar: {
+        type: DataTypes.STRING
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    address: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    active: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    sponsor: {
         type: DataTypes.STRING
     }
 }, {
@@ -31,6 +79,6 @@ User.init({
     modelName: 'Users'
 });
 
-User.sync({force: true}).then(() => console.log('Users table created'));
+User.sync().then(() => console.log('Users table sync'));
 
 export default User;
