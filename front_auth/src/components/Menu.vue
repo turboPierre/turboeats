@@ -31,8 +31,7 @@
   export default {
     data() {
 
-      const request = this.$app_api_uri + '/restaurants';
-      this.$http.get(request, {
+      this.$http.get(this.$app_api_uri + '/restaurants', {
               headers: {
                   'Authorization': 'Bearer ' + localStorage.getItem('access_token')
               }

@@ -29,6 +29,32 @@ export let getOneUser = (req: Request, res: Response, next: NextFunction) => {
 
 };
 
+export let myInfos = (req: Request, res: Response, next: NextFunction) => {
+    try{
+        if(req.headers.authorization != null){
+            const token = req.headers.authorization.split(' ')[1];
+            const decodedToken : any = jwt.verify(token, ''+process.env.RANDOM_TOKEN_SECRET);
+            const userId = decodedToken.userId;
+            User.findByPk<User>(userId)
+                .then((user: User | null) => {
+                    if (user) {
+                        res.json(user);
+                    } else {
+                        res.status(404).json({errors: ['No user infos found']});
+                    }
+                })
+                .catch((err: Error) => res.status(500).json(err));
+        }
+        else{
+            throw new Error('No user infos, token error');
+        }
+    } catch(error){
+        res.status(500).json(error);
+    }
+
+};
+
+
 export let updateUser = (req: Request, res: Response, next: NextFunction) => {
     const userId: string = req.params.id;
     const params: UserInterface = req.body;

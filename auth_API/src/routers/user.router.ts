@@ -21,7 +21,10 @@ userRouter.get('/', AuthMiddleware.userAuth , UserController.getAllUsers)
 
 // GET users/:id
 // @Unused
-// userRouter.get('/:id', UserController.getOneUser);
+// userRouter.get('/:id', AuthMiddleware.userAuth, UserController.getOneUser);
+
+// GET users/myInfos
+userRouter.get('/myInfos', AuthMiddleware.userAuth, UserController.myInfos);
 
 // PUT users/:id
 // @Unused
