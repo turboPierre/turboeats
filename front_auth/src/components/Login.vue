@@ -34,8 +34,14 @@
                   email: this.form.email,
                   password: this.form.password
                 }
-        ).then( response => localStorage.setItem('access_token', response.data.token)).catch( error => console.log(error));
-
+        ).then(response => {
+                  localStorage.setItem('access_token', response.data.token);
+                  this.$router.push({ name: "menu"});
+        }).catch(error => {
+                  console.log(error);
+                  window.alert("Identifiants incorrects.");
+        });
+        //Acceder au token : localStorage.getItem('access_token');
         event.preventDefault();
       },
     }

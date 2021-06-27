@@ -4,6 +4,7 @@
 
 import express from 'express';
 import * as RestaurantController from '../controllers/restaurant.controller';
+import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -17,16 +18,16 @@ export const restaurantRouter = express.Router();
  */
 
 // GET restaurants/
-restaurantRouter.get('/', RestaurantController.getAllRestaurants)
+restaurantRouter.get('/', AuthMiddleware.userAuth, RestaurantController.getAllRestaurants)
 
 // GET restaurants/:id
-restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
+restaurantRouter.get('/:id',AuthMiddleware.userAuth, RestaurantController.getOneRestaurant);
 
 // POST restaurants/
-restaurantRouter.post('/', RestaurantController.createRestaurant);
+restaurantRouter.post('/',AuthMiddleware.userAuth, RestaurantController.createRestaurant);
 
 // PUT restaurants/:id
-restaurantRouter.put('/:id', RestaurantController.updateRestaurant);
+restaurantRouter.put('/:id',AuthMiddleware.userAuth, RestaurantController.updateRestaurant);
 
 // DELETE restaurants/:id
-restaurantRouter.delete('/:id', RestaurantController.deleteRestaurant);
+restaurantRouter.delete('/:id',AuthMiddleware.userAuth, RestaurantController.deleteRestaurant);

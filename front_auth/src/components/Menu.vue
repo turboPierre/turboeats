@@ -32,10 +32,16 @@
     data() {
 
       const request = this.$app_api_uri + '/restaurants';
-      this.$http.get(request)
-          .then((result) => {
+      this.$http.get(request, {
+              headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+              }
+            }).then((result) => {
             this.users = result.data
-          });
+          }).catch(error => {
+                console.log(error);
+                this.$router.push({ name: "login"});
+      });
 
       return {
         form: {
