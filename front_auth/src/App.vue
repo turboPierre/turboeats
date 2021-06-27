@@ -1,13 +1,13 @@
 <template>
-  <div v-if="loged" id="app" style="overflow-x:hidden; margin-top: 5px">
+  <div v-if="logged" id="app" style="overflow-x:hidden; margin-top: 5px">
     <div class="nav">
-      <router-link to="/login"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+      <router-link to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
     </div>
 
   </div>
 
   <div v-else id="app" style="overflow-x:hidden">
-    <router-link to="/login"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+    <router-link to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
       <div>
         <strong>Logged</strong>
       </div>
@@ -23,7 +23,7 @@ export default {
   data(){
     return{
       // Value for change header
-      loged : false
+      logged : false
     }
   }
 }
