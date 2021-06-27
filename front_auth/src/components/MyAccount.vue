@@ -13,7 +13,7 @@
             }
         }).then((response) => {
             var div = document.getElementById('userInfos');
-            var data = response.data;
+            var data = response.data[0];
             console.log(data);
             div.innerHTML += '<b>Nom : </b><p>' + data.lastName + '</p>';
             div.innerHTML += '<b>Prénom : </b><p>' + data.firstName + '</p>';
@@ -25,7 +25,7 @@
             div.innerHTML += '<b>Code de parrainage : </b><p>' + data.sponsor + '</p>';
         }).catch(error => {
             console.log(error);
-            // this.$router.push({ name: "login"});
+            this.$router.push({ name: "login"});
         });
       return {
         form: {
