@@ -28,17 +28,13 @@
     },
     methods: {
       onSubmit(event) {
-        const request = this.$auth_api_uri + '/users/login';
-
-        const bodyParameters = {
-          email: this.form.email,
-          password: this.form.password
-        };
-
         this.$http.post(
-                request,
-                bodyParameters
-        ).then(console.log).catch(console.log);
+                this.$auth_api_uri + '/users/login',
+                {
+                  email: this.form.email,
+                  password: this.form.password
+                }
+        ).then( response => localStorage.setItem('access_token', response.data.token)).catch( error => console.log(error));
 
         event.preventDefault();
       },

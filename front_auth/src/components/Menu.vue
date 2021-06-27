@@ -35,7 +35,7 @@
       this.$http.get(request)
           .then((result) => {
             this.users = result.data
-          })
+          });
 
       return {
         form: {
