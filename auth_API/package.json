@@ -14,7 +14,8 @@
 		"env": {
 			"NODE_ENV": "development",
 			"MSSQL_IP": "172.16.41.21",
-			"PORT": "8080"
+			"PORT": "8080",
+			"RANDOM_TOKEN_SECRET" : "aPdSgVkYp3s6v9y$B&E)H@MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r5u8x/A?D("
 		}
 	},
 	"dependencies": {

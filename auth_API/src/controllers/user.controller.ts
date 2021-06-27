@@ -2,7 +2,7 @@ import { User, UserInterface } from '../models/user.model';
 import { Request, Response, NextFunction} from 'express';
 import {DestroyOptions, UpdateOptions} from 'sequelize';
 import bcrypt from 'bcrypt';
-
+import jwt from 'jsonwebtoken';
 
 export let getAllUsers = (req: Request, res: Response, next: NextFunction) => {
 
@@ -92,7 +92,11 @@ export let login = (req: Request, res: Response, next: NextFunction) => {
                     }
                     res.status(200).json({
                         userId: user.id,
-                        token: 'TOKEN'
+                        token: jwt.sign(
+                            { userId: user.id },
+                            ''+process.env.RANDOM_TOKEN_SECRET,
+                            { expiresIn: '24h' }
+                        )
                     });
                 })
                 .catch(error => res.status(500).json({ error }));
