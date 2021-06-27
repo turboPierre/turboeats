@@ -4,6 +4,7 @@
 
 import express from 'express';
 import * as UserController from '../controllers/user.controller';
+import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -11,13 +12,12 @@ import * as UserController from '../controllers/user.controller';
 
 export const userRouter = express.Router();
 
-
 /**
  * Controller Definitions
  */
 
 // GET users/
-userRouter.get('/', UserController.getAllUsers)
+userRouter.get('/', AuthMiddleware.userAuth , UserController.getAllUsers)
 
 // GET users/:id
 // @Unused

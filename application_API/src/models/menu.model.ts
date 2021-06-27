@@ -4,7 +4,7 @@ export interface MenuInterface extends Document {
     name: string,
     price: string,
     describe: string,
-    picture: File
+    picture: string
 }
 
 export const menuSchema = new Schema({
@@ -15,7 +15,7 @@ export const menuSchema = new Schema({
     _restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true},
     price: { type: String, required: true },
     describe: { type: String, required: false},
-    picture : { type: File, required : false}
+    picture : { type: String, required : false}
 });
 
 const Menu = mongoose.model<MenuInterface>('Menu', menuSchema);

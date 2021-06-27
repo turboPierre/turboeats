@@ -4,7 +4,7 @@ export interface ProductInterface extends Document {
     name: string,
     price: string,
     describe: string,
-    picture: File
+    picture: string
 }
 
 export const productSchema = new Schema({
@@ -12,7 +12,7 @@ export const productSchema = new Schema({
     price:  { type: Number, required: true },
     _restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true},
     describe: { type: String, required: false},
-    picture : { type: File, required : false}
+    picture : { type: String, required : false}
 });
 
 const Product = mongoose.model<ProductInterface>('Product', productSchema);

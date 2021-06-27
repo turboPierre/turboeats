@@ -17,6 +17,7 @@
 <script>
   export default {
     data() {
+
       return {
         form: {
           email: '',
@@ -27,8 +28,19 @@
     },
     methods: {
       onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
+        const request = this.$auth_api_uri + '/users/login';
+
+        const bodyParameters = {
+          email: this.form.email,
+          password: this.form.password
+        };
+
+        this.$http.post(
+                request,
+                bodyParameters
+        ).then(console.log).catch(console.log);
+
+        event.preventDefault();
       },
     }
   }

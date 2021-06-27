@@ -31,8 +31,8 @@
   export default {
     data() {
 
-      const requete = 'http://172.20.10.5:8081/restaurants'
-      this.$http.get(requete)
+      const request = this.$app_api_uri + '/restaurants';
+      this.$http.get(request)
           .then((result) => {
             this.users = result.data
           })

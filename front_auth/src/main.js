@@ -18,6 +18,9 @@ import OrderedHistory from './components/OrderedHistory.vue';
 
 Vue.prototype.$http = axios;
 
+Vue.prototype.$app_api_uri = "http://localhost:8081";
+Vue.prototype.$auth_api_uri = "http://localhost:8080";
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
