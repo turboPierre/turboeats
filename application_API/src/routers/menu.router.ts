@@ -4,6 +4,7 @@
 
 import express from 'express';
 import * as MenuController from '../controllers/menu.controller';
+import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -17,16 +18,16 @@ export const menuRouter = express.Router();
  */
 
 // GET menus/
-menuRouter.get('/', MenuController.getAllMenus)
+menuRouter.get('/',AuthMiddleware.userAuth, MenuController.getAllMenus)
 
 // GET menus/:id
-menuRouter.get('/:id', MenuController.getOneMenu);
+menuRouter.get('/:id',AuthMiddleware.userAuth, MenuController.getOneMenu);
 
 // POST menus/
-menuRouter.post('/', MenuController.createMenu);
+menuRouter.post('/',AuthMiddleware.userAuth, MenuController.createMenu);
 
 // PUT menus/:id
-menuRouter.put('/:id', MenuController.updateMenu);
+menuRouter.put('/:id',AuthMiddleware.userAuth, MenuController.updateMenu);
 
 // DELETE menus/:id
-menuRouter.delete('/:id', MenuController.deleteMenu);
+menuRouter.delete('/:id',AuthMiddleware.userAuth, MenuController.deleteMenu);

@@ -4,6 +4,7 @@
 
 import express from 'express';
 import * as CommandController from '../controllers/command.controller';
+import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -17,16 +18,16 @@ export const commandRouter = express.Router();
  */
 
 // GET commands/
-commandRouter.get('/', CommandController.getAllCommands)
+commandRouter.get('/', AuthMiddleware.userAuth, CommandController.getAllCommands)
 
 // GET commands/:id
-commandRouter.get('/:id', CommandController.getOneCommand);
+commandRouter.get('/:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
 
 // POST commands/
-commandRouter.post('/', CommandController.createCommand);
+commandRouter.post('/',AuthMiddleware.userAuth, CommandController.createCommand);
 
 // PUT commands/:id
-commandRouter.put('/:id', CommandController.updateCommand);
+commandRouter.put('/:id',AuthMiddleware.userAuth, CommandController.updateCommand);
 
 // DELETE commands/:id
-commandRouter.delete('/:id', CommandController.deleteCommand);
+commandRouter.delete('/:id',AuthMiddleware.userAuth, CommandController.deleteCommand);
