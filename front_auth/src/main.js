@@ -15,10 +15,12 @@ import RestaurantRegister from './components/RestaurantRegister.vue';
 import MyAccount from './components/MyAccount.vue';
 import Basket from './components/Basket.vue';
 import OrderedHistory from './components/OrderedHistory.vue';
+import PageRestaurant from "./components/PageRestaurant.vue";
 
 Vue.prototype.$http = axios;
 
 Vue.use(VueRouter);
+
 
 const router = new VueRouter({
   mode: 'history',
@@ -37,6 +39,11 @@ const router = new VueRouter({
       path: '/menu',
       component: Menu,
       name: 'menu'
+    },
+    {
+      path: '/restaurant/:id',
+      component: PageRestaurant,
+      name: 'Restaurant'
     },
     {
       path: '/deliverer_register',
