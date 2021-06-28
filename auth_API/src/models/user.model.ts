@@ -8,7 +8,6 @@ export interface UserInterface {
     lastName: string;
     email: string;
     phone: string;
-    avatar: string;
     password: string;
     address: string;
     role: string;
@@ -22,7 +21,6 @@ export class User extends Model {
     public lastName!: string;
     public email!: string;
     public phone!: string;
-    public avatar!: string;
     public password!: string;
     public address!: string;
     public role!: string;
@@ -50,9 +48,6 @@ User.init({
         allowNull: false
     },
     phone: {
-        type: DataTypes.STRING
-    },
-    avatar: {
         type: DataTypes.STRING
     },
     password: {

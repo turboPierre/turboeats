@@ -19,13 +19,12 @@
             div.innerHTML += '<b>Prénom : </b><p>' + data.firstName + '</p>';
             div.innerHTML += '<b>Email : </b><p>' + data.email + '</p>';
             div.innerHTML += '<b>Phone : </b><p>' + data.phone + '</p>';
-            div.innerHTML += '<b>Avatar : </b><p>' + data.avatar + '</p>';
             div.innerHTML += '<b>Address : </b><p>' + data.address + '</p>';
             div.innerHTML += '<b>Type : </b><p>' + data.role + '</p>';
             div.innerHTML += '<b>Code de parrainage : </b><p>' + data.sponsor + '</p>';
         }).catch(error => {
             console.log(error);
-            // this.$router.push({ name: "login"});
+            this.$router.push({ name: "login"});
         });
       return {
         form: {
