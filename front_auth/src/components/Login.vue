@@ -36,7 +36,7 @@
                 }
         ).then(response => {
                   localStorage.setItem('access_token', response.data.token);
-                  this.$router.push({ name: "menu"});
+                  this.$router.replace('/menu');
         }).catch(error => {
                   console.log(error);
                   window.alert("Identifiants incorrects.");

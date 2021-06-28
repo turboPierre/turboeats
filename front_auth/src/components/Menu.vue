@@ -24,30 +24,26 @@
 </template>
 
 <script>
-    export default {
-        data() {
 
-            this.$http.get(this.$app_api_uri + '/restaurants', {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-                }
-            }).then((result) => {
-                this.users = result.data
-            }).catch(error => {
-                console.log(error);
-                this.$router.push({ name: "login"});
-            });
+  export default {
+    data() {
 
-            return {
-                form: {
-                    email: '',
-                    password: '',
-                },
-                show: true
-            }
-        },
-        methods: {
+      return {
+        restaurants: null
+      }
+    },
+    mounted() {
+
+      this.$http.get(this.$app_api_uri + '/restaurants', {
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
         }
+      }).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
+        console.log(error);
+        this.$router.push({ name: "login"})
+      });
+
     }
+  }
 
 </script>
