@@ -1,6 +1,7 @@
 <template>
   <div class='mt-5'>
     <h3><strong>Content de vous revoir !</strong></h3>
+    <br>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group id="input-group-1" label="Email:" label-for="input-1">
         <b-form-input id="email" v-model="form.email" type="email" placeholder="Email" required></b-form-input>
@@ -8,7 +9,9 @@
       <b-form-group class="mt-3" id="input-group-2" label="Mot de passe:" label-for="password">
         <b-form-input id="password" v-model="form.password" type="password" placeholder="Mot de passe" required></b-form-input>
       </b-form-group>
+      <br>
       <b-button class="mt-3 btn-success" type="submit" variant="primary"><strong>Se connecter</strong></b-button>
+      <br><br>
       <p>Vous êtes nouveau ?<router-link style="color:#5FB709" to="/register"> Créer votre compte.</router-link></p>
     </b-form>
   </div>

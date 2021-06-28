@@ -12,7 +12,6 @@ export interface UserInterface {
     address: string;
     role: string;
     active: boolean;
-    sponsor: string;
 }
 
 export class User extends Model {
@@ -25,7 +24,6 @@ export class User extends Model {
     public address!: string;
     public role!: string;
     public active!: boolean;
-    public sponsor!: string;
 }
 
 User.init({
@@ -65,9 +63,6 @@ User.init({
     active: {
         type: DataTypes.BOOLEAN,
         allowNull: false
-    },
-    sponsor: {
-        type: DataTypes.STRING
     }
 }, {
     sequelize,
@@ -75,5 +70,9 @@ User.init({
 });
 
 User.sync().then(() => console.log('Users table sync'));
+/*
+User.sync({
+    force: true
+});*/
 
 export default User;
