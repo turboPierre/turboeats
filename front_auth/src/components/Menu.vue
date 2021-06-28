@@ -1,9 +1,9 @@
 <template>
   <div class='m-5' style=" margin-top: 70px;">
 <div class="row">
-  <h1>
-    Liste des restaurants
-  </h1>
+<!--  <h1>-->
+<!--    Liste des restaurants-->
+<!--  </h1>-->
 </div>
 
 
