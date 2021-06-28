@@ -1,5 +1,6 @@
 <template>
-  <div class='container' id='userInfos'>
+  <div class='container mt-5' id='userInfos'>
+    <h3><strong>Mon Compte</strong></h3><br>
   </div>
 </template>
 

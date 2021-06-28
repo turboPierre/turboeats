@@ -1,7 +1,7 @@
 <template>
   <div class='container mt-5'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <h4><strong>Créer votre compte</strong></h4>
+      <h3><strong>Créer votre compte</strong></h3><br>
       <b-form-group
         id="input-group-1"
         label="Email :"
@@ -65,7 +65,7 @@
         ></b-form-input>
       </b-form-group>
 
-
+      <br>
       <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>S'enregistrer</strong></b-button>
     </b-form>
 
@@ -94,27 +94,32 @@
     },
     methods: {
       onSubmit(event) {
-        this.$http.post(
-                this.$auth_api_uri + '/users/signup',
-                {
-                  firstName: this.form.firstname,
-                  lastName: this.form.lastname,
-                  email: this.form.email,
-                  phone: this.form.phone,
-                  password: this.form.password1,
-                  address: this.form.address,
-                  role: "client",
-                }
-        ).then(response => {
-          console.log(response);
-          this.$router.push({ name: "login"});
-          location.reload();
-          window.alert("Compte utilisateur créé.");
-        }).catch(error => {
-          console.log(error);
-          window.alert("ERROR");
-        });
-        //Acceder au token : localStorage.getItem('access_token');
+        if(this.form.password1 !== this.form.password2){
+          window.alert("Les mots de passes ne correspondent pas.")
+        } else{
+          this.$http.post(
+                  this.$auth_api_uri + '/users/signup',
+                  {
+                    firstName: this.form.firstname,
+                    lastName: this.form.lastname,
+                    email: this.form.email,
+                    phone: this.form.phone,
+                    password: this.form.password1,
+                    address: this.form.address,
+                    role: "client",
+                  }
+          ).then(response => {
+            console.log(response);
+            window.alert("Compte créé.");
+            setTimeout(() => {
+              this.$router.push({ name: "login"});
+              location.reload();
+            }, 1000);
+          }).catch(error => {
+            console.log(error);
+            window.alert("ERROR");
+          });
+        }
         event.preventDefault();
       },
     }
