@@ -4,6 +4,7 @@
 
 import express from 'express';
 import * as ProductController from '../controllers/product.controller';
+import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -17,16 +18,16 @@ export const productRouter = express.Router();
  */
 
 // GET products/
-productRouter.get('/', ProductController.getAllProducts)
+productRouter.get('/',AuthMiddleware.userAuth, ProductController.getAllProducts)
 
 // GET products/:id
-productRouter.get('/:id', ProductController.getOneProduct);
+productRouter.get('/:id',AuthMiddleware.userAuth, ProductController.getOneProduct);
 
 // POST products/
-productRouter.post('/', ProductController.createProduct);
+productRouter.post('/',AuthMiddleware.userAuth, ProductController.createProduct);
 
 // PUT products/:id
-productRouter.put('/:id', ProductController.updateProduct);
+productRouter.put('/:id',AuthMiddleware.userAuth, ProductController.updateProduct);
 
 // DELETE products/:id
-productRouter.delete('/:id', ProductController.deleteProduct);
+productRouter.delete('/:id',AuthMiddleware.userAuth, ProductController.deleteProduct);

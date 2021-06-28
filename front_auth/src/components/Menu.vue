@@ -27,6 +27,17 @@
 
   export default {
     data() {
+      this.$http.get(this.$app_api_uri + '/restaurants', {
+              headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+              }
+            }).then((result) => {
+            this.users = result.data
+          }).catch(error => {
+                console.log(error);
+                this.$router.push({ name: "login"});
+      });
+
       return {
         restaurants: null
       }

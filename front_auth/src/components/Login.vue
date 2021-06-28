@@ -17,6 +17,7 @@
 <script>
   export default {
     data() {
+
       return {
         form: {
           email: '',
@@ -27,8 +28,21 @@
     },
     methods: {
       onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
+        this.$http.post(
+                this.$auth_api_uri + '/users/login',
+                {
+                  email: this.form.email,
+                  password: this.form.password
+                }
+        ).then(response => {
+                  localStorage.setItem('access_token', response.data.token);
+                  this.$router.push({ name: "menu"});
+        }).catch(error => {
+                  console.log(error);
+                  window.alert("Identifiants incorrects.");
+        });
+        //Acceder au token : localStorage.getItem('access_token');
+        event.preventDefault();
       },
     }
   }

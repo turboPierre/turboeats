@@ -19,6 +19,9 @@ import PageRestaurant from "./components/PageRestaurant.vue";
 
 Vue.prototype.$http = axios;
 
+Vue.prototype.$app_api_uri = "http://localhost:8081";
+Vue.prototype.$auth_api_uri = "http://localhost:8080";
+
 Vue.use(VueRouter);
 
 
@@ -72,14 +75,14 @@ const router = new VueRouter({
     },
     { path: '*', redirect: '/login' }
   ]
-})
+});
 
 
 Vue.use(BootstrapVue);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
