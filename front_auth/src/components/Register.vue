@@ -1,7 +1,7 @@
 <template>
   <div class='container mt-5'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <h3><strong>Créer votre compte client !</strong></h3><br>
+      <h3><strong>Créez votre compte client !</strong></h3><br>
       <b-form-group
         id="input-group-1"
         label="Email :"
@@ -110,14 +110,14 @@
                   }
           ).then(response => {
             console.log(response);
-            window.alert("Compte créé.");
+            window.alert("Compte client créé.");
             setTimeout(() => {
               this.$router.push({ name: "login"});
               location.reload();
             }, 1000);
           }).catch(error => {
             console.log(error);
-            window.alert("ERROR");
+            window.alert("Le compte n'as pas pu être créé.");
           });
         }
         event.preventDefault();

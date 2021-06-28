@@ -1,6 +1,6 @@
 <template>
   <div class='container mt-5' id='userInfos'>
-    <h3><strong>Mon Compte</strong></h3><br>
+    <h3><strong id="title"></strong></h3><br>
   </div>
 </template>
 
@@ -21,6 +21,7 @@
             div.innerHTML += '<b>Numéro de téléphone : </b><p>' + data.phone + '</p>';
             div.innerHTML += '<b>Adresse : </b><p>' + data.address + '</p>';
             div.innerHTML += '<b>Code de parrainage : </b><p>' + data.id + '</p>';
+            document.getElementById('title').innerHTML += 'Mon Compte ' + data.role;
         }).catch(error => {
             console.log(error);
             this.$router.push({ name: "login"});
