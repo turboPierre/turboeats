@@ -15,7 +15,7 @@
 			"NODE_ENV": "development",
 			"MSSQL_IP": "172.16.41.21",
 			"PORT": "8080",
-			"RANDOM_TOKEN_SECRET" : "aPdSgVkYp3s6v9y$B&E)H@MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r5u8x/A?D("
+			"RANDOM_TOKEN_SECRET": "aPdSgVkYp3s6v9y$B&E)H@MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r5u8x/A?D("
 		}
 	},
 	"dependencies": {
@@ -31,7 +31,9 @@
 		"@types/bcrypt": "^5.0.0",
 		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.6",
+		"@types/jsonwebtoken": "^8.5.2",
 		"@types/node": "^14.0.14",
+		"jsonwebtoken": "^8.5.1",
 		"nodemon": "^2.0.4",
 		"ts-node": "^8.10.2",
 		"tslint": "^6.1.2",

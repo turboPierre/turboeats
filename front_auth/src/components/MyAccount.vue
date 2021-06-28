@@ -7,13 +7,13 @@
   export default {
     data() {
 
-        this.$http.get(this.$auth_api_uri + '/users/', {
+        this.$http.get(this.$auth_api_uri + '/users/myInfos', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access_token')
             }
         }).then((response) => {
             var div = document.getElementById('userInfos');
-            var data = response.data[0];
+            var data = response.data;
             console.log(data);
             div.innerHTML += '<b>Nom : </b><p>' + data.lastName + '</p>';
             div.innerHTML += '<b>Prénom : </b><p>' + data.firstName + '</p>';
@@ -25,7 +25,7 @@
             div.innerHTML += '<b>Code de parrainage : </b><p>' + data.sponsor + '</p>';
         }).catch(error => {
             console.log(error);
-            this.$router.push({ name: "login"});
+            // this.$router.push({ name: "login"});
         });
       return {
         form: {
