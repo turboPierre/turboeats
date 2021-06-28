@@ -91,12 +91,10 @@ export let signup = (req: Request, res: Response, next: NextFunction) => {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 phone: req.body.phone,
-                avatar: req.body.avatar,
                 password: hash,
                 address: req.body.address,
                 role: req.body.role,
-                active: req.body.active,
-                sponsor: req.body.sponsor
+                active: false
             });
             user.save()
                 .then(() => res.status(201).json({ message: 'User registered' }))

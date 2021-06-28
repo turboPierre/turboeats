@@ -17,14 +17,11 @@
             div.innerHTML += '<b>Nom : </b><p>' + data.lastName + '</p>';
             div.innerHTML += '<b>Prénom : </b><p>' + data.firstName + '</p>';
             div.innerHTML += '<b>Email : </b><p>' + data.email + '</p>';
-            div.innerHTML += '<b>Phone : </b><p>' + data.phone + '</p>';
-            div.innerHTML += '<b>Address : </b><p>' + data.address + '</p>';
-            div.innerHTML += '<b>Type : </b><p>' + data.role + '</p>';
-            div.innerHTML += '<b>Code de parrainage : </b><p>' + data.sponsor + '</p>';
+            div.innerHTML += '<b>Numéro de téléphone : </b><p>' + data.phone + '</p>';
+            div.innerHTML += '<b>Adresse : </b><p>' + data.address + '</p>';
+            div.innerHTML += '<b>Code de parrainage : </b><p>' + data.id + '</p>';
         }).catch(error => {
             console.log(error);
-
-            //TODO Create method
             this.$router.push({ name: "login"});
             location.reload();
         });
