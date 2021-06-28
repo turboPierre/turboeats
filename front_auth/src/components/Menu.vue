@@ -1,5 +1,5 @@
 <template>
-  <div class='container' style="margin-left: -10%; margin-right: -10%; margin-top: 70px">
+  <div class='m-5' style=" margin-top: 70px;">
 <div class="row">
   <h1>
     Liste des restaurants
@@ -7,7 +7,7 @@
 </div>
 
 
-    <div class="row">
+    <div class="row mt-3">
     <div class="col-3" v-for="restaurant in restaurants.data" :key="restaurant.id">
       <router-link :to="{ name: 'Restaurant', params: { id: restaurant.id }}" style="color: #2C3E50; text-decoration: none">
         <b-card img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 30rem;" class="mb-2">
