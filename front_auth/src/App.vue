@@ -1,20 +1,7 @@
 <template>
-  <div v-if="logged" id="app" style="overflow-x:hidden; margin-top: 5px">
-    <div class="nav">
-      <div class="row">
-          <router-link to="/login"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
-      </div>
 
-    </div>
-
-  </div>
-
-  <div v-else id="app" style="overflow-x:hidden">
+  <div id="app" style="overflow-x:hidden">
     <router-link to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
-      <div>
-        <strong>Logged</strong>
-      </div>
-    <router-link to="/myaccount" tag="button" class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>Acceuil</strong></router-link>
     <router-view></router-view>
   </div>
 
@@ -25,7 +12,6 @@
 export default { 
   data(){
     return{
-      logged : false
     }
   }
 }
