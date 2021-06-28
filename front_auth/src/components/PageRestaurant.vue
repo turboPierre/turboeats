@@ -22,7 +22,7 @@
         <b-tab title="Produits">
           <div class="row">
             <div class="col-sm-4 mt-3" v-for="product in listProducts" :key="product.id">
-              <div v-if="product._restaurantId === restaurant._id" @click="add(product)">
+              <div v-if="product._restaurantId === restaurant._id" @click="add_product(product)">
                 <h1>{{ product.name }}</h1>
                 <h5>{{product.describe}}</h5>
                 <h5>{{product.price}} €</h5>
@@ -47,12 +47,15 @@
       }
     },
     methods: {
-      add(product){
-        this.basket.push(product._id);
+      add_product(product){
+        this.basket.push(product);
         this.price.push(product.price);
         localStorage.setItem('basket_product', this.basket);
         localStorage.setItem('price_product', this.price);
-      }
+      },
+      add_menu(menu){
+        console.log(menu);
+      },
     },
     mounted() {
 
