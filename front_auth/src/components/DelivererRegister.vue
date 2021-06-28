@@ -1,7 +1,7 @@
 <template>
   <div class='container mt-5'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <h3><strong>Créer votre compte livreur !</strong></h3><br>
+      <h3><strong>Créez votre compte livreur !</strong></h3><br>
       <b-form-group
               id="input-group-1"
               label="Email :"
@@ -64,6 +64,7 @@
                 required
         ></b-form-input>
       </b-form-group>
+      <hr>
 
       <br>
       <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>S'enregistrer</strong></b-button>
@@ -106,7 +107,7 @@
                     phone: this.form.phone,
                     password: this.form.password1,
                     address: this.form.address,
-                    role: "client",
+                    role: "livreur",
                   }
           ).then(response => {
             console.log(response);

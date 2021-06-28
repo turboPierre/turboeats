@@ -1,7 +1,7 @@
 <template>
   <div class='container mt-5'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <h3><strong>Créer votre compte client !</strong></h3><br>
+      <h3><strong>Créez votre compte client !</strong></h3><br>
       <b-form-group
         id="input-group-1"
         label="Email :"
