@@ -34,13 +34,8 @@
     },
     mounted() {
 
-      this.$http.get(this.$app_api_uri + '/restaurants', {
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-        }
-      }).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
+      this.$http.get(this.$app_api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
         console.log(error);
-        this.$router.push({ name: "login"})
       });
 
     }

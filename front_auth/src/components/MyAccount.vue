@@ -14,7 +14,6 @@
         }).then((response) => {
             var div = document.getElementById('userInfos');
             var data = response.data;
-            console.log(data);
             div.innerHTML += '<b>Nom : </b><p>' + data.lastName + '</p>';
             div.innerHTML += '<b>Prénom : </b><p>' + data.firstName + '</p>';
             div.innerHTML += '<b>Email : </b><p>' + data.email + '</p>';
@@ -24,7 +23,10 @@
             div.innerHTML += '<b>Code de parrainage : </b><p>' + data.sponsor + '</p>';
         }).catch(error => {
             console.log(error);
+
+            //TODO Create method
             this.$router.push({ name: "login"});
+            location.reload();
         });
       return {
         form: {

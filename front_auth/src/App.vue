@@ -4,9 +4,19 @@
       <div class="container">
         <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
         <ul class="nav navbar-nav flex-row float-right">
-          <li class="nav-item">
-            <router-link class="btn turbo-btn" to="/login">Se connecter</router-link>
-          </li>
+            <div v-if="logged">
+              <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
+                <b-dropdown-item><router-link class="dropItem" to="/myaccount">Mon compte</router-link></b-dropdown-item>
+                <b-dropdown-item><span class="dropItem">Mes commandes</span></b-dropdown-item>
+                <b-dropdown-divider></b-dropdown-divider>
+                <b-dropdown-item v-on:click="disconnect" ><span class="redDropItem">Se déconnecter</span></b-dropdown-item>
+              </b-dropdown>
+            </div>
+            <div v-else>
+              <li class="nav-item">
+                  <router-link class="btn btn-success" to="/login">Se connecter</router-link>
+              </li>
+            </div>
         </ul>
       </div>
     </nav>
@@ -25,9 +35,25 @@
 
 <script>
 
-export default { 
-  data(){
-    return{
+export default {
+  data() {
+    if (localStorage.getItem('email') != null && localStorage.getItem('access_token') != null ) {
+      return {
+        logged: true
+      }
+    } else {
+      return {
+        logged: false
+      }
+    }
+  },
+  methods: {
+    disconnect : function (event) {
+      // TODO Revoke Token
+      localStorage.removeItem('email');
+      localStorage.removeItem('access_token');
+      location.reload();
+      console.log(event);
     }
   }
 }
@@ -36,7 +62,6 @@ export default {
 
 <style>
   body {
-    min-height: 100vh;
     display: flex;
     font-weight: 400;
   }
@@ -44,11 +69,9 @@ export default {
   html,
   .App,
   .vertical-center {
-    margin-top: 35px;
     width: 100%;
     height: 100%;
   }
-
   #app{
     font-family: Gill Sans, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -58,7 +81,7 @@ export default {
     margin:auto;
   }
 
-  .turbo-btn{
+  .btn-success{
     background-color: #5FB709 !important;
     border: none !important;
     font-weight: bold !important;
@@ -89,5 +112,18 @@ export default {
   label {
     font-weight: 500;
   }
+
+  .dropItem{
+    color: #5FB709 !important;
+    font-weight: bold !important;
+    text-decoration: none;
+  }
+
+  .redDropItem{
+    color: darkred !important;
+    font-weight: bold !important;
+    text-decoration: none;
+  }
+
 
 </style>
