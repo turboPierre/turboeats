@@ -18,7 +18,7 @@ export const productRouter = express.Router();
  */
 
 // GET products/
-productRouter.get('/',AuthMiddleware.userAuth, ProductController.getAllProducts)
+productRouter.get('/', ProductController.getAllProducts)
 
 // GET products/:id
 productRouter.get('/:id',AuthMiddleware.userAuth, ProductController.getOneProduct);
