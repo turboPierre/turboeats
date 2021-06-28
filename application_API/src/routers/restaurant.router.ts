@@ -18,10 +18,10 @@ export const restaurantRouter = express.Router();
  */
 
 // GET restaurants/
-restaurantRouter.get('/', AuthMiddleware.userAuth, RestaurantController.getAllRestaurants)
+restaurantRouter.get('/', RestaurantController.getAllRestaurants);
 
 // GET restaurants/:id
-restaurantRouter.get('/:id',AuthMiddleware.userAuth, RestaurantController.getOneRestaurant);
+restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
 
 // POST restaurants/
 restaurantRouter.post('/',AuthMiddleware.userAuth, RestaurantController.createRestaurant);
