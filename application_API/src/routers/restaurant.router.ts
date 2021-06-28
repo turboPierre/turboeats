@@ -24,7 +24,7 @@ restaurantRouter.get('/', RestaurantController.getAllRestaurants);
 restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
 
 // POST restaurants/
-restaurantRouter.post('/', RestaurantController.createRestaurant);
+restaurantRouter.post('/', AuthMiddleware.userAuth,  RestaurantController.createRestaurant);
 
 // PUT restaurants/:id
 restaurantRouter.put('/:id',AuthMiddleware.userAuth, RestaurantController.updateRestaurant);

@@ -111,14 +111,14 @@
                   }
           ).then(response => {
             console.log(response);
-            window.alert("Compte créé.");
+            window.alert("Compte livreur créé.");
             setTimeout(() => {
               this.$router.push({ name: "login"});
               location.reload();
             }, 1000);
           }).catch(error => {
             console.log(error);
-            window.alert("ERROR");
+            window.alert("Erreur lors de la création du compte livreur.");
           });
         }
         event.preventDefault();
