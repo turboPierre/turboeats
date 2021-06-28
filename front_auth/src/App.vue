@@ -6,6 +6,9 @@
         <ul class="nav navbar-nav flex-row float-right">
             <div v-if="logged">
               <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
+                <template #button-content>
+                  <span class="sr-only" id="userButton"></span>
+                </template>
                 <b-dropdown-item><router-link class="dropItem" to="/myaccount">Mon compte</router-link></b-dropdown-item>
                 <b-dropdown-item><span class="dropItem">Mes commandes</span></b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
@@ -50,11 +53,21 @@ export default {
   methods: {
     disconnect : function (event) {
       // TODO Revoke Token
-      localStorage.removeItem('email');
       localStorage.removeItem('access_token');
       location.reload();
       console.log(event);
     }
+  }, mounted: function () {
+    this.$http.get(this.$auth_api_uri + '/users/myInfos', {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      }
+    }).then((response) => {
+      var data = response.data;
+      document.getElementById('userButton').innerHTML += data.firstName;
+    }).catch(error => {
+      console.log(error);
+    });
   }
 }
 
