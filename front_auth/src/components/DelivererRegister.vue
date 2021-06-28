@@ -64,7 +64,6 @@
                 required
         ></b-form-input>
       </b-form-group>
-      <hr>
 
       <br>
       <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>S'enregistrer</strong></b-button>
