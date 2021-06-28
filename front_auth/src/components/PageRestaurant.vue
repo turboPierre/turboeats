@@ -4,7 +4,7 @@
     <div class='row' style="margin-top: -10%">
 
 
-      <div class="container">
+      <div class="cont">
         <img alt="restaurant" src="https://www.agencephotoup.fr/public/Medias/0_bandeaux_new/portfolio/bandeau_restaurants.jpg">
         <div class="text-block">
           <h4>{{ restaurant.name }}</h4>
@@ -74,8 +74,9 @@
 
 <style>
 /* Container holding the image and the text */
-.container {
+.cont {
   position: relative;
+  margin-left: -3.2%;
 }
 
 /* Bottom right text */

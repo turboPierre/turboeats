@@ -88,6 +88,7 @@ export default {
   .vertical-center {
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
   }
   #app{
     font-family: Gill Sans, sans-serif;
