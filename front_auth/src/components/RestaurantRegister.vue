@@ -98,6 +98,14 @@
                 required
         ></b-form-input>
       </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Numéro de téléphone :" label-for="restaurant_phone">
+        <b-form-input
+                id="restaurant_phone"
+                v-model="form.restaurant_phone"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
       <b-form-group class="mt-3" id="input-group-2" label="Horraire d'ouverture:" label-for="open_hour">
         <b-form-input
                 id="open_hour"
@@ -138,6 +146,7 @@
     data() {
       return {
         form: {
+          //USER
           email: '',
           password1: '',
           password2: '',
@@ -145,10 +154,13 @@
           firstname: '',
           phone: '',
           address: '',
+
+          //RESTAURANT
           restaurant_name: '',
           restaurant_description: '',
           restaurant_picture: '',
           restaurant_address: '',
+          restaurant_phone: '',
           open_hour: '',
           close_hour: '',
           open_days: '',
@@ -175,38 +187,34 @@
                   }
           ).then(response => {
             console.log(response);
-            window.alert("Compte créé.");
-            setTimeout(() => {
-              this.$router.push({ name: "login"});
-              location.reload();
-            }, 1000);
           }).catch(error => {
             console.log(error);
-            window.alert("ERROR");
+            window.alert("Le compte n'as pas pu être créé.");
           });
 
           //POST for RESTAURANT informations
           this.$http.post(
-                  this.$app_api_uri + '/users/signup',
+                  this.$app_api_uri + '/restaurants/',
                   {
-                    firstName: this.form.firstname,
-                    lastName: this.form.lastname,
-                    email: this.form.email,
-                    phone: this.form.phone,
-                    password: this.form.password1,
-                    address: this.form.address,
-                    role: "restaurant",
+                    name: this.form.restaurant_name,
+                    describe: this.form.restaurant_description,
+                    picture: this.form.restaurant_picture,
+                    address: this.form.restaurant_address,
+                    phone: this.form.restaurant_phone,
+                    open_hour: this.form.open_hour,
+                    close_hour: this.form.close_hour,
+                    open_days: this.form.open_days,
                   }
           ).then(response => {
             console.log(response);
-            window.alert("Compte créé.");
+            window.alert("Compte restaurant créé.");
             setTimeout(() => {
               this.$router.push({ name: "login"});
               location.reload();
             }, 1000);
           }).catch(error => {
             console.log(error);
-            window.alert("ERROR");
+            window.alert("Le restaurant n'as pas pu être créé.");
           });
         }
         event.preventDefault();

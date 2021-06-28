@@ -6,6 +6,7 @@ export interface RestaurantInterface extends Document {
     describe: string,
     picture: string,
     address: string,
+    phone: string,
     open_hour: number,
     close_hour: number,
     open_days: string
@@ -17,6 +18,7 @@ export const restaurantSchema = new Schema({
     describe: { type: String, required: false},
     picture : { type: String, required : false},
     address : { type: String, required: true },
+    phone : { type: String, required: true },
     open_hour : { type: Number, required:false},
     close_hour : { type: Number, required:false},
     open_days : { type: String, required: true }

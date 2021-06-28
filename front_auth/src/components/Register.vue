@@ -110,14 +110,14 @@
                   }
           ).then(response => {
             console.log(response);
-            window.alert("Compte créé.");
+            window.alert("Compte client créé.");
             setTimeout(() => {
               this.$router.push({ name: "login"});
               location.reload();
             }, 1000);
           }).catch(error => {
             console.log(error);
-            window.alert("ERROR");
+            window.alert("Le compte n'as pas pu être créé.");
           });
         }
         event.preventDefault();
