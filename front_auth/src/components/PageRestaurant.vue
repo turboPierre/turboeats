@@ -3,7 +3,7 @@
     <div class='row'>
       <figure style="height: 400px">
         <img alt="restaurant" src="https://www.agencephotoup.fr/public/Medias/0_bandeaux_new/portfolio/bandeau_restaurants.jpg">
-          <div class="row" style="margin-top: -300px; margin-left: -70%">
+          <div class="row">
             <h1 style="color: white"><strong>{{restaurant.name}}</strong></h1>
           </div>
       </figure>

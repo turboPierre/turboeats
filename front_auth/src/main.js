@@ -46,7 +46,7 @@ const router = new VueRouter({
     {
       path: '/restaurant/:id',
       component: PageRestaurant,
-      name: 'Restaurant'
+      name: 'PageRestaurant'
     },
     {
       path: '/deliverer_register',
