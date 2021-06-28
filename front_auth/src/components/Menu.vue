@@ -1,5 +1,5 @@
 <template>
-  <div class='m-5' style=" margin-top: 70px;">
+  <div class='m-5'>
 <div class="row">
 <!--  <h1>-->
 <!--    Liste des restaurants-->

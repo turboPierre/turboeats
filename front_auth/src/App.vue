@@ -2,6 +2,9 @@
   <div id="app">
     <nav class="navbar shadow bg-white rounded justify-content-between flex-nowrap flex-row fixed-top">
       <div class="container">
+
+<!--        TODO v-if role : RESTAURANT route : restaurantMenu, restaurantAdd, DELIVERER route : delivererMenu, delivererCommand-->
+
         <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
         <ul class="nav navbar-nav flex-row float-right">
             <div v-if="logged">
@@ -88,7 +91,6 @@ export default {
   .vertical-center {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
   }
   #app{
     font-family: Gill Sans, sans-serif;
