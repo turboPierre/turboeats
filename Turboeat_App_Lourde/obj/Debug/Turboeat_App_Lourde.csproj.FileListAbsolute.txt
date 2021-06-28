@@ -1,0 +1,12 @@
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\bin\Debug\Turboeat_App_Lourde.exe.config
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\bin\Debug\Turboeat_App_Lourde.exe
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\bin\Debug\Turboeat_App_Lourde.pdb
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.csproj.AssemblyReference.cache
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.Properties.Resources.resources
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.csproj.GenerateResource.cache
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.csproj.CoreCompileInputs.cache
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.exe
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.pdb
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.Technical.resources
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.Frm1.resources
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.FrmCommercial.resources
