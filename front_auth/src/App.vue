@@ -81,6 +81,10 @@ export default {
     margin:auto;
   }
 
+  .container{
+    max-width:inherit !important;
+  }
+
   .btn-success{
     background-color: #5FB709 !important;
     border: none !important;
@@ -120,7 +124,7 @@ export default {
   }
 
   .redDropItem{
-    color: darkred !important;
+    color: red !important;
     font-weight: bold !important;
     text-decoration: none;
   }
