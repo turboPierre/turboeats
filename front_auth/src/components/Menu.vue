@@ -24,27 +24,30 @@
 </template>
 
 <script>
+    export default {
+        data() {
 
-  export default {
-    data() {
-      this.$http.get(this.$app_api_uri + '/restaurants', {
-              headers: {
-                  'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-              }
+            this.$http.get(this.$app_api_uri + '/restaurants', {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                }
             }).then((result) => {
-            this.users = result.data
-          }).catch(error => {
+                this.users = result.data
+            }).catch(error => {
                 console.log(error);
                 this.$router.push({ name: "login"});
-      });
+            });
 
-      return {
-        restaurants: null
-      }
-    },
-    mounted() {
-      this.$http.get('http://localhost:8081/restaurants').then(response => (this.restaurants = response))
+            return {
+                form: {
+                    email: '',
+                    password: '',
+                },
+                show: true
+            }
+        },
+        methods: {
+        }
     }
-  }
 
 </script>
