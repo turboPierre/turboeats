@@ -77,6 +77,7 @@ export default {
   body {
     display: flex;
     font-weight: 400;
+    padding-top: 60px !important;
   }
   body,
   html,
@@ -116,7 +117,7 @@ export default {
     margin: auto;
     background: #ffffff;
     box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-    padding: 20px 55px 45px 55px;
+    padding: 20px 50px 40px 50px;
     border-radius: 15px;
     transition: all .3s;
   }

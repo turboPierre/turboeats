@@ -12,10 +12,10 @@
       <br>
       <b-button class="mt-3 btn-success" type="submit" variant="primary"><strong>Se connecter</strong></b-button>
       <br><br>
-      <p>Vous êtes nouveau ?<router-link style="color:#5FB709" to="/register"> Créer votre compte utilisateur.</router-link></p>
+      <p>Vous êtes nouveau ?<router-link style="color:#5FB709" to="/register"> Créer votre compte utilisateur !</router-link></p>
       <hr>
-      <p>Vous êtes livreur ?<router-link style="color:#5FB709" to="/deliverer_register"> Créer votre compte livreur.</router-link></p>
-      <p>Vous êtes restaurateur ?<router-link style="color:#5FB709" to="/restaurant_register"> Créer votre compte restaurateur.</router-link></p>
+      <p>Vous êtes livreur ?<router-link style="color:#5FB709" to="/deliverer_register"> Créer votre compte livreur !</router-link></p>
+      <p>Vous êtes restaurateur ?<router-link style="color:#5FB709" to="/restaurant_register"> Créer votre compte restaurant !</router-link></p>
     </b-form>
   </div>
 </template>
