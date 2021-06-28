@@ -5,6 +5,9 @@
         <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
         <ul class="nav navbar-nav flex-row float-right">
             <div v-if="logged">
+              <router-link class=" btn btn-success" to="/basket">
+                &#128722;
+              </router-link>
               <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
                 <template #button-content>
                   <span class="sr-only" id="userButton"></span>

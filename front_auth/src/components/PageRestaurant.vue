@@ -1,43 +1,57 @@
 <template>
+  <div class="container">
   <div class="mt-5">
     <div class='row' style="margin-top: -10%">
-<!--      <figure style="height: 400px">-->
-<!--        <img alt="restaurant" src="https://www.agencephotoup.fr/public/Medias/0_bandeaux_new/portfolio/bandeau_restaurants.jpg">-->
-<!--          <div class="row">-->
-<!--            <h1 style="color: white"><strong>{{restaurant.name}}</strong></h1>-->
-<!--          </div>-->
-<!--      </figure>-->
 
-              <img alt="restaurant" src="https://www.agencephotoup.fr/public/Medias/0_bandeaux_new/portfolio/bandeau_restaurants.jpg">
+
+      <div class="container">
+        <img alt="restaurant" src="https://www.agencephotoup.fr/public/Medias/0_bandeaux_new/portfolio/bandeau_restaurants.jpg">
+        <div class="text-block">
+          <h4>{{ restaurant.name }}</h4>
+          <p>{{restaurant.describe}}</p>
+        </div>
+      </div>
+
+
     </div>
     <div class="row">
       <b-tabs content-class="mt-3" fill>
         <b-tab title="Menus" active>
 
-
-
         </b-tab>
         <b-tab title="Produits">
           <div class="row">
-            <div class="col-sm-4" v-for="product in listProducts" :key="product.id">
-              <h1>{{ product.name }}</h1>
-              <h5>{{product.describe}}</h5>
-              <h5>{{product.price}} €</h5>
+            <div class="col-sm-4 mt-3" v-for="product in listProducts" :key="product.id">
+              <div v-if="product._restaurantId === restaurant._id" @click="add(2)">
+                <h1>{{ product.name }}</h1>
+                <h5>{{product.describe}}</h5>
+                <h5>{{product.price}} €</h5>
+              </div>
             </div>
           </div>
         </b-tab>
       </b-tabs>
     </div>
   </div>
-
+  </div>
 </template>
 
 <script>
   export default {
     data() {
+      this.basket = [];
+      this.price = [];
       return {
         restaurant: null,
         listProducts: null,
+      }
+    },
+    methods: {
+      add(product){
+        this.basket.push(product._id);
+        this.price.push(product.price);
+        localStorage.setItem('basket_product', this.basket);
+        localStorage.setItem('price_product', this.price);
       }
     },
     mounted() {
@@ -57,3 +71,22 @@
     }
   }
 </script>
+
+<style>
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  margin-left: -1.6%;
+}
+
+/* Bottom right text */
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>

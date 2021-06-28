@@ -1,6 +1,6 @@
 <template>
   <div class='container'>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <b-form>
         <h4><strong>Votre Panier</strong></h4>
         <b-form-group
         id="input-group-1"
@@ -18,19 +18,10 @@
   export default {
     data() {
       return {
-        form: {
-          email: '',
-          password1: '',
-          password2: '',
-        },
-        show: true
       }
     },
     methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
+
     }
   }
 </script>
