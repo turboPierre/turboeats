@@ -22,7 +22,7 @@
         <b-tab title="Produits">
           <div class="row">
             <div class="col-sm-4 mt-3" v-for="product in listProducts" :key="product.id">
-              <div v-if="product._restaurantId === restaurant._id" @click="add(2)">
+              <div v-if="product._restaurantId === restaurant._id" @click="add(product)">
                 <h1>{{ product.name }}</h1>
                 <h5>{{product.describe}}</h5>
                 <h5>{{product.price}} €</h5>
@@ -76,7 +76,6 @@
 /* Container holding the image and the text */
 .container {
   position: relative;
-  margin-left: -1.6%;
 }
 
 /* Bottom right text */
