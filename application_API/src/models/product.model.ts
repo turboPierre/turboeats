@@ -10,7 +10,7 @@ export const productSchema = new Schema({
     name: { type: String, required: true },
     price:  { type: Number, required: true },
     _restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true},
-    describe: { type: String, required: false}
+    describe: { type: String, required: true}
 });
 
 const Product = mongoose.model<ProductInterface>('Product', productSchema);

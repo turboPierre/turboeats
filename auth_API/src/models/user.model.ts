@@ -10,6 +10,7 @@ export interface UserInterface {
     phone: string;
     password: string;
     address: string;
+    city: string;
     role: string;
     active: boolean;
 }
@@ -22,6 +23,7 @@ export class User extends Model {
     public phone!: string;
     public password!: string;
     public address!: string;
+    public city!: string;
     public role!: string;
     public active!: boolean;
 }
@@ -46,13 +48,18 @@ User.init({
         allowNull: false
     },
     phone: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
     },
     address: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    city: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -69,10 +76,10 @@ User.init({
     modelName: 'Users'
 });
 
-User.sync().then(() => console.log('Users table sync'));
-/*
+// User.sync().then(() => console.log('Users table sync'));
+
 User.sync({
     force: true
-});*/
+});
 
 export default User;

@@ -93,6 +93,7 @@ export let signup = (req: Request, res: Response, next: NextFunction) => {
                 phone: req.body.phone,
                 password: hash,
                 address: req.body.address,
+                city: req.body.city,
                 role: req.body.role,
                 active: false
             });

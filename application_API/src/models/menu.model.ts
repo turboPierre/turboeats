@@ -13,7 +13,7 @@ export const menuSchema = new Schema({
     ],
     _restaurantId: {type: Schema.Types.ObjectId, ref: 'Restaurant', required:true},
     price: { type: String, required: true },
-    describe: { type: String, required: false}
+    describe: { type: String, required: true}
 });
 
 const Menu = mongoose.model<MenuInterface>('Menu', menuSchema);

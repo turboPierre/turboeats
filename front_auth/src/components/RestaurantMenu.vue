@@ -33,7 +33,7 @@
         }).then((result) => { this.restaurant = result.data; console.log(result)}).catch(error => {
             console.log(error);
         });
-        
+
         //TODO Faire requetes
         //requete pour liste des produits
         this.$http.get(this.$app_api_uri + '/products')
