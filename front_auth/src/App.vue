@@ -81,8 +81,6 @@ export default {
         if (role === "livreur") {
             isDeliverer = true
         }
-        console.log(role);
-        console.log(logged);
         return {
             logged: logged,
             isClient: isClient,
@@ -94,6 +92,7 @@ export default {
     disconnect : function (event) {
         this.$cookie.delete('access_token');
         this.$cookie.delete('role');
+        this.$router.push({ name: "/menu"});
       location.reload();
       console.log(event);
     }

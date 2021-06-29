@@ -45,13 +45,13 @@
                     this.$cookie.set('access_token', response.data.token);
                     this.$cookie.set('role', role);
                     if (role === "client") {
-                      this.$router.push({ name: "/menu"});
+                      this.$router.push({ name: "menu"});
                     }
                     if (role === "restaurant") {
-                      this.$router.push({ name: "/restaurantMenu"});
+                      this.$router.push({ name: "restaurantMenu"});
                     }
                     if (role === "livreur") {
-                      this.$router.push({ name: "/delivererMenu"});
+                      this.$router.push({ name: "delivererMenu"});
                     }
                   location.reload();
         }).catch(error => {

@@ -52,9 +52,9 @@
 export default {
   data() {
 
-    this.basket_product = JSON.parse(localStorage.getItem('basket_product'));
-    this.basket_menu = JSON.parse(localStorage.getItem('basket_menu'));
-    console.log(this.basket_menu = JSON.parse(localStorage.getItem('basket_menu')));
+    this.basket_product = JSON.parse(this.$cookie.get('basket_product'));
+    this.basket_menu = JSON.parse(this.$cookie.get('basket_menu'));
+    console.log(this.basket_menu = JSON.parse(this.$cookie.get('basket_menu')));
 
     return {
     }
