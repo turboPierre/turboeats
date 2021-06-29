@@ -106,8 +106,9 @@ export default {
 
     },
     cancel_panier() {
-      this.$cookie.remove('basket_product', {path: ''});
-      this.$cookie.remove('basket_menu', {path: ''});
+      this.$cookie.delete('basket_product', {path: ''});
+      this.$cookie.delete('basket_menu', {path: ''});
+      location.reload();
     },
 
     payment(){
