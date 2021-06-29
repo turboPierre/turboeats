@@ -1,36 +1,39 @@
 <template>
-  <div class="mt-5 container" >
+  <div class="mt-5 container" style="width:100%" >
+
     <div class='mt-3'>
-
-
-      <div class="mt-3">
-        <img style="display: block;margin:auto;" alt="restaurant" src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2020/05/23132534/hero-1583762206.jpg" width="50%">
-        <h1 style="margin-top: 2%"><strong>{{ restaurant.name }}</strong></h1>
-        <p><b>{{restaurant.describe}}</b></p>
+      <div class="row">
+        <div class="col-sm-3">
+          <img alt="restaurant" src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2020/05/23132534/hero-1583762206.jpg" width="100%">
+        </div>
+        <div class="col-sm-3">
+          <h1 style="margin-top: 2%"><strong>{{ restaurant.name }}</strong></h1>
+          <p><b>{{restaurant.describe}}</b></p>
+        </div>
       </div>
-
-
     </div>
+
     <div class="mt-3">
-      <b-tabs content-class="mt-3" fill>
+
+      <b-tabs fill>
         <b-tab title="Menus" active>
-          <div class="row">
-            <div class="col-sm-4 mt-3" v-for="menu in listMenus" :key="menu.id">
+          <div class="row" style="background-color: #f5f5f5;">
+            <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
               <div v-if="menu._restaurantId === restaurant._id" @click="add_menu(menu)">
-                <h1>{{ menu.name }}</h1>
-                <h5>{{menu.describe}}</h5>
-                <h5>{{menu.price}} €</h5>
+                <h5>{{ menu.name }}</h5>
+                <p>{{menu.describe}}</p>
+                <h5><em>{{menu.price}} €</em></h5>
               </div>
             </div>
           </div>
         </b-tab>
         <b-tab title="Produits">
-          <div class="row">
+          <div class="row" style="background-color: #f5f5f5;">
             <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
               <div v-if="product._restaurantId === restaurant._id" @click="add_product(product)">
-                <h3>{{ product.name }}</h3>
-                <h5>{{product.describe}}</h5>
-                <h5>{{product.price}} €</h5>
+                <h5>{{ product.name }}</h5>
+                <p>{{product.describe}}</p>
+                <h5><em>{{product.price}} €</em></h5>
               </div>
             </div>
           </div>

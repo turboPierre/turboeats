@@ -1,12 +1,5 @@
 <template>
-  <div class='m-5'>
-<div class="row">
-<!--  <h1>-->
-<!--    Liste des restaurants-->
-<!--  </h1>-->
-</div>
-
-
+  <div class='mt-5'>
     <div class="row mt-3">
     <div class="col-sm-3" v-for="restaurant in restaurants.data" :key="restaurant.id">
       <router-link :to="{ name: 'PageRestaurant', params: { id: restaurant._id }}" style="color: #2C3E50; text-decoration: none">
@@ -17,9 +10,6 @@
       </router-link>
     </div>
     </div>
-
-
-
   </div>
 </template>
 

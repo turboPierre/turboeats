@@ -7,6 +7,6 @@ C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\T
 C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.csproj.CoreCompileInputs.cache
 C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.exe
 C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.pdb
-C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.Technical.resources
 C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.Frm1.resources
 C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.FrmCommercial.resources
+C:\Users\bapti\Desktop\Projet_logiciel\turboeats\Turboeat_App_Lourde\obj\Debug\Turboeat_App_Lourde.FrmTechnical.resources
