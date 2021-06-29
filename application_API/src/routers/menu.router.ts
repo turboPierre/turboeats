@@ -18,7 +18,7 @@ export const menuRouter = express.Router();
  */
 
 // GET menus/
-menuRouter.get('/',AuthMiddleware.userAuth, MenuController.getAllMenus)
+menuRouter.get('/', MenuController.getAllMenus)
 
 // GET menus/:id
 menuRouter.get('/:id',AuthMiddleware.userAuth, MenuController.getOneMenu);

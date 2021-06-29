@@ -17,7 +17,15 @@
     <div class="row">
       <b-tabs content-class="mt-3" fill>
         <b-tab title="Menus" active>
-
+          <div class="row">
+            <div class="col-sm-4 mt-3" v-for="menu in listMenus" :key="menu.id">
+              <div v-if="menu._restaurantId === restaurant._id" @click="add_menu(menu)">
+                <h1>{{ menu.name }}</h1>
+                <h5>{{menu.describe}}</h5>
+                <h5>{{menu.price}} €</h5>
+              </div>
+            </div>
+          </div>
         </b-tab>
         <b-tab title="Produits">
           <div class="row">
@@ -39,21 +47,22 @@
 <script>
   export default {
     data() {
-      this.basket = [];
-      this.price = [];
+      this.basket_product = [];
+      this.basket_menu = [];
       return {
         restaurant: null,
         listProducts: null,
+        listMenus: null,
       }
     },
     methods: {
       add_product(product){
-        this.basket.push(product);
-        this.price.push(product.price);
-        localStorage.setItem('basket_product', JSON.stringify(this.basket));
+        this.basket_product.push(product);
+        localStorage.setItem('basket_product', JSON.stringify(this.basket_product));
       },
       add_menu(menu){
-        console.log(menu);
+        this.basket_menu.push(menu);
+        localStorage.setItem('basket_menu', JSON.stringify(this.basket_menu));
       },
     },
     mounted() {
@@ -69,6 +78,8 @@
 
       //requete pour liste des produits
       this.$http.get(this.$app_api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+      //requete pour liste des menus
+      this.$http.get(this.$app_api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
 
     }
   }
