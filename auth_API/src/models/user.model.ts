@@ -76,10 +76,10 @@ User.init({
     modelName: 'Users'
 });
 
-// User.sync().then(() => console.log('Users table sync'));
+User.sync().then(() => console.log('Users table sync'));
 
-User.sync({
-    force: true
-});
+// User.sync({
+//     force: true
+// });
 
 export default User;

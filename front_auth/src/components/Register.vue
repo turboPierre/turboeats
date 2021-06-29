@@ -64,6 +64,14 @@
                 required
         ></b-form-input>
       </b-form-group>
+        <b-form-group class="mt-3" id="input-group-2" label="Ville :" label-for="city">
+          <b-form-input
+                  id="city"
+                  v-model="form.city"
+                  type="text"
+                  required
+          ></b-form-input>
+      </b-form-group>
 
       <br>
       <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>S'enregistrer</strong></b-button>
@@ -88,6 +96,7 @@
           firstname: '',
           phone: '',
           address: '',
+          city: '',
         },
         show: true
       }
@@ -106,6 +115,7 @@
                     phone: this.form.phone,
                     password: this.form.password1,
                     address: this.form.address,
+                    city: this.form.city,
                     role: "client",
                   }
           ).then(response => {

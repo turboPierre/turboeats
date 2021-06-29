@@ -64,6 +64,14 @@
                 required
         ></b-form-input>
       </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Ville:" label-for="city">
+        <b-form-input
+                id="city"
+                v-model="form.city"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
 <!--      <br><br>-->
 <!--      <h3><strong>Informations restaurant</strong></h3><br>-->
 <!--      <b-form-group class="mt-3" id="input-group-2" label="Nom:" label-for="restaurant_name">-->
@@ -154,6 +162,7 @@
           firstname: '',
           phone: '',
           address: '',
+          city: '',
 
           //RESTAURANT
           // restaurant_name: '',
@@ -183,6 +192,7 @@
                     phone: this.form.phone,
                     password: this.form.password1,
                     address: this.form.address,
+                    city: this.form.city,
                     role: "restaurant",
                   }
           ).then(response => {
