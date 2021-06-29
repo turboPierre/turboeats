@@ -50,7 +50,7 @@
       add_product(product){
         this.basket.push(product);
         this.price.push(product.price);
-        localStorage.setItem('basket_product', JSON.stringify(this.basket));
+        this.$cookie.set('basket_product', JSON.stringify(this.basket));
       },
       add_menu(menu){
         console.log(menu);
@@ -61,7 +61,7 @@
       //requete pour info restaurant
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
         headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+          'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
       }).then((result) => { this.restaurant = result.data; console.log(result)}).catch(error => {
         console.log(error);

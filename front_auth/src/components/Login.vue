@@ -41,15 +41,15 @@
                   password: this.form.password
                 }
         ).then(response => {
-                  localStorage.setItem('access_token', response.data.token);
-                  localStorage.setItem('role', response.data.role);
+                    this.$cookie.set('access_token', response.data.token);
+                    this.$cookie.set('role', response.data.role);
                   this.$router.push({ name: "/"});
                   location.reload();
         }).catch(error => {
                   console.log(error);
                   window.alert("Identifiants incorrects.");
         });
-        //Acceder au token : localStorage.getItem('access_token');
+        //Acceder au token : this.$cookie.get('access_token');
         event.preventDefault();
       },
     }

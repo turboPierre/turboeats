@@ -60,7 +60,7 @@ export default {
         let isDeliverer = false;
         this.$http.get(this.$auth_api_uri + '/users/myInfos', {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token')
             }
         }).then((response) => {
             var data = response.data;
@@ -68,10 +68,10 @@ export default {
         }).catch(error => {
             console.log(error);
         });
-        if (localStorage.getItem('access_token') != null) {
+        if (this.$cookie.get('access_token') != null) {
             logged = true;
         }
-        var role = localStorage.getItem('role');
+        var role = this.$cookie.get('role');
         if (role === "client") {
             isClient = true;
         }
@@ -92,8 +92,8 @@ export default {
     },
   methods: {
     disconnect : function (event) {
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('role');
+        this.$cookie.delete('access_token');
+        this.$cookie.delete('role');
       location.reload();
       console.log(event);
     }

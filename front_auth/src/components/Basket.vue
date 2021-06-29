@@ -18,7 +18,7 @@
 <script>
 export default {
   data() {
-    this.basket_product = JSON.parse(localStorage.getItem('basket_product'));
+    this.basket_product = JSON.parse(this.$cookie.get('basket_product'));
     return {
     }
   },
