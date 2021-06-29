@@ -94,6 +94,7 @@ export default {
     disconnect : function (event) {
         this.$cookie.delete('access_token');
         this.$cookie.delete('role');
+        this.$router.push({ name: "/menu"});
       location.reload();
       console.log(event);
     }
