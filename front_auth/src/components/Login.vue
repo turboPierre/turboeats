@@ -42,7 +42,7 @@
                 }
         ).then(response => {
                   localStorage.setItem('access_token', response.data.token);
-                  this.$router.push({ name: "menu"});
+                  this.$router.push({ name: "/"});
                   location.reload();
         }).catch(error => {
                   console.log(error);

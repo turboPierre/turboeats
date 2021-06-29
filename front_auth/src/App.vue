@@ -4,8 +4,15 @@
       <div class="container">
 
 <!--        TODO v-if role : RESTAURANT route : restaurantMenu, restaurantAdd, DELIVERER route : delivererMenu, delivererCommand-->
-
-        <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+          <div v-if="isRestaurant">
+              <router-link class="navbar-brand float-left" to="/myaccount"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+          </div>
+          <div v-else-if="isDeliverer">
+              <router-link class="navbar-brand float-left" to="/basket"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+          </div>
+          <div v-else>
+              <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+          </div>
         <ul class="nav navbar-nav flex-row float-right">
             <div v-if="logged">
               <router-link class=" btn btn-success" to="/basket">
@@ -40,30 +47,30 @@
   </div>
 </template>
 
-<!--<router-link to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>-->
-
 <script>
 
 export default {
   data() {
+      var logged = false;
+      var role = null;
       this.$http.get(this.$auth_api_uri + '/users/myInfos', {
           headers: {
               'Authorization': 'Bearer ' + localStorage.getItem('access_token')
           }
       }).then((response) => {
           var data = response.data;
+          role = data.role;
           document.getElementById('userButton').innerHTML += data.firstName;
+          console.log(role);
       }).catch(error => {
           console.log(error);
       });
     if (localStorage.getItem('access_token') != null ) {
-      return {
-        logged: true
-      }
-    } else {
-      return {
-        logged: false
-      }
+        logged = true;
+    }
+    return{
+        logged: logged,
+        role: role
     }
   },
   methods: {
@@ -71,7 +78,13 @@ export default {
       localStorage.removeItem('access_token');
       location.reload();
       console.log(event);
-    }
+    },
+      isRestaurant : function () {
+          return this.role === 'restaurant';
+      },
+      isDeliverer : function () {
+          return this.role === 'livreur';
+      }
   }
 }
 
