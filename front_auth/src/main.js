@@ -73,7 +73,7 @@ const router = new VueRouter({
       component: OrderedHistory,
       name: 'OrderedHistory'
     },
-    { path: '*', redirect: '/login' }
+    { path: '*', redirect: '/menu' }
   ]
 });
 
