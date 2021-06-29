@@ -11,6 +11,7 @@ import Register from './components/Register.vue';
 import Menu from './components/Menu.vue'
 import DelivererRegister from './components/DelivererRegister.vue';
 import RestaurantRegister from './components/RestaurantRegister.vue';
+import VueCookie from 'vue-cookie';
 
 import MyAccount from './components/MyAccount.vue';
 import Basket from './components/Basket.vue';
@@ -21,11 +22,14 @@ import RestaurantAdd from "./components/RestaurantAdd.vue";
 import DelivererMenu from "./components/DelivererMenu.vue";
 import DelivererCommand from "./components/DelivererCommand.vue";
 
+
 Vue.prototype.$http = axios;
 
 Vue.prototype.$app_api_uri = "http://localhost:8081";
 Vue.prototype.$auth_api_uri = "http://localhost:8080";
 
+
+Vue.use(VueCookie);
 Vue.use(VueRouter);
 
 const router = new VueRouter({

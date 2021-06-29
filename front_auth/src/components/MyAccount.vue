@@ -10,7 +10,7 @@
 
         this.$http.get(this.$auth_api_uri + '/users/myInfos', {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token')
             }
         }).then((response) => {
             var div = document.getElementById('userInfos');
