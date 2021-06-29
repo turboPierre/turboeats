@@ -57,16 +57,22 @@
       add_product(product){
         this.basket_product.push(product);
         this.$cookie.set('basket_product', JSON.stringify(this.basket_product));
-        //document.getElementById("basketCount").innerHTML =
-        console.log(this.$cookie.get('basket_product').data.length + this.$cookie.get('basket_menu').data.length);
+        let nbProducts = Object.keys(JSON.parse(this.$cookie.get('basket_product'))).length;
+        let nbMenus = Object.keys(JSON.parse(this.$cookie.get('basket_menu'))).length;
+        console.log(nbProducts + nbMenus);
+        document.getElementById("basketCount").innerHTML = nbProducts + nbMenus;
       },
       add_menu(menu){
         this.basket_menu.push(menu);
         this.$cookie.set('basket_menu', JSON.stringify(this.basket_menu));
-        console.log(this.$cookie.get('basket_product').data.length + this.$cookie.get('basket_menu').data.length);
+        let nbProducts = Object.keys(JSON.parse(this.$cookie.get('basket_product'))).length;
+        let nbMenus = Object.keys(JSON.parse(this.$cookie.get('basket_menu'))).length;
+        document.getElementById("basketCount").innerHTML = nbProducts + nbMenus;
       },
     },
     mounted() {
+      this.$cookie.set('basket_product', JSON.stringify(''));
+      this.$cookie.set('basket_menu', JSON.stringify(''));
 
       //requete pour info restaurant
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
