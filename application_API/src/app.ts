@@ -46,8 +46,9 @@ app.use(helmet());
 
 const corsOptions = {
     origin: 'http://192.168.1.100',
-}
-app.use(cors(corsOptions));
+};
+
+app.use(cors(/*corsOptions*/));
 app.use(express.json());
 
 // Routes de l'API
