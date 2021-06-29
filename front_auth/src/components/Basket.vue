@@ -28,18 +28,45 @@
       <hr>
       <div class="row">
         <div class="col-sm-6">
-          <b-button v-b-modal.modal-center class="btn btn-danger">Annuler</b-button>
+          <b-button v-b-modal.modal-cancel class="btn btn-danger">Annuler</b-button>
         </div>
         <div class="col-sm-6">
-          <b-button class="btn btn-success">Commander</b-button>
+          <b-button v-b-modal.modal-pay class="btn btn-success">Commander</b-button>
         </div>
       </div>
 
 
       <div>
 
-        <b-modal id="modal-center" centered title="vider du panier">
+        <b-modal id="modal-cancel" centered title="vider le panier">
           <p class="my-4">Voulez-vous vider votre panier ?</p>
+          <template #modal-footer="{ cancel_panier }">
+            <!-- Emulate built in modal footer ok and cancel button actions -->
+            <button type="button" class="btn btn-danger close" aria-label="close">
+              annuler
+            </button>
+            <b-button variant="success" @click="cancel_panier">
+              Valider
+            </b-button>
+
+          </template>
+        </b-modal>
+
+
+
+        <b-modal id="modal-pay" size="lg" centered title="Paiement">
+
+          <template #modal-footer="{ cancel_payment, payment }">
+            <!-- Emulate built in modal footer ok and cancel button actions -->
+            <b-button variant="danger" @click="cancel_payment()">
+              annuler
+            </b-button>
+            <b-button variant="success" @click="payment()">
+              Valider
+            </b-button>
+
+          </template>
+
         </b-modal>
       </div>
 
@@ -60,7 +87,17 @@ export default {
     }
   },
   methods: {
+    cancel_panier() {
+      this.$cookie.remove('basket_product', {path: ''});
+      this.$cookie.remove('basket_menu', {path: ''});
+    },
 
+    cancel_payment(){
+    },
+
+    payment(){
+      console.log('test')
+    },
   }
 }
 </script>

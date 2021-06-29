@@ -133,6 +133,12 @@ export default {
     font-weight: bold !important;
     color : white !important;
   }
+  .btn-danger{
+    /*background-color: #BB2D3B !important;*/
+    border: none !important;
+    font-weight: bold !important;
+    color : white !important;
+  }
 
   .vertical-center {
     display: flex;
