@@ -116,6 +116,7 @@ export let login = (req: Request, res: Response, next: NextFunction) => {
                     }
                     res.status(200).json({
                         userId: user.id,
+                        role: user.role,
                         token: jwt.sign(
                             { userId: user.id },
                             ''+process.env.RANDOM_TOKEN_SECRET,

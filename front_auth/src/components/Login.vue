@@ -42,6 +42,7 @@
                 }
         ).then(response => {
                   localStorage.setItem('access_token', response.data.token);
+                  localStorage.setItem('role', response.data.role);
                   this.$router.push({ name: "/"});
                   location.reload();
         }).catch(error => {

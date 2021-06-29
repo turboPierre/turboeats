@@ -12,26 +12,30 @@
           <div v-else>
               <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
+
         <ul class="nav navbar-nav flex-row float-right">
+
             <div v-if="logged">
-              <router-link class=" btn btn-success" to="/basket">
+              <router-link v-if="isClient" class=" btn btn-success" to="/basket">
                 &#128722;
               </router-link>
               <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
                 <template #button-content>
                   <span class="sr-only" id="userButton"></span>
                 </template>
-                <b-dropdown-item><router-link class="dropItem" to="/myaccount">Mon compte</router-link></b-dropdown-item>
-                <b-dropdown-item><span class="dropItem">Mes commandes</span></b-dropdown-item>
+                  <router-link to="/myaccount" tag="b-dropdown-item"><span class="dropItem">Mon compte</span></router-link>
+                  <b-dropdown-item v-if="isClient"><span class="dropItem">Mes commandes</span></b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item v-on:click="disconnect" ><span class="redDropItem">Se déconnecter</span></b-dropdown-item>
               </b-dropdown>
             </div>
+
             <div v-else>
               <li class="nav-item">
                   <router-link class="btn btn-success" to="/login">Se connecter</router-link>
               </li>
             </div>
+
         </ul>
       </div>
     </nav>
@@ -49,41 +53,50 @@
 <script>
 
 export default {
-  data() {
-      var logged = false;
-      var role = null;
-      this.$http.get(this.$auth_api_uri + '/users/myInfos', {
-          headers: {
-              'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-          }
-      }).then((response) => {
-          var data = response.data;
-          role = data.role;
-          document.getElementById('userButton').innerHTML += data.firstName;
-          console.log(role);
-      }).catch(error => {
-          console.log(error);
-      });
-    if (localStorage.getItem('access_token') != null ) {
-        logged = true;
-    }
-    return{
-        logged: logged,
-        role: role
-    }
-  },
+    data: function () {
+        let logged = false;
+        let isClient = false;
+        let isRestaurant = false;
+        let isDeliverer = false;
+        this.$http.get(this.$auth_api_uri + '/users/myInfos', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            }
+        }).then((response) => {
+            var data = response.data;
+            document.getElementById('userButton').innerHTML += data.firstName;
+        }).catch(error => {
+            console.log(error);
+        });
+        if (localStorage.getItem('access_token') != null) {
+            logged = true;
+        }
+        var role = localStorage.getItem('role');
+        if (role === "client") {
+            isClient = true;
+        }
+        if (role === "restaurant") {
+            isRestaurant = true;
+        }
+        if (role === "livreur") {
+            isDeliverer = true
+        }
+        console.log(role);
+        console.log(logged);
+        return {
+            logged: logged,
+            isClient: isClient,
+            isRestaurant: isRestaurant,
+            isDeliverer: isDeliverer,
+        }
+    },
   methods: {
     disconnect : function (event) {
       localStorage.removeItem('access_token');
+      localStorage.removeItem('role');
       location.reload();
       console.log(event);
-    },
-      isRestaurant : function () {
-          return this.role === 'restaurant';
-      },
-      isDeliverer : function () {
-          return this.role === 'livreur';
-      }
+    }
   }
 }
 
