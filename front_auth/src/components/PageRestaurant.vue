@@ -1,10 +1,10 @@
 <template>
-  <div class="mt-5 container">
+  <div class="mt-5 container" >
     <div class='mt-3'>
 
 
       <div class="mt-3">
-      <img style="display: block;margin:auto;" alt="restaurant" src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2020/05/23132534/hero-1583762206.jpg" width="50%">
+        <img style="display: block;margin:auto;" alt="restaurant" src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2020/05/23132534/hero-1583762206.jpg" width="50%">
         <h1 style="margin-top: 2%"><strong>{{ restaurant.name }}</strong></h1>
         <p><b>{{restaurant.describe}}</b></p>
       </div>
@@ -31,7 +31,6 @@
     </div>
   </div>
 </template>
-
 <script>
   export default {
     data() {
@@ -54,7 +53,7 @@
     },
     mounted() {
 
-      //requete pour info restaurant
+      //requete pour info restauran
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
