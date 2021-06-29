@@ -1,12 +1,10 @@
 import mongoose, {Schema, Document} from 'mongoose';
 
 export interface CommandInterface extends Document {
-    name: string,
     price: string
 }
 
 export const commandSchema = new Schema({
-    name: { type: String, required: true },
     price: { type: String, required: true },
     _clientId: {type: Number, required:true},
     _restaurantId: {type: Number, required:true},

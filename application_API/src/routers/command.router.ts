@@ -24,7 +24,7 @@ commandRouter.get('/', AuthMiddleware.userAuth, CommandController.getAllCommands
 commandRouter.get('/:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
 
 // POST commands/
-commandRouter.post('/',AuthMiddleware.userAuth, CommandController.createCommand);
+commandRouter.post('/', CommandController.createCommand);
 
 // PUT commands/:id
 commandRouter.put('/:id',AuthMiddleware.userAuth, CommandController.updateCommand);
