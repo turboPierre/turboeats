@@ -3,6 +3,7 @@ import mongoose, {Schema, Document} from 'mongoose';
 
 export interface RestaurantInterface extends Document {
     name: string,
+    _userId: number,
     describe: string,
     picture: string,
     address: string,
