@@ -50,8 +50,7 @@
       add_product(product){
         this.basket.push(product);
         this.price.push(product.price);
-        localStorage.setItem('basket_product', this.basket);
-        localStorage.setItem('price_product', this.price);
+        localStorage.setItem('basket_product', JSON.stringify(this.basket));
       },
       add_menu(menu){
         console.log(menu);
