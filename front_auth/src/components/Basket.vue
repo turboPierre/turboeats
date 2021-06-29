@@ -114,6 +114,9 @@ export default {
     payment(){
       console.log('test')
     },
+    command(){
+
+    },
   },
   beforeMount() {
     this.basket_product.forEach(element => this.total = parseInt(element.price) + parseInt(this.total));
