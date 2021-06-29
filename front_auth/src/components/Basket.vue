@@ -77,7 +77,7 @@
           <div slot="modal-footer">
             <div class="row">
                 <h6>Total : {{ this.total }} €</h6>
-                <b-button variant="success" @click="payment()">
+                <b-button variant="success" @click="command()">
                 Valider
                 </b-button>
             </div>
@@ -102,20 +102,33 @@ export default {
     }
   },
   methods: {
-    calcul_total(){
-
-    },
     cancel_panier() {
       this.$cookie.delete('basket_product', {path: ''});
       this.$cookie.delete('basket_menu', {path: ''});
       location.reload();
     },
 
-    payment(){
-      console.log('test')
-    },
     command(){
 
+
+      this.$http.post(this.$app_api_uri + '/commands', {
+        _delivererId: 1,
+        _restaurantId: 1,
+        _clientId: 1,
+        price: this.total,
+        _menuId: this.basket_menu,
+        _productId: this.basket_product
+          },{
+        headers: {
+          'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
+          }
+      }
+      ).then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.log(error);
+        window.alert(error);
+      });
     },
   },
   beforeMount() {

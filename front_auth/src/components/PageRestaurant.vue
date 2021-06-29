@@ -65,7 +65,7 @@
     },
     mounted() {
 
-      //requete pour info restauran
+      //requete pour info restaurant
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')

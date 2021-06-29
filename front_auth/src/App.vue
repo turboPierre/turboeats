@@ -177,4 +177,10 @@ export default {
     text-decoration: none;
   }
 
+  .close{
+    color: red !important;
+    border: none !important;
+    font-weight: bold !important;
+  }
+
 </style>
