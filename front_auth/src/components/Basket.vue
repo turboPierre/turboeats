@@ -22,8 +22,9 @@
           {{ product.price }} €
         </div>
       </div>
+      <hr>
       <div class="row">
-        <strong>Total €</strong>
+        <strong>Total {{ this.total }} €</strong>
       </div>
       <hr>
       <div class="row">
@@ -40,32 +41,47 @@
 
         <b-modal id="modal-cancel" centered title="vider le panier">
           <p class="my-4">Voulez-vous vider votre panier ?</p>
-          <template #modal-footer="{ cancel_panier }">
+          <div slot="modal-footer">
             <!-- Emulate built in modal footer ok and cancel button actions -->
-            <button type="button" class="btn btn-danger close" aria-label="close">
-              annuler
-            </button>
-            <b-button variant="success" @click="cancel_panier">
+            <b-button variant="success" @click="cancel_panier()">
               Valider
             </b-button>
 
-          </template>
+          </div>
         </b-modal>
 
 
 
-        <b-modal id="modal-pay" size="lg" centered title="Paiement">
+        <b-modal id="modal-pay" size="lg" centered title="Méthodes de paiements :">
 
-          <template #modal-footer="{ cancel_payment, payment }">
-            <!-- Emulate built in modal footer ok and cancel button actions -->
-            <b-button variant="danger" @click="cancel_payment()">
-              annuler
-            </b-button>
-            <b-button variant="success" @click="payment()">
-              Valider
-            </b-button>
 
-          </template>
+
+          <b-tabs fill>
+            <b-tab title="Paypal" active>
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="https://balancepayout.paypal.com/hw2web/javax.faces.resource/244013801687/en/login_logo.png.xhtml?ln=img" width="100%">
+                </div>
+              </div>
+            </b-tab>
+            <b-tab title="Carte bancaire">
+              <div class="row">
+                <div class="col-sm-2">
+                  <img src="https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_GIE-CB.jpg" width="100%">
+                </div>
+              </div>
+            </b-tab>
+          </b-tabs>
+
+
+          <div slot="modal-footer">
+            <div class="row">
+                <h6>Total : {{ this.total }} €</h6>
+                <b-button variant="success" @click="payment()">
+                Valider
+                </b-button>
+            </div>
+          </div>
 
         </b-modal>
       </div>
@@ -78,26 +94,29 @@
 <script>
 export default {
   data() {
-
+    this.total = 0;
     this.basket_product = JSON.parse(this.$cookie.get('basket_product'));
     this.basket_menu = JSON.parse(this.$cookie.get('basket_menu'));
-    console.log(this.basket_menu = JSON.parse(this.$cookie.get('basket_menu')));
 
     return {
     }
   },
   methods: {
+    calcul_total(){
+
+    },
     cancel_panier() {
       this.$cookie.remove('basket_product', {path: ''});
       this.$cookie.remove('basket_menu', {path: ''});
     },
 
-    cancel_payment(){
-    },
-
     payment(){
       console.log('test')
     },
+  },
+  beforeMount() {
+    this.basket_product.forEach(element => this.total = parseInt(element.price) + parseInt(this.total));
+    this.basket_menu.forEach(element => this.total = parseInt(element.price) + parseInt(this.total));
   }
 }
 </script>
