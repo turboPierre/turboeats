@@ -44,23 +44,10 @@ const app = express();
 // App Configuration
 app.use(helmet());
 
-// TODO configurer avant le deploiement docker
-const options: cors.CorsOptions = {
-    allowedHeaders: [
-        'Origin',
-        'X-Requested-With',
-        'Content-Type',
-        'Accept',
-        'X-Access-Token',
-    ],
-    credentials: true,
-    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    origin: 'http://192.168.1.100:80',
-    preflightContinue: false,
-
-};
-
-app.use(cors(options));
+const corsOptions = {
+    origin: 'http://192.168.1.100',
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes de l'API
