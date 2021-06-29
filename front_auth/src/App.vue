@@ -150,6 +150,30 @@ export default {
     transition: all .3s;
   }
 
+
+  .tab-content {
+      margin-left: 0.5%;
+  }
+
+  .nav-tabs .nav-link.active{
+      background-color: #f5f5f5 !important;
+  }
+
+  .nav-tabs .nav-link{
+      font-weight: bold;
+      color:black;
+  }
+
+  .nav-tabs .nav-link.active{
+      font-weight: bold;
+      color:#5FB709 !important;
+  }
+
+  .nav-tabs .nav-link:hover{
+      font-weight: bold;
+      color:#5FB709 !important;
+  }
+
   .vertical-center {
     border-color: #2554FF;
     box-shadow: none;
