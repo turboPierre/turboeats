@@ -4,7 +4,7 @@
     <div class='mt-3'>
       <div class="row">
         <div class="col-sm-3">
-          <img alt="restaurant" src="https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2020/05/23132534/hero-1583762206.jpg" width="100%">
+          <img alt="restaurant" :src="restaurant.picture" width="100%">
         </div>
         <div class="col-sm-3">
           <h1 style="margin-top: 2%"><strong>{{ restaurant.name }}</strong></h1>
