@@ -18,7 +18,7 @@
       <b-tabs fill>
         <b-tab title="Menus" active>
           <div class="row" style="background-color: #f5f5f5;">
-            <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
+            <div class="case col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
               <div v-if="menu._restaurantId === restaurant._id" @click="add_menu(menu)">
                 <h5>{{ menu.name }}</h5>
                 <p>{{menu.describe}}</p>
@@ -29,7 +29,7 @@
         </b-tab>
         <b-tab title="Produits">
           <div class="row" style="background-color: #f5f5f5;">
-            <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
+            <div class="case col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
               <div v-if="product._restaurantId === restaurant._id" @click="add_product(product)">
                 <h5>{{ product.name }}</h5>
                 <p>{{product.describe}}</p>
@@ -65,7 +65,7 @@
     },
     mounted() {
 
-      //requete pour info restauran
+      //requete pour info restaurant
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
