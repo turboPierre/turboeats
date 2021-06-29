@@ -3,12 +3,11 @@
     <nav class="navbar shadow bg-white rounded justify-content-between flex-nowrap flex-row fixed-top">
       <div class="container">
 
-<!--        TODO v-if role : RESTAURANT route : restaurantMenu, restaurantAdd, DELIVERER route : delivererMenu, delivererCommand-->
           <div v-if="isRestaurant">
-              <router-link class="navbar-brand float-left" to="/myaccount"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+              <router-link class="navbar-brand float-left" to="/restaurantMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
           <div v-else-if="isDeliverer">
-              <router-link class="navbar-brand float-left" to="/basket"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+              <router-link class="navbar-brand float-left" to="/delivererMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
           <div v-else>
               <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
