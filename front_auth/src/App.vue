@@ -16,8 +16,8 @@
         <ul class="nav navbar-nav flex-row float-right">
 
             <div v-if="logged">
-              <router-link v-if="isClient" class=" btn btn-success" to="/basket">
-                &#128722;
+              <router-link v-if="isClient" class=" btn btn-success" to="/basket" style="margin-right:5px">
+                  <div id="basketCount">0</div>&#128722;
               </router-link>
               <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
                 <template #button-content>

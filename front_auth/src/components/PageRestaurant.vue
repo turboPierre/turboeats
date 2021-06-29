@@ -68,10 +68,13 @@
       add_product(product){
         this.basket_product.push(product);
         this.$cookie.set('basket_product', JSON.stringify(this.basket_product));
+        //document.getElementById("basketCount").innerHTML =
+        console.log(this.$cookie.get('basket_product').data.length + this.$cookie.get('basket_menu').data.length);
       },
       add_menu(menu){
         this.basket_menu.push(menu);
         this.$cookie.set('basket_menu', JSON.stringify(this.basket_menu));
+        console.log(this.$cookie.get('basket_product').data.length + this.$cookie.get('basket_menu').data.length);
       },
     },
     mounted() {
