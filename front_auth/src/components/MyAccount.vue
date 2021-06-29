@@ -103,8 +103,27 @@
     },
     methods: {
       onSubmit(event) {
+        this.$http.post(this.$auth_api_uri + '/users/myInfos', {
+          headers: {
+            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+          }
+        }).then((response) => {
+          var data = response.data;
+          document.getElementById('lastname').setAttribute("value",data.lastName);
+          document.getElementById('firstname').setAttribute("value",data.firstName);
+          document.getElementById('email').setAttribute("value",data.email);
+          document.getElementById('phone').setAttribute("value",data.phone);
+          document.getElementById('address').setAttribute("value",data.address);
+          document.getElementById('city').setAttribute("value",data.city);
+          document.getElementById('sponsorId').innerHTML += '<p>Code de parrainage : <b>' + data.id + '</b></p>';
+          document.getElementById('title').innerHTML += 'Mon Compte ' + data.role;
+        }).catch(error => {
+          console.log(error);
+          //TODO Erreur ?
+          // this.$router.push({ name: "login"});
+          // location.reload();
+        });
         event.preventDefault();
-        alert(JSON.stringify(this.form))
       },
     },mounted() {
       this.$http.get(this.$auth_api_uri + '/users/myInfos', {
@@ -123,7 +142,7 @@
         document.getElementById('title').innerHTML += 'Mon Compte ' + data.role;
       }).catch(error => {
         console.log(error);
-        //TODO Erreur ?
+        //TODO Erreur introuvable ?
         // this.$router.push({ name: "login"});
         // location.reload();
       });
