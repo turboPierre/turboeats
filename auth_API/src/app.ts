@@ -40,13 +40,9 @@ const app = express();
 app.use(helmet());
 
 const corsOptions = {
-<<<<<<< HEAD
     origin: 'http://localhost',
 }
-=======
-    origin: 'http://192.168.1.100',
-};
->>>>>>> da8d650a1cd8c108e693a65d6feb4800587a1de5
+
 
 app.use(cors(/*corsOptions*/));
 app.use(express.json());
