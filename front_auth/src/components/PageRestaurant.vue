@@ -53,12 +53,12 @@
     methods: {
       add_product(product){
         this.basket_product.push(product);
-        localStorage.setItem('basket_product', JSON.stringify(this.basket_product));
+        this.$cookie.set('basket_product', JSON.stringify(this.basket_product));
         
       },
       add_menu(menu){
         this.basket_menu.push(menu);
-        localStorage.setItem('basket_menu', JSON.stringify(this.basket_menu));
+        this.$cookie.set('basket_menu', JSON.stringify(this.basket_menu));
       },
     },
     mounted() {

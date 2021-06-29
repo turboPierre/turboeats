@@ -81,8 +81,6 @@ export default {
         if (role === "livreur") {
             isDeliverer = true
         }
-        console.log(role);
-        console.log(logged);
         return {
             logged: logged,
             isClient: isClient,
