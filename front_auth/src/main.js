@@ -16,6 +16,10 @@ import MyAccount from './components/MyAccount.vue';
 import Basket from './components/Basket.vue';
 import OrderedHistory from './components/OrderedHistory.vue';
 import PageRestaurant from "./components/PageRestaurant.vue";
+import RestaurantMenu from "./components/RestaurantMenu.vue";
+import RestaurantAdd from "./components/RestaurantAdd.vue";
+import DelivererMenu from "./components/DelivererMenu.vue";
+import DelivererCommand from "./components/DelivererCommand.vue";
 
 Vue.prototype.$http = axios;
 
@@ -23,7 +27,6 @@ Vue.prototype.$app_api_uri = "http://localhost:8081";
 Vue.prototype.$auth_api_uri = "http://localhost:8080";
 
 Vue.use(VueRouter);
-
 
 const router = new VueRouter({
   mode: 'history',
@@ -72,6 +75,26 @@ const router = new VueRouter({
       path: '/orderedhistory',
       component: OrderedHistory,
       name: 'OrderedHistory'
+    },
+    {
+      path: '/restaurantMenu',
+      component: RestaurantMenu,
+      name: 'restaurantMenu'
+    },
+    {
+      path: '/restaurantAdd',
+      component: RestaurantAdd,
+      name: 'restaurantAdd'
+    },
+    {
+      path: '/delivererMenu',
+      component: DelivererMenu,
+      name: 'delivererMenu'
+    },
+    {
+      path: '/delivererCommand',
+      component: DelivererCommand,
+      name: 'delivererCommand'
     },
     { path: '*', redirect: '/menu' }
   ]
