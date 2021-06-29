@@ -7,9 +7,9 @@
         label="User Name"
         label-for="input-1"
         ></b-form-group>
-      <div class="row" v-for="product in this.basket_product">
+<!--      <div class="row" v-for="product in this.basket_product">-->
 
-      </div>
+<!--      </div>-->
 
 <!--        <b-button class="mt-3" type="submit" variant="primary" style="background-color: grey; border: none"><strong>+</strong></b-button>-->
 <!--        <b-button class="mt-3" type="submit" variant="primary" style="background-color: grey; border: none"><strong>-</strong></b-button>-->

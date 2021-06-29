@@ -46,6 +46,16 @@
 
 export default {
   data() {
+      this.$http.get(this.$auth_api_uri + '/users/myInfos', {
+          headers: {
+              'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+          }
+      }).then((response) => {
+          var data = response.data;
+          document.getElementById('userButton').innerHTML += data.firstName;
+      }).catch(error => {
+          console.log(error);
+      });
     if (localStorage.getItem('email') != null && localStorage.getItem('access_token') != null ) {
       return {
         logged: true
@@ -58,22 +68,10 @@ export default {
   },
   methods: {
     disconnect : function (event) {
-      // TODO Revoke Token
       localStorage.removeItem('access_token');
       location.reload();
       console.log(event);
     }
-  }, mounted: function () {
-    this.$http.get(this.$auth_api_uri + '/users/myInfos', {
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-      }
-    }).then((response) => {
-      var data = response.data;
-      document.getElementById('userButton').innerHTML += data.firstName;
-    }).catch(error => {
-      console.log(error);
-    });
   }
 }
 
