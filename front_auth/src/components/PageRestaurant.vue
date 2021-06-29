@@ -59,7 +59,7 @@
       add_product(product){
         this.basket_product.push(product);
         localStorage.setItem('basket_product', JSON.stringify(this.basket_product));
-        
+
       },
       add_menu(menu){
         this.basket_menu.push(menu);
