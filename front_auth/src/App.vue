@@ -56,7 +56,7 @@ export default {
       }).catch(error => {
           console.log(error);
       });
-    if (localStorage.getItem('email') != null && localStorage.getItem('access_token') != null ) {
+    if (localStorage.getItem('access_token') != null ) {
       return {
         logged: true
       }
