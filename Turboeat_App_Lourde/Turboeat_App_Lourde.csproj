@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Request.cs" />
     <Compile Include="FrmCommercial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,11 +59,11 @@
     <Compile Include="Frm1.Designer.cs">
       <DependentUpon>Frm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Technical.cs">
+    <Compile Include="FrmTechnical.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Technical.Designer.cs">
-      <DependentUpon>Technical.cs</DependentUpon>
+    <Compile Include="FrmTechnical.Designer.cs">
+      <DependentUpon>FrmTechnical.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +82,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Technical.resx">
-      <DependentUpon>Technical.cs</DependentUpon>
+    <EmbeddedResource Include="FrmTechnical.resx">
+      <DependentUpon>FrmTechnical.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,5 +101,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

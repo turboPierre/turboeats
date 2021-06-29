@@ -34,7 +34,7 @@ namespace Turboeat_App_Lourde
             // 
             // Btn_deco
             // 
-            this.Btn_deco.Location = new System.Drawing.Point(12, 12);
+            this.Btn_deco.Location = new System.Drawing.Point(700, 415);
             this.Btn_deco.Name = "Btn_deco";
             this.Btn_deco.Size = new System.Drawing.Size(88, 23);
             this.Btn_deco.TabIndex = 0;

@@ -23,5 +23,15 @@ namespace Turboeat_App_Lourde
             frm2.Show();
             this.Close();
         }
+
+        private void zrerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
