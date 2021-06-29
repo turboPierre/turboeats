@@ -92,6 +92,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     this.total = 0;
@@ -109,7 +110,6 @@ export default {
     },
 
     command(){
-
 
       this.$http.post(this.$app_api_uri + '/commands', {
         _delivererId: 1,
