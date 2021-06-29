@@ -18,7 +18,7 @@
       <b-tabs fill>
         <b-tab title="Menus" active>
           <div class="row" style="background-color: #f5f5f5;">
-            <div @click="toast()" class="case col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
+            <div class="case col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
               <div v-if="menu._restaurantId === restaurant._id" @click="add_menu(menu)">
                 <h5>{{ menu.name }}</h5>
                 <p>{{menu.describe}}</p>
@@ -29,7 +29,7 @@
         </b-tab>
         <b-tab title="Produits">
           <div class="row" style="background-color: #f5f5f5;">
-            <div @click="toast()" class="case col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
+            <div class="case col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
               <div v-if="product._restaurantId === restaurant._id" @click="add_product(product)">
                 <h5>{{ product.name }}</h5>
                 <p>{{product.describe}}</p>
@@ -56,22 +56,18 @@
     },
     methods: {
 
-      toast() {
-        this.$bvToast.toast('Article ajouté !', {
-          title: 'Panier',
-          autoHideDelay: 5000,
-          variant: 'success',
-        })
-      },
-      
-
       add_product(product){
         this.basket_product.push(product);
         this.$cookie.set('basket_product', JSON.stringify(this.basket_product));
         let nbProducts = Object.keys(JSON.parse(this.$cookie.get('basket_product'))).length;
         let nbMenus = Object.keys(JSON.parse(this.$cookie.get('basket_menu'))).length;
-        console.log(nbProducts + nbMenus);
         document.getElementById("basketCount").innerHTML = nbProducts + nbMenus;
+        this.$bvToast.toast(product.name, {
+          title: `Produit ajouté au panier`,
+          variant: defa,
+          autoHideDelay: 2000,
+          appendToast: false
+        })
       },
       add_menu(menu){
         this.basket_menu.push(menu);
@@ -79,6 +75,11 @@
         let nbProducts = Object.keys(JSON.parse(this.$cookie.get('basket_product'))).length;
         let nbMenus = Object.keys(JSON.parse(this.$cookie.get('basket_menu'))).length;
         document.getElementById("basketCount").innerHTML = nbProducts + nbMenus;
+        this.$bvToast.toast(menu.name, {
+          title: `Menu ajouté au panier`,
+          autoHideDelay: 2000,
+          appendToast: false
+        })
       },
     },
     mounted() {
@@ -106,6 +107,15 @@
 
 <style>
 /* Container holding the image and the text */
+.toast {
+  opacity: 1 !important;
+  color : #5FB709 !important;
+  font-weight: bold !important;
+}
+.b-toaster-slot{
+  margin-top: 75px !important;
+}
+
 .cont {
   position: relative;
   margin-left: -3.2%;

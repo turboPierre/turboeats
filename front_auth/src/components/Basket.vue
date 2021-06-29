@@ -106,6 +106,7 @@ export default {
     cancel_panier() {
       this.$cookie.delete('basket_product', {path: ''});
       this.$cookie.delete('basket_menu', {path: ''});
+      document.getElementById("basketCount").innerHTML = 0;
       location.reload();
     },
 
