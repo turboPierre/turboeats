@@ -21,7 +21,8 @@ import RestaurantMenu from "./components/RestaurantMenu.vue";
 import RestaurantAdd from "./components/RestaurantAdd.vue";
 import DelivererMenu from "./components/DelivererMenu.vue";
 import DelivererCommand from "./components/DelivererCommand.vue";
-import { ToastPlugin } from 'bootstrap-vue'
+
+Vue.prototype.$http = axios;
 
 // Vue.prototype.$app_api_uri = "http://192.168.1.100:8081";
 // Vue.prototype.$auth_api_uri = "http://192.168.1.100:8080";
