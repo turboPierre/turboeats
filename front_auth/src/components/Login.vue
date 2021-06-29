@@ -41,9 +41,18 @@
                   password: this.form.password
                 }
         ).then(response => {
+                    let role = response.data.role;
                     this.$cookie.set('access_token', response.data.token);
-                    this.$cookie.set('role', response.data.role);
-                  this.$router.push({ name: "/"});
+                    this.$cookie.set('role', role);
+                    if (role === "client") {
+                      this.$router.push({ name: "/menu"});
+                    }
+                    if (role === "restaurant") {
+                      this.$router.push({ name: "/restaurantMenu"});
+                    }
+                    if (role === "livreur") {
+                      this.$router.push({ name: "/delivererMenu"});
+                    }
                   location.reload();
         }).catch(error => {
                   console.log(error);
