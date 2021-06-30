@@ -1,6 +1,6 @@
 <template>
   <div class='container mt-5'>
-  <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+  <b-form @submit="onSubmit" v-if="show">
     <h3><strong>Modifiez votre restaurant !</strong></h3><br>
     <b-form-group
             id="input-group-1"
@@ -8,12 +8,12 @@
             label-for="input-1"
     >
       <b-form-input
-              id="email"
-              v-model="form.email"
-              type="email"
+              id="name"
+              v-model="form.name"
               required
       ></b-form-input>
     </b-form-group>
+
 
     <b-form-group class="mt-3" id="input-group-2" label="Mot de passe:" label-for="password1">
       <b-form-input
@@ -68,6 +68,7 @@
             label-for="input-1"
     >
     </b-form-group>
+
     <b-tab title="Produits">
       <div class="row" style="background-color: #f5f5f5;">
         <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
@@ -110,15 +111,18 @@
   export default {
     data() {
       return {
+        restaurant: null,
+        listProducts:null,
+        listMenus: null,
         form: {
-          email: '',
+          name: '',
           password1: '',
           password2: '',
         },
         show: true
       }
     },
-    mounted() {
+    beforeMount() {
 
         //requete pour info restaurant
         this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
@@ -136,51 +140,48 @@
 
         //TODO Faire requetes
         //requete pour liste des produits
-        // this.$http.get(this.$api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
-        // console.log(listProducts)
-        //requete pour liste des menus
-        // this.$http.get(this.$api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+        this.$http.get(this.$api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+        // requete pour liste des menus
+        this.$http.get(this.$api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
 
     },
 
     methods: {
       onSubmit(event) {
-        this.$http.post(this.$auth_api_uri + '/restaurants', {
-          headers: {
-            'Authorization': 'Bearer ' + this.$cookie.post('access_token')
-          }
-        }).then((response) => {
-          var data = response.data;
-          document.getElementById('name').setAttribute("value",data.name);
-          document.getElementById('price').setAttribute("value",data.price);
-          document.getElementById('describe').setAttribute("value",data.describe);
-          document.getElementById('picture').setAttribute("value",data.picture);
-        }).catch(error => {
-          console.log(error);
-          //TODO Erreur ?
-          // this.$router.push({ name: "login"});
-          // location.reload();
-        });
-        event.preventDefault();
+        // this.$http.post(this.$auth_api_uri + '/restaurants', {
+        //   headers: {
+        //     'Authorization': 'Bearer ' + this.$cookie.post('access_token')
+        //   }
+        // }).then((response) => {
+        //   var data = response.data;
+        //   document.getElementById('name').setAttribute("value",data.name);
+        //   document.getElementById('price').setAttribute("value",data.price);
+        //   document.getElementById('describe').setAttribute("value",data.describe);
+        //   document.getElementById('picture').setAttribute("value",data.picture);
+        // }).catch(error => {
+        //   console.log(error);
+        //   //TODO Erreur ?
+        //   // this.$router.push({ name: "login"});
+        //   // location.reload();
+        // });
+        // event.preventDefault();
       },
-      mounted() {
-        this.$http.get(this.$auth_api_uri + '/restaurants', {
-        headers: {
-          'Authorization': 'Bearer ' + this.$cookie.get('access_token')
-        }
-      }).then((response) => {
-          var data = response.data;
-          document.getElementById('name').setAttribute("value",data.name);
-          document.getElementById('describe').setAttribute("value",data.describe);
-          document.getElementById('address').setAttribute("value",data.address);
-        }).catch(error => {
-          console.log(error);
-          //TODO Erreur ?
-          // this.$router.push({ name: "login"});
-          // location.reload();
-        });
-        event.preventDefault();
-      },
+
+      // mounted() {
+      //   this.$http.get(this.$auth_api_uri + '/restaurants', {
+      //   headers: {
+      //     'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      //   }
+      // }).then((response) => {
+      //     this.data = response.data;
+      //   }).catch(error => {
+      //     console.log(error);
+      //     //TODO Erreur ?
+      //     // this.$router.push({ name: "login"});
+      //     // location.reload();
+      //   });
+      //   event.preventDefault();
+      // },
     },
 
 
