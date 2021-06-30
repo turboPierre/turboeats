@@ -6,16 +6,35 @@
 <!--  </h1>-->
 </div>
 
-
-    <div class="row mt-3">
-    <div class="col-sm-3" v-for="command in commands.data" :key="command.id">
-      <router-link :to="{ name: 'Commande', params: { id: command._id }}" style="color: #2C3E50; text-decoration: none">
-        <b-card img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 30rem;" class="mb-2">
-          <b-card-title>{{ command.name }}</b-card-title>
-          <b-card-text>{{ command._restaurantId }}</b-card-text>
-        </b-card>
-      </router-link>
+    <!-- afficher si le deliverer a une commande active -->
+    <div v-if="active">
+      <div v-for="command in commands.data" :key="command._id">
+        <div v-if="command._delivererId == userId">
+          Livraison en cours :
+          okokok
+        </div>
+      </div>
     </div>
+
+    <!-- afficher si le deliverer n'a pas de commande active -->
+    <div v-else>
+      <h1>Liste des commandes en attente :</h1>
+      <div class=" col-sm-3" v-for="command in commands.data" :key="command._id">
+        <div class="case" v-if="command._delivererId === -1" @click="valid(command._id)">
+          <b-card tag="article" style="max-width: 30rem;" class="mb-2">
+            <b-card-title><h6>Numéro de commande : {{ command._id }}</h6></b-card-title>
+            <b-card-text>
+              <div v-for="restaurant in restaurants.data" :key="restaurant._id">
+                <div v-if="restaurant._id === command._restaurantId">
+                  Nom du restaurant : {{ restaurant.name }}
+                  <hr>
+                  Adresse : {{ restaurant.adress }}, {{ restaurant.city }}
+                </div>
+              </div>
+            </b-card-text>
+          </b-card>
+        </div>
+      </div>
     </div>
 
 
@@ -29,11 +48,15 @@
     data() {
 
       return {
-        commands: null
+        commands: null,
+        restaurants: null,
+        active: 0,
+        userId: this.$cookie.get('userId')
       }
     },
-    mounted() {
+    beforeMount() {
 
+      //récupération de la liste des commandes
       this.$http.get(this.$api_uri + '/commands', {
           headers: {
               'Authorization': 'Bearer ' + this.$cookie.get('access_token')
@@ -42,6 +65,37 @@
       console.log(error);
       });
 
+      //récupération de la liste des restaurants
+      this.$http.get(this.$api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
+        console.log(error);
+      });
+
+      //voir si le deliverer a une commande active
+
+      this.commands.forEach(function(element){
+        if(element._delivererId == this.userId){
+          this.active = 1
+        }
+      });
+
+    },
+    methods:{
+      valid(id){
+        this.$http.put(this.$api_uri + '/commands/'+ id, {
+              _delivererId: this.$cookie.get('userId')
+            },{
+              headers: {
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
+              }
+            }
+        ).then(response => {
+          console.log(response)
+        }).catch(error => {
+          console.log(error);
+          window.alert(error);
+        });
+
+      }
     }
   }
 
