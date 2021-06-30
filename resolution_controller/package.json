@@ -1,0 +1,37 @@
+{
+	"name": "resolution_controller",
+	"version": "1.0.0",
+	"description": "Resolution Controller",
+	"license": "",
+	"scripts": {
+		"doc": "apidoc -i src/routers/ -o public/docs/ ",
+		"start": "npm run build && node dist/app.js",
+		"dev": "nodemon src/app.ts",
+		"build": "tsc -p .",
+		"test": "echo run some tests!"
+	},
+	"author": "turboeats",
+	"nodemonConfig": {
+		"env": {
+			"NODE_ENV": "development",
+			"PORT": "8082",
+			"APP_API_IP:": "http://localhost:8081",
+			"AUTH_API_IP:": "http://localhost:8080"
+		}
+	},
+	"dependencies": {
+		"apidoc": "^0.28.1",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"helmet": "^4.6.0"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.6",
+		"@types/node": "^14.0.14",
+		"@types/jsonwebtoken": "latest",
+		"nodemon": "^2.0.4",
+		"ts-node": "^8.10.2",
+		"tslint": "^6.1.2",
+		"typescript": "^3.9.6"
+	}
+}

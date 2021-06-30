@@ -1,4 +1,4 @@
-define({ "api": [
+[
   {
     "type": "delete",
     "url": "/Command/:id",
@@ -100,7 +100,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "src/routers/router.ts",
+    "filename": "src/routers/command.router.ts",
     "groupTitle": "Command"
   },
   {
@@ -204,7 +204,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "src/routers/router.ts",
+    "filename": "src/routers/command.router.ts",
     "groupTitle": "Command"
   },
   {
@@ -308,7 +308,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "src/routers/router.ts",
+    "filename": "src/routers/command.router.ts",
     "groupTitle": "Command"
   },
   {
@@ -412,7 +412,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "src/routers/router.ts",
+    "filename": "src/routers/command.router.ts",
     "groupTitle": "Command"
   },
   {
@@ -516,7 +516,7 @@ define({ "api": [
         }
       ]
     },
-    "filename": "src/routers/router.ts",
+    "filename": "src/routers/command.router.ts",
     "groupTitle": "Command"
   },
   {
@@ -2009,4 +2009,4 @@ define({ "api": [
     "filename": "src/routers/restaurant.router.ts",
     "groupTitle": "Restaurant"
   }
-] });
+]
