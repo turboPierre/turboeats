@@ -6,19 +6,19 @@
       </div>
 <!--      menus-->
       <div class="row" v-for="menu in this.basket_menu" :key="menu._id">
-        <div class="col-sm-6">
-          <strong>{{ menu.name }}</strong>
+        <div class="col-sm-9">
+          <strong>- {{ menu.name }}</strong>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-3" style="float: right;">
           {{ menu.price }} €
         </div>
       </div>
 <!--      produits-->
       <div class="row" v-for="product in this.basket_product" :key="product._id">
-        <div class="col-sm-6">
-          <strong>{{ product.name }}</strong>
+        <div class="col-sm-9">
+          <strong>- {{ product.name }}</strong>
         </div>
-        <div class="col-6">
+        <div class="col-sm-3">
           {{ product.price }} €
         </div>
       </div>

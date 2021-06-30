@@ -12,6 +12,7 @@
       <br>
       <b-button class="mt-3 btn-success" type="submit" variant="primary"><strong>Se connecter</strong></b-button>
       <br><br>
+      <p style="max-width: 400px; font-size: 10px; font-style: italic">* En vous connectant vous acceptez l'utilisation de traceurs comme les cookies pour collecter, stocker, croiser, et transférer des données, à ces fins: Profil de publicités personnalisées et affichage, Contenu personnalisé et développement produit.</p>
       <p>Vous êtes nouveau ?<router-link style="color:#5FB709" to="/register"> Créez votre compte utilisateur !</router-link></p>
       <hr>
       <p>Vous êtes livreur ?<router-link style="color:#5FB709" to="/deliverer_register"> Créez votre compte livreur !</router-link></p>
