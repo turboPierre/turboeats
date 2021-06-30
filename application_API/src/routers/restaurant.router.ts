@@ -104,8 +104,7 @@ restaurantRouter.get('/', RestaurantController.getAllRestaurants);
  */
 
 // GET restaurants/:id
-//  @Unused
-// restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
+restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
 
 // GET restaurants/userRestaurant
 restaurantRouter.get('/userRestaurant',AuthMiddleware.userAuth, RestaurantController.getUserRestaurant);

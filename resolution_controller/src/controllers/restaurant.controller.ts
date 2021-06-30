@@ -12,8 +12,9 @@ export const getAllRestaurants = async(req: Request, res: Response, next: NextFu
     res.send(result)
 };
 
-export const getUserRestaurant = async(req: Request, res: Response, next: NextFunction) => {
-    const result = await axios.get(process.env.APP_API_IP + 'restaurants/userRestaurant', {
+export const getOneRestaurant = async(req: Request, res: Response, next: NextFunction) => {
+    const itemID: string = req.params.id;
+    const result = await axios.get(process.env.APP_API_IP + 'restaurants/'+ itemID, {
         headers:req.headers
     })
         .then(response => response.data)
