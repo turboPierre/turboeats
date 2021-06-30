@@ -43,7 +43,7 @@
       </b-tabs>
       </div>
 
-      <div v-else="">
+      <div v-else>
       <b-tabs fill>
         <b-tab title="Menus" active>
           <div class="row" style="background-color: #f5f5f5;">
