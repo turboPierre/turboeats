@@ -11,17 +11,16 @@ export const restaurantRouter = express.Router();
 restaurantRouter.get('/', RestaurantController.getAllRestaurants);
 
 // GET restaurants/userRestaurant
-// restaurantRouter.get('/userRestaurant',RestaurantController.getUserRestaurant);
+restaurantRouter.get('/userRestaurant',RestaurantController.getUserRestaurant);
 
 // GET restaurants/:id
-restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
+restaurantRouter.get('/id=:id', RestaurantController.getOneRestaurant);
 
 // POST restaurants/
 restaurantRouter.post('/', RestaurantController.createRestaurant);
 
 // PUT restaurants/:id
 restaurantRouter.put('/:id', RestaurantController.updateRestaurant);
-
 
 // DELETE restaurants/:id
 restaurantRouter.delete('/:id', RestaurantController.deleteRestaurant);

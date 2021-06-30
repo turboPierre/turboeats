@@ -13,7 +13,17 @@ export const getAllRestaurants = async(req: Request, res: Response, next: NextFu
 
 export const getOneRestaurant = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.get(APP_API_IP + 'restaurants/'+ itemID, {
+    const result = await axios.get(APP_API_IP + 'restaurants/id='+ itemID, {
+        headers:req.headers
+    })
+        .then(response => response.data)
+        .catch(err => res.sendStatus(err.response.status));
+
+    res.send(result)
+};
+
+export const getUserRestaurant = async(req: Request, res: Response, next: NextFunction) => {
+    const result = await axios.get(APP_API_IP + 'restaurants/userRestaurant', {
         headers:req.headers
     })
         .then(response => response.data)

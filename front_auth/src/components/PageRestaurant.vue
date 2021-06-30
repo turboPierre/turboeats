@@ -126,7 +126,7 @@
       }
 
       //requete pour info restaurant
-      this.$http.get(this.$api_uri + '/restaurants/'+this.$route.params.id, {
+      this.$http.get(this.$api_uri + '/restaurants/id='+this.$route.params.id, {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }

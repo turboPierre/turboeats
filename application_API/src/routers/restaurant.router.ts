@@ -103,8 +103,8 @@ restaurantRouter.get('/', RestaurantController.getAllRestaurants);
  *     }
  */
 
-// GET restaurants/:id
-restaurantRouter.get('/:id', RestaurantController.getOneRestaurant);
+// GET restaurants/id=:id
+restaurantRouter.get('/id=:id', RestaurantController.getOneRestaurant);
 
 // GET restaurants/userRestaurant
 restaurantRouter.get('/userRestaurant',AuthMiddleware.userAuth, RestaurantController.getUserRestaurant);
