@@ -1,6 +1,6 @@
 <template>
     <div class='container mt-5'>
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+        <b-form @submit="onSubmit" v-if="show">
             <h3><strong>Créez votre restaurant !</strong></h3><br>
               <b-form-group class="mt-3" id="input-group-2" label="Nom: " label-for="restaurant_name">
                 <b-form-input

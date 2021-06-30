@@ -1,108 +1,101 @@
 <template>
   <div class='container mt-5'>
-  <b-form @submit="onSubmit" v-if="show">
-    <h3><strong>Modifiez votre restaurant !</strong></h3><br>
-    <b-form-group
-            id="input-group-1"
-            label="Email :"
-            label-for="input-1"
-    >
-      <b-form-input
-              id="name"
-              v-model="form.name"
-              required
-      ></b-form-input>
-    </b-form-group>
-
-
-    <b-form-group class="mt-3" id="input-group-2" label="Mot de passe:" label-for="password1">
-      <b-form-input
-              id="password1"
-              v-model="form.password1"
-              type="password"
-              required
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group class="mt-3" id="input-group-2" label="Nom :" label-for="lastname">
-      <b-form-input
-              id="lastname"
-              v-model="form.lastname"
-              type="text"
-              required
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group class="mt-3" id="input-group-2" label="Numéro de téléphone:" label-for="phone">
-      <b-form-input
-              id="phone"
-              v-model="form.phone"
-              type="text"
-              required
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group class="mt-3" id="input-group-2" label="Adresse:" label-for="address">
-      <b-form-input
-              id="address"
-              v-model="form.address"
-              type="text"
-              required
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group class="mt-3" id="input-group-2" label="Ville :" label-for="city">
-      <b-form-input
-              id="city"
-              v-model="form.city"
-              type="text"
-              required
-      ></b-form-input>
-    </b-form-group>
-    <br>
-    <div id="sponsorId"></div>
-    <br>
-    <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none;"><strong>Modifier le restaurant</strong></b-button>
-    <br>
-    <b-button class="mt-3" type="cancel" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer le restaurant</strong></b-button>
-    <hr>
-    <b-form-group
-            id="input-group-1"
-            label="Produits"
-            label-for="input-1"
-    >
-    </b-form-group>
-
-    <b-tab title="Produits">
-      <div class="row" style="background-color: #f5f5f5;">
-        <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
-          <div v-if="product._restaurantId === restaurant._id">
-            <h5>{{ product.name }}</h5>
-            <p>{{product.describe}}</p>
-            <h5><em>{{product.price}} €</em></h5>
+    <b-form @submit="onSubmit" v-if="show">
+      <h3><strong>Modifiez votre restaurant !</strong></h3><br>
+      <b-form-group class="mt-3" id="input-group-2" label="Nom: " label-for="restaurant_name">
+        <b-form-input
+                id="restaurant_name"
+                v-model="form.restaurant_name"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Description: " label-for="restaurant_description">
+        <b-form-input
+                id="restaurant_description"
+                v-model="form.restaurant_description"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Image (lien): " label-for="restaurant_picture">
+        <b-form-input
+                id="restaurant_picture"
+                v-model="form.restaurant_picture"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Adresse: " label-for="restaurant_address">
+        <b-form-input
+                id="restaurant_address"
+                v-model="form.restaurant_address"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Ville: " label-for="restaurant_city">
+        <b-form-input
+                id="restaurant_city"
+                v-model="form.restaurant_city"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Numéro de téléphone:" label-for="restaurant_phone">
+        <b-form-input
+                id="restaurant_phone"
+                v-model="form.restaurant_phone"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Horraire d'ouverture: (heure:minutes)" label-for="open_hour">
+        <b-form-input
+                id="open_hour"
+                v-model="form.open_hour"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group class="mt-3" id="input-group-2" label="Horraire de fermeture: (heure:minutes)" label-for="close_hour">
+        <b-form-input
+                id="close_hour"
+                v-model="form.close_hour"
+                type="text"
+                required
+        ></b-form-input>
+      </b-form-group>
+      <br>
+      <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none;"><strong>Modifier le restaurant</strong></b-button>
+      <br>
+      <b-button class="mt-3" type="cancel" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer le restaurant</strong></b-button>
+    </b-form>
+      <b-tab title="Produits">
+        <div class="row" style="background-color: #f5f5f5;">
+          <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
+            <div v-if="product._restaurantId === restaurant._id">
+              <h5>{{ product.name }}</h5>
+              <p>{{product.describe}}</p>
+              <h5><em>{{product.price}} €</em></h5>
+            </div>
           </div>
         </div>
-      </div>
-      <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
-    </b-tab>
-    <hr>
-    <b-form-group
-            id="input-group-1"
-            label="Menu"
-            label-for="input-1"
-    >
-    <b-tab title="Menu">
-      <div class="row" style="background-color: #f5f5f5;">
-        <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
-          <div v-if="menu._restaurantId === restaurant._id">
-            <h5>{{ menu.name }}</h5>
-            <p>{{menu.describe}}</p>
-            <h5><em>{{menu.price}} €</em></h5>
+        <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
+      </b-tab>
+      <hr>
+      <b-tab title="Menu">
+        <div class="row" style="background-color: #f5f5f5;">
+          <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
+            <div v-if="menu._restaurantId === restaurant._id">
+              <h5>{{ menu.name }}</h5>
+              <p>{{menu.describe}}</p>
+              <h5><em>{{menu.price}} €</em></h5>
+            </div>
           </div>
         </div>
-      </div>
-      <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
-    </b-tab>
-    </b-form-group>
-
-
-  </b-form>
+        <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
+      </b-tab>
   </div>
 </template>
 
@@ -115,14 +108,36 @@
         listProducts:null,
         listMenus: null,
         form: {
-          name: '',
-          password1: '',
-          password2: '',
+          restaurant_name: '',
+          restaurant_description: '',
+          restaurant_picture: '',
+          restaurant_address: '',
+          restaurant_city:'',
+          restaurant_phone: '',
+          open_hour: '',
+          close_hour: '',
         },
         show: true
       }
     },
     beforeMount() {
+      this.$http.get(this.$api_uri + '/userRestaurant', {
+        headers: {
+          'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+        }
+      }).then((response) => {
+        var data = response.data;
+        document.getElementById('restaurant_name').setAttribute("value",data.restaurant_name);
+        document.getElementById('restaurant_description').setAttribute("value",data.restaurant_description);
+        document.getElementById('restaurant_picture').setAttribute("value",data.restaurant_picture);
+        document.getElementById('restaurant_address').setAttribute("value",data.restaurant_address);
+        document.getElementById('restaurant_city').setAttribute("value",data.restaurant_city);
+        document.getElementById('restaurant_phone').setAttribute("value",data.restaurant_phone);
+        document.getElementById('open_hour').setAttribute("value",data.open_hour);
+        document.getElementById('close_hour').setAttribute("value",data.close_hour);
+      }).catch(error => {
+        console.log(error);
+      });
 
         //requete pour info restaurant
         this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
