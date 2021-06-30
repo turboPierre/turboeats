@@ -44,6 +44,7 @@
                     let role = response.data.role;
                     this.$cookie.set('access_token', response.data.token);
                     this.$cookie.set('role', role);
+                    this.$cookie.set('userId', response.data.userId);
                     if (role === "client") {
                       this.$router.push({ name: "menu"});
                     }

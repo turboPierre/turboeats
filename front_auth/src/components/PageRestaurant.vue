@@ -116,6 +116,8 @@
       },
     },
     mounted() {
+
+
       if(this.$cookie.get('basket_product') == null){
         this.$cookie.set('basket_product', JSON.stringify(''));
       }
@@ -128,7 +130,7 @@
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
-      }).then((result) => { this.restaurant = result.data; console.log(result)}).catch(error => {
+      }).then((result) => { this.restaurant = result.data; this.$cookie.set('basket_restaurantId', this.restaurant._id)}).catch(error => {
         console.log(error);
       });
 
@@ -137,6 +139,8 @@
       this.$http.get(this.$app_api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
       //requete pour liste des menus
       this.$http.get(this.$app_api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+
+
 
     }
   }

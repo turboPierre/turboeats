@@ -98,7 +98,6 @@ export default {
     this.total = 0;
     this.basket_product = JSON.parse(this.$cookie.get('basket_product'));
     this.basket_menu = JSON.parse(this.$cookie.get('basket_menu'));
-
     return {
     }
   },
@@ -114,8 +113,8 @@ export default {
 
       this.$http.post(this.$app_api_uri + '/commands', {
         _delivererId: 1,
-        _restaurantId: 1,
-        _clientId: 1,
+        _restaurantId: this.$cookie.get('basket_restaurantId'),
+        _clientId: this.$cookie.get('userId'),
         price: this.total,
         _menuId: this.basket_menu,
         _productId: this.basket_product
