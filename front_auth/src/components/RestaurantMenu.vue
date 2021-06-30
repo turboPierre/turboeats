@@ -23,26 +23,10 @@
               required
       ></b-form-input>
     </b-form-group>
-    <b-form-group class="mt-3" id="input-group-2" label="Confirmer le mot de passe:" label-for="password2">
-      <b-form-input
-              id="password2"
-              v-model="form.password2"
-              type="password"
-              required
-      ></b-form-input>
-    </b-form-group>
     <b-form-group class="mt-3" id="input-group-2" label="Nom :" label-for="lastname">
       <b-form-input
               id="lastname"
               v-model="form.lastname"
-              type="text"
-              required
-      ></b-form-input>
-    </b-form-group>
-    <b-form-group class="mt-3" id="input-group-2" label="Prenom:" label-for="firstname">
-      <b-form-input
-              id="firstname"
-              v-model="form.firstname"
               type="text"
               required
       ></b-form-input>
@@ -77,6 +61,45 @@
     <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none;"><strong>Modifier le restaurant</strong></b-button>
     <br>
     <b-button class="mt-3" type="cancel" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer le restaurant</strong></b-button>
+    <hr>
+    <b-form-group
+            id="input-group-1"
+            label="Produits"
+            label-for="input-1"
+    >
+    </b-form-group>
+    <b-tab title="Produits">
+      <div class="row" style="background-color: #f5f5f5;">
+        <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
+          <div v-if="product._restaurantId === restaurant._id">
+            <h5>{{ product.name }}</h5>
+            <p>{{product.describe}}</p>
+            <h5><em>{{product.price}} €</em></h5>
+          </div>
+        </div>
+      </div>
+      <!-- <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button> -->
+    </b-tab>
+    <hr>
+    <b-form-group
+            id="input-group-1"
+            label="Menu"
+            label-for="input-1"
+    >
+    <b-tab title="Menu">
+      <div class="row" style="background-color: #f5f5f5;">
+        <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
+          <div v-if="menu._restaurantId === restaurant._id">
+            <h5>{{ menu.name }}</h5>
+            <p>{{menu.describe}}</p>
+            <h5><em>{{menu.price}} €</em></h5>
+          </div>
+        </div>
+      </div>
+      <!-- <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button> -->
+    </b-tab>
+    </b-form-group>
+
 
   </b-form>
   </div>
@@ -105,8 +128,18 @@
                 this.$router.push({ name: "login"});
             }
         });
+        // console.log(mounted.restaurant)
 
-    }
+        //TODO Faire requetes
+        //requete pour liste des produits
+        // this.$http.get(this.$app_api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+        console.log(listProducts)
+        //requete pour liste des menus
+        // this.$http.get(this.$app_api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+
+    },
+
+
   }
 
 </script>
