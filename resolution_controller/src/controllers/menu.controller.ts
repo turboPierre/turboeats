@@ -2,7 +2,7 @@ import { Request, Response, NextFunction} from 'express';
 import axios from 'axios';
 
 export const getAllMenus = async(req: Request, res: Response, next: NextFunction) => {
-    const result = await axios.get(process.env.AUTH_API_IP + 'menus/', {
+    const result = await axios.get(process.env.APP_API_IP + 'menus/', {
         headers:req.headers
     })
         .then(response => response.data)
@@ -13,7 +13,7 @@ export const getAllMenus = async(req: Request, res: Response, next: NextFunction
 
 export const getOneMenu = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.get(process.env.AUTH_API_IP + 'menus/' + itemID, {
+    const result = await axios.get(process.env.APP_API_IP + 'menus/' + itemID, {
         headers:req.headers
     })
         .then(response => response.data)
@@ -23,7 +23,7 @@ export const getOneMenu = async(req: Request, res: Response, next: NextFunction)
 };
 
 export const createMenu = async(req: Request, res: Response, next: NextFunction) => {
-    const result = await axios.post(process.env.AUTH_API_IP + 'menus/',req.body, {
+    const result = await axios.post(process.env.APP_API_IP + 'menus/',req.body, {
         headers:req.headers
     })
         .then(response => response.data)
@@ -34,7 +34,7 @@ export const createMenu = async(req: Request, res: Response, next: NextFunction)
 
 export const updateMenu = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.put(process.env.AUTH_API_IP + 'menus/' + itemID,req.body, {
+    const result = await axios.put(process.env.APP_API_IP + 'menus/' + itemID,req.body, {
         headers:req.headers
     })
         .then(response => response.data)
@@ -45,7 +45,7 @@ export const updateMenu = async(req: Request, res: Response, next: NextFunction)
 
 export const deleteMenu = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.delete(process.env.AUTH_API_IP + 'menus/'+itemID,{
+    const result = await axios.delete(process.env.APP_API_IP + 'menus/'+itemID,{
         headers:req.headers
     })
         .then(response => response.data)
