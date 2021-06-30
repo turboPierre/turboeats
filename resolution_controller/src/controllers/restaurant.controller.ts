@@ -7,8 +7,7 @@ export const getAllRestaurants = async(req: Request, res: Response, next: NextFu
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
-    console.log(process.env.APP_API_I + 'restaurants/');
+        .catch(err => res.sendStatus(err.response.status));
     res.send(result)
 };
 
@@ -18,7 +17,7 @@ export const getOneRestaurant = async(req: Request, res: Response, next: NextFun
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -28,7 +27,7 @@ export const createRestaurant = async(req: Request, res: Response, next: NextFun
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -39,7 +38,7 @@ export const updateRestaurant = async(req: Request, res: Response, next: NextFun
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -50,7 +49,7 @@ export const deleteRestaurant = async(req: Request, res: Response, next: NextFun
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };

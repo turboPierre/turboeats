@@ -6,7 +6,7 @@ export const getAllMenus = async(req: Request, res: Response, next: NextFunction
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -17,7 +17,7 @@ export const getOneMenu = async(req: Request, res: Response, next: NextFunction)
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -27,7 +27,7 @@ export const createMenu = async(req: Request, res: Response, next: NextFunction)
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -38,7 +38,7 @@ export const updateMenu = async(req: Request, res: Response, next: NextFunction)
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -49,7 +49,7 @@ export const deleteMenu = async(req: Request, res: Response, next: NextFunction)
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(404).send(err))
+        .catch(err => res.sendStatus(err.response.status))
 
     res.send(result)
 };

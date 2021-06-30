@@ -6,7 +6,7 @@ export const getAllCommands = async(req: Request, res: Response, next: NextFunct
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -17,7 +17,7 @@ export const getOneCommand = async(req: Request, res: Response, next: NextFuncti
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -27,7 +27,7 @@ export const createCommand = async(req: Request, res: Response, next: NextFuncti
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -38,7 +38,7 @@ export const updateCommand = async(req: Request, res: Response, next: NextFuncti
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -49,7 +49,7 @@ export const deleteCommand = async(req: Request, res: Response, next: NextFuncti
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };

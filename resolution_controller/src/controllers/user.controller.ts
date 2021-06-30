@@ -6,7 +6,7 @@ export const getAllUsers = async(req: Request, res: Response, next: NextFunction
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -16,7 +16,7 @@ export const myInfos = async(req: Request, res: Response, next: NextFunction) =>
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -26,7 +26,7 @@ export const updateUser = async(req: Request, res: Response, next: NextFunction)
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -36,7 +36,7 @@ export const signup = async(req: Request, res: Response, next: NextFunction) => 
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err));
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
@@ -45,7 +45,7 @@ export const login = async(req: Request, res: Response, next: NextFunction) => {
         headers:req.headers
     })
         .then(response => response.data)
-        .catch(err => res.sendStatus(err.response.status).send(err))
+        .catch(err => res.sendStatus(err.response.status));
 
     res.send(result)
 };
