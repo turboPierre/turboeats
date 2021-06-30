@@ -4,6 +4,7 @@
 	"description": "auth API",
 	"license": "",
 	"scripts": {
+		"doc": "apidoc -i src/routers/ -o public/docs/ ",
 		"start": "npm run build && node dist/app.js",
 		"dev": "nodemon src/app.ts",
 		"build": "tsc -p .",

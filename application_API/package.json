@@ -4,6 +4,7 @@
 	"description": "application API",
 	"license": "",
 	"scripts": {
+		"doc": "apidoc -i src/routers/ -o public/docs/ ",
 		"start": "npm run build && node dist/app.js",
 		"dev": "nodemon src/app.ts",
 		"build": "tsc -p .",
@@ -19,12 +20,13 @@
 		}
 	},
 	"dependencies": {
+		"apidoc": "^0.28.1",
 		"cors": "^2.8.5",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
-		"mongoose": "^5.12.13",
-		"jsonwebtoken": "latest"
+		"jsonwebtoken": "latest",
+		"mongoose": "^5.12.13"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.10",
