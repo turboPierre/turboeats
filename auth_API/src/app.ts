@@ -30,6 +30,7 @@ const PORT: number = parseInt(process.env.PORT as string, 10);
 
 
 const app = express();
+app.use(express.static('public'));
 
 
 /**
