@@ -34,7 +34,7 @@
     },
     mounted() {
 
-      this.$http.get(this.$app_api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
+      this.$http.get(this.$api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
         console.log(error);
       });
 

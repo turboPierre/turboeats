@@ -184,7 +184,7 @@
         } else{
           //POST For USER Restaurant
           this.$http.post(
-                  this.$auth_api_uri + '/users/signup',
+                  this.$api_uri + '/users/signup',
                   {
                     firstName: this.form.firstname,
                     lastName: this.form.lastname,
@@ -209,7 +209,7 @@
 
           // //POST for RESTAURANT informations
           // this.$http.post(
-          //         this.$app_api_uri + '/restaurants/',
+          //         this.$api_uri + '/restaurants/',
           //         {
           //           name: this.form.restaurant_name,
           //           describe: this.form.restaurant_description,

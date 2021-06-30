@@ -103,7 +103,7 @@
     },
     methods: {
       onSubmit(event) {
-        this.$http.post(this.$auth_api_uri + '/users/myInfos', {
+        this.$http.post(this.$api_uri + '/users/myInfos', {
           headers: {
             'Authorization': 'Bearer ' + this.$cookie.get('access_token')
           }
@@ -126,7 +126,7 @@
         event.preventDefault();
       },
     },mounted() {
-      this.$http.get(this.$auth_api_uri + '/users/myInfos', {
+      this.$http.get(this.$api_uri + '/users/myInfos', {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }

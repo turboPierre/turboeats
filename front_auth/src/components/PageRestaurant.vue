@@ -126,7 +126,7 @@
       }
 
       //requete pour info restaurant
-      this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
+      this.$http.get(this.$api_uri + '/restaurants/'+this.$route.params.id, {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
@@ -136,9 +136,9 @@
 
       //TODO Faire requetes
       //requete pour liste des produits
-      this.$http.get(this.$app_api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+      this.$http.get(this.$api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
       //requete pour liste des menus
-      this.$http.get(this.$app_api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+      this.$http.get(this.$api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
 
 
 

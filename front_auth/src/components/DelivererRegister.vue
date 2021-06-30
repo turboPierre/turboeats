@@ -107,7 +107,7 @@
           window.alert("Les mots de passes ne correspondent pas.")
         } else{
           this.$http.post(
-                  this.$auth_api_uri + '/users/signup',
+                  this.$api_uri + '/users/signup',
                   {
                     firstName: this.form.firstname,
                     lastName: this.form.lastname,
