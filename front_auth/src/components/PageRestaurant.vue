@@ -64,7 +64,6 @@
         document.getElementById("basketCount").innerHTML = nbProducts + nbMenus;
         this.$bvToast.toast(product.name, {
           title: `Produit ajouté au panier`,
-          variant: defa,
           autoHideDelay: 2000,
           appendToast: false
         })
@@ -83,8 +82,8 @@
       },
     },
     mounted() {
-      this.$cookie.set('basket_product', JSON.stringify(''));
-      this.$cookie.set('basket_menu', JSON.stringify(''));
+      // this.$cookie.set('basket_product', JSON.stringify(''));
+      // this.$cookie.set('basket_menu', JSON.stringify(''));
 
       //requete pour info restaurant
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {
