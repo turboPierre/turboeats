@@ -43,10 +43,11 @@ export const updateMenu = async(req: Request, res: Response, next: NextFunction)
     res.send(result)
 };
 
-// TODO headers ?
 export const deleteMenu = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.delete(process.env.AUTH_API_IP + 'menus/'+itemID,req.body)
+    const result = await axios.delete(process.env.AUTH_API_IP + 'menus/'+itemID,{
+        headers:req.headers
+    })
         .then(response => response.data)
         .catch(err => res.sendStatus(404).send(err))
 

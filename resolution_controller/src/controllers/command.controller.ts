@@ -43,10 +43,11 @@ export const updateCommand = async(req: Request, res: Response, next: NextFuncti
     res.send(result)
 };
 
-// TODO headers ?
 export const deleteCommand = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.delete(process.env.AUTH_API_IP + 'commands/' + itemID,req.body)
+    const result = await axios.delete(process.env.AUTH_API_IP + 'commands/' + itemID,{
+        headers:req.headers
+    })
         .then(response => response.data)
         .catch(err => res.sendStatus(err.response.status).send(err));
 

@@ -43,10 +43,11 @@ export const updateProduct = async(req: Request, res: Response, next: NextFuncti
     res.send(result)
 };
 
-// TODO headers ?
 export const deleteProduct = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.delete(process.env.AUTH_API_IP + 'products/' + itemID,req.body)
+    const result = await axios.delete(process.env.AUTH_API_IP + 'products/' + itemID,{
+        headers:req.headers
+    })
         .then(response => response.data)
         .catch(err => res.sendStatus(404).send(err))
 
