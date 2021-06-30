@@ -9,9 +9,8 @@ export interface RestaurantInterface extends Document {
     address: string,
     city: string,
     phone: string,
-    open_hour: number,
-    close_hour: number,
-    open_days: string
+    open_hour: string,
+    close_hour: string
 }
 
 export const restaurantSchema = new Schema({
@@ -22,9 +21,8 @@ export const restaurantSchema = new Schema({
     address : { type: String, required: true },
     city : {type: String, required:true},
     phone : { type: String, required: true },
-    open_hour : { type: Number, required:true},
-    close_hour : { type: Number, required:true},
-    open_days : { type: String, required: true }
+    open_hour : { type: String, required:true},
+    close_hour : { type: String, required:true}
 });
 
 const Restaurant = mongoose.model<RestaurantInterface>('Restaurant', restaurantSchema);

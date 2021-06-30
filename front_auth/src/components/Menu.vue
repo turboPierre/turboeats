@@ -5,7 +5,7 @@
       <router-link :to="{ name: 'PageRestaurant', params: { id: restaurant._id }}" style="color: #2C3E50; text-decoration: none">
         <b-card :img-src="restaurant.picture" img-alt="Image" img-top tag="article" class="case mb-2">
           <b-card-title>{{ restaurant.name }}</b-card-title>
-          <b-card-text>Horaires : 00h00 - 00h00</b-card-text>
+          <b-card-text>Horaires : {{restaurant.open_hour}} - {{restaurant.close_hour}}</b-card-text>
         </b-card>
       </router-link>
     </div>
