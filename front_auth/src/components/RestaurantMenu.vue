@@ -96,7 +96,7 @@
           </div>
         </div>
       </div>
-      <!-- <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button> -->
+      <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
     </b-tab>
     <hr>
     <b-form-group
@@ -114,8 +114,8 @@
             </div>
           </div>
         </div>
-        <!-- <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button> -->
-      </b-tab>
+      <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
+    </b-tab>
     </b-form-group>
 
 
@@ -153,7 +153,16 @@
             }
         });
 
+        //TODO Faire requetes
+        //requete pour liste des produits
+        // this.$http.get(this.$app_api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+        //console.log(listProducts)
+        //requete pour liste des menus
+        // this.$http.get(this.$app_api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+
+    },
+
+
     }
-  }
 
 </script>
