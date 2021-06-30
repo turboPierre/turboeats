@@ -87,12 +87,7 @@
   export default {
     data() {
       return {
-        form: {
-          email: '',
-          password1: '',
-          password2: '',
-        },
-        show: true
+
       }
     },
     mounted() {
