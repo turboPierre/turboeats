@@ -15,20 +15,23 @@
 		"env": {
 			"NODE_ENV": "development",
 			"PORT": "8082",
-			"APP_API_IP:": "http://localhost:8081",
-			"AUTH_API_IP:": "http://localhost:8080"
+			"APP_API_IP": "http://localhost:8081/",
+			"AUTH_API_IP": "http://localhost:8080/"
 		}
 	},
 	"dependencies": {
 		"apidoc": "^0.28.1",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
-		"helmet": "^4.6.0"
+		"helmet": "^4.6.0",
+		"axios": "latest",
+		"cors": "latest"
 	},
 	"devDependencies": {
+		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.6",
-		"@types/node": "^14.0.14",
 		"@types/jsonwebtoken": "latest",
+		"@types/node": "^14.0.14",
 		"nodemon": "^2.0.4",
 		"ts-node": "^8.10.2",
 		"tslint": "^6.1.2",

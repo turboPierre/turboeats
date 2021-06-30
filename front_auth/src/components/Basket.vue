@@ -114,7 +114,7 @@ export default {
 
     command(){
 
-      this.$http.post(this.$app_api_uri + '/commands', {
+      this.$http.post(this.$api_uri + '/commands', {
         _delivererId: 1,
         _restaurantId: this.$cookie.get('basket_restaurantId'),
         _clientId: this.$cookie.get('userId'),

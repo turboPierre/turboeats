@@ -95,7 +95,7 @@
             onSubmit(event) {
                 //POST for RESTAURANT informations
                 this.$http.post(
-                        this.$app_api_uri + '/restaurants/',
+                        this.$api_uri + '/restaurants/',
                         {
                           name: this.form.restaurant_name,
                           describe: this.form.restaurant_description,

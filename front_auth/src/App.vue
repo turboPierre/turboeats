@@ -60,7 +60,7 @@ export default {
         let isDeliverer = false;
         if (this.$cookie.get('access_token') != null) {
             logged = true;
-            this.$http.get(this.$auth_api_uri + '/users/myInfos', {
+            this.$http.get(this.$api_uri + '/users/myInfos', {
                 headers: {
                     'Authorization': 'Bearer ' + this.$cookie.get('access_token')
                 }

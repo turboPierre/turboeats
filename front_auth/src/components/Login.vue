@@ -36,7 +36,7 @@
     methods: {
       onSubmit(event) {
         this.$http.post(
-                this.$auth_api_uri + '/users/login',
+                this.$api_uri + '/users/login',
                 {
                   email: this.form.email,
                   password: this.form.password

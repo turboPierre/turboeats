@@ -45,10 +45,7 @@ app.use(express.static('public'));
 // App Configuration
 app.use(helmet());
 
-const corsOptions = {
-    origin: 'http://localhost',
-}
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
