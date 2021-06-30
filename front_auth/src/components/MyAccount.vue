@@ -5,8 +5,7 @@
       <b-form-group
               id="input-group-1"
               label="Email :"
-              label-for="input-1"
-      >
+              label-for="email">
         <b-form-input
                 id="email"
                 v-model="form.email"
@@ -94,35 +93,36 @@
 
       return {
         form: {
-          email: '',
-          password1: '',
-          password2: '',
         },
         show: true
       }
     },
     methods: {
-      onSubmit(event) {
-        this.$http.post(this.$api_uri + '/users/myInfos', {
-          headers: {
-            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
-          }
-        }).then((response) => {
-          var data = response.data;
-          document.getElementById('lastname').setAttribute("value",data.lastName);
-          document.getElementById('firstname').setAttribute("value",data.firstName);
-          document.getElementById('email').setAttribute("value",data.email);
-          document.getElementById('phone').setAttribute("value",data.phone);
-          document.getElementById('address').setAttribute("value",data.address);
-          document.getElementById('city').setAttribute("value",data.city);
-          document.getElementById('sponsorId').innerHTML += '<p>Code de parrainage : <b>' + data.id + '</b></p>';
-          document.getElementById('title').innerHTML += 'Mon Compte ' + data.role;
-        }).catch(error => {
-          console.log(error);
-          //TODO Erreur ?
-          // this.$router.push({ name: "login"});
-          // location.reload();
-        });
+      onSubmit(event) {if(this.form.password1 !== this.form.password2){
+        window.alert("Les mots de passes ne correspondent pas.")
+      } else {
+          this.$http.put(this.$api_uri + '/users/updateInfos', {
+            firstName: this.form.firstname,
+            lastName: this.form.lastname,
+            email: this.form.email,
+            phone: this.form.phone,
+            password: this.form.password1,
+            address: this.form.address,
+            city: this.form.city,
+            role: "client",
+          }, {
+            headers: {
+              'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+            }
+          }).then((response) => {
+            console.log(response);
+            window.alert("Compte client modifié.");
+            location.reload();
+          }).catch(error => {
+            console.log(error);
+            window.alert("Erreur : le compte client n'a pas pu être modifié.");
+          });
+        }
         event.preventDefault();
       },
     },mounted() {
@@ -142,9 +142,8 @@
         document.getElementById('title').innerHTML += 'Mon Compte ' + data.role;
       }).catch(error => {
         console.log(error);
-        //TODO Erreur introuvable ?
-        // this.$router.push({ name: "login"});
-        // location.reload();
+        this.$router.push({ name: "login"});
+        location.reload();
       });
     }
   }
