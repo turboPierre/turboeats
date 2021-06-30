@@ -32,7 +32,12 @@
           <b-button v-b-modal.modal-cancel class="btn btn-danger">Annuler</b-button>
         </div>
         <div class="col-sm-6">
-          <b-button v-b-modal.modal-pay class="btn btn-success">Commander</b-button>
+          <div v-if="this.total === 0">
+            <b-button disabled class="btn btn-success">Commander</b-button>
+          </div>
+          <div v-else="">
+            <b-button v-b-modal.modal-pay class="btn btn-success">Commander</b-button>
+          </div>
         </div>
       </div>
 
@@ -51,9 +56,7 @@
         </b-modal>
 
 
-
         <b-modal id="modal-pay" size="lg" centered title="Méthodes de paiements :">
-
 
 
           <b-tabs fill>
@@ -125,6 +128,9 @@ export default {
       }
       ).then(response => {
         console.log(response)
+        this.$cookie.set('basket_product','');
+        this.$cookie.set('basket_menu','');
+        window.location = "/orderedhistory";
       }).catch(error => {
         console.log(error);
         window.alert(error);
@@ -132,8 +138,14 @@ export default {
     },
   },
   beforeMount() {
-    this.basket_product.forEach(element => this.total = parseInt(element.price) + parseInt(this.total));
-    this.basket_menu.forEach(element => this.total = parseInt(element.price) + parseInt(this.total));
+
+    for(let i = 0; i < this.basket_menu.length; i++){
+      this.total = this.basket_menu[i].price + this.total;
+    }
+    for(let i = 0; i < this.basket_product.length; i++){
+      this.total = this.basket_product[i].price + this.total;
+      console.log(this.total);
+    }
   }
 }
 </script>
