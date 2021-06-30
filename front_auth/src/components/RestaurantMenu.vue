@@ -129,7 +129,14 @@
             headers: {
                 'Authorization': 'Bearer ' + this.$cookie.get('access_token')
             }
-        }).then((result) => { this.restaurant = result.data; console.log(result)}).catch(error => {
+        }).then((result) => {
+          if(result.data === ""){
+            this.$router.push({ name: "restaurantAdd"});
+          }else{
+            this.restaurant = result.data;
+          }
+          console.log(result);
+        }).catch(error => {
             if(error.response.status === 404){
               this.$router.push({ name: "restaurantAdd"});
             }

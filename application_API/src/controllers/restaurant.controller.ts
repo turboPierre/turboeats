@@ -50,15 +50,26 @@ export let createRestaurant = (req: Request, res: Response, next: NextFunction) 
 
     const restaurantObject = req.body;
     delete restaurantObject._id;
+    Restaurant.findOne({ _userId: restaurantObject._userId})
+        .then((response) => {
+            console.log(response);
+            if(response === null){
+                const restaurant = new Restaurant({ ...restaurantObject });
+                restaurant.save()
+                    .then(() => {
+                        res.status(201).send('Restaurant enregistré !')
+                    }).catch((err) => {
+                    res.status(400).send(err.message)
+                })
+            }else{
+                res.status(406).send('User is already assign to a restaurant have a restaurant.');
+            }
+        }).catch((error) => {
+            console.log(error);
+            res.status(400).send(error.message)
+        });
 
-    const restaurant = new Restaurant({ ...restaurantObject })
 
-    restaurant.save()
-        .then(() => {
-            res.status(201).send('Restaurant enregistré !')
-        }).catch((err) => {
-        res.status(400).send(err.message)
-    });
 
 };
 
