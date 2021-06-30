@@ -14,9 +14,7 @@
 	"nodemonConfig": {
 		"env": {
 			"NODE_ENV": "development",
-			"PORT": "8082",
-			"APP_API_IP": "http://localhost:8081/",
-			"AUTH_API_IP": "http://localhost:8080/"
+			"PORT": "8082"
 		}
 	},
 	"dependencies": {
