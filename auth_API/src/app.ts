@@ -38,7 +38,13 @@ const app = express();
 
 // App Configuration
 app.use(helmet());
-app.use(cors());
+
+const corsOptions = {
+    origin: 'http://localhost',
+}
+
+
+app.use(cors(/*corsOptions*/));
 app.use(express.json());
 
 // Routes de l'API

@@ -1,22 +1,11 @@
 <template>
   <div class='m-5'>
 <div class="row">
-<!--  <h1>-->
-<!--    Liste des restaurants-->
-<!--  </h1>-->
+  <h1>
+    Modifiez votre restaurant !
+  </h1>
 </div>
 
-
-    <div class="row mt-3">
-    <div class="col-sm-3" v-for="restaurant in restaurants.data" :key="restaurant.id">
-      <router-link :to="{ name: 'PageRestaurant', params: { id: restaurant._id }}" style="color: #2C3E50; text-decoration: none">
-        <b-card img-src="https://picsum.photos/600/300/?image=25" img-alt="Image" img-top tag="article" style="max-width: 30rem;" class="mb-2">
-          <b-card-title>{{ restaurant.name }}</b-card-title>
-          <b-card-text>Horaires : 00h00 - 00h00</b-card-text>
-        </b-card>
-      </router-link>
-    </div>
-    </div>
 
 
 
@@ -27,16 +16,35 @@
 
   export default {
     data() {
-
       return {
-        restaurants: null
+          restaurant: null,
+          listProducts: null,
+          listMenus: null,
       }
     },
     mounted() {
 
-      this.$http.get(this.$app_api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
-        console.log(error);
-      });
+        var idrestaurant = 0;
+        //requete pour info restauran
+        this.$http.get(this.$app_api_uri + '/restaurants/'+ idrestaurant, {
+            headers: {
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+            }
+        }).then((result) => { this.restaurant = result.data; console.log(result)}).catch(error => {
+            console.log(error);
+        });
+
+        //TODO Faire requetes
+        //requete pour liste des produits
+        this.$http.get(this.$app_api_uri + '/products')
+            .then((result) => { this.listProducts = result.data; console.log(result)})
+            .catch(error => {console.log(error);});
+
+        //requete pour liste des menus
+        this.$http.get(this.$app_api_uri + '/menus')
+            .then((result) => { this.listMenus = result.data; console.log(result)})
+            .catch(error => {console.log(error);});
+
 
     }
   }

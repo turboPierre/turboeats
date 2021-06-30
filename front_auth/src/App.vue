@@ -16,8 +16,8 @@
         <ul class="nav navbar-nav flex-row float-right">
 
             <div v-if="logged">
-              <router-link v-if="isClient" class=" btn btn-success" to="/basket">
-                &#128722;
+              <router-link v-if="isClient" class=" btn btn-success" to="/basket" style="margin-right:5px">
+                  <div id="basketCount">0</div>&#128722;
               </router-link>
               <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
                 <template #button-content>
@@ -58,28 +58,28 @@ export default {
         let isClient = false;
         let isRestaurant = false;
         let isDeliverer = false;
-        this.$http.get(this.$auth_api_uri + '/users/myInfos', {
-            headers: {
-                'Authorization': 'Bearer ' + this.$cookie.get('access_token')
-            }
-        }).then((response) => {
-            var data = response.data;
-            document.getElementById('userButton').innerHTML += data.firstName;
-        }).catch(error => {
-            console.log(error);
-        });
         if (this.$cookie.get('access_token') != null) {
             logged = true;
-        }
-        var role = this.$cookie.get('role');
-        if (role === "client") {
-            isClient = true;
-        }
-        if (role === "restaurant") {
-            isRestaurant = true;
-        }
-        if (role === "livreur") {
-            isDeliverer = true
+            this.$http.get(this.$auth_api_uri + '/users/myInfos', {
+                headers: {
+                    'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+                }
+            }).then((response) => {
+                var data = response.data;
+                document.getElementById('userButton').innerHTML += data.firstName;
+            }).catch(error => {
+                console.log(error);
+            });
+            var role = this.$cookie.get('role');
+            if (role === "client") {
+                isClient = true;
+            }
+            if (role === "restaurant") {
+                isRestaurant = true;
+            }
+            if (role === "livreur") {
+                isDeliverer = true
+            }
         }
         return {
             logged: logged,
@@ -156,30 +156,6 @@ export default {
     transition: all .3s;
   }
 
-
-  .tab-content {
-      margin-left: 0.5%;
-  }
-
-  .nav-tabs .nav-link.active{
-      background-color: #f5f5f5 !important;
-  }
-
-  .nav-tabs .nav-link{
-      font-weight: bold;
-      color:black;
-  }
-
-  .nav-tabs .nav-link.active{
-      font-weight: bold;
-      color:#5FB709 !important;
-  }
-
-  .nav-tabs .nav-link:hover{
-      font-weight: bold;
-      color:#5FB709 !important;
-  }
-
   .vertical-center {
     border-color: #2554FF;
     box-shadow: none;
@@ -199,6 +175,19 @@ export default {
     color: red !important;
     font-weight: bold !important;
     text-decoration: none;
+  }
+
+  .close{
+    color: red !important;
+    border: none !important;
+    font-weight: bold !important;
+  }
+
+  .case{
+    cursor: pointer;
+  }
+  .case:hover{
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   }
 
 </style>

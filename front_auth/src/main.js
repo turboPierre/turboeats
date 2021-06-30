@@ -22,12 +22,13 @@ import RestaurantAdd from "./components/RestaurantAdd.vue";
 import DelivererMenu from "./components/DelivererMenu.vue";
 import DelivererCommand from "./components/DelivererCommand.vue";
 
-
 Vue.prototype.$http = axios;
+
+// Vue.prototype.$app_api_uri = "http://192.168.1.100:8081";
+// Vue.prototype.$auth_api_uri = "http://192.168.1.100:8080";
 
 Vue.prototype.$app_api_uri = "http://localhost:8081";
 Vue.prototype.$auth_api_uri = "http://localhost:8080";
-
 
 Vue.use(VueCookie);
 Vue.use(VueRouter);

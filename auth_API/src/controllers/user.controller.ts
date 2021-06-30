@@ -56,18 +56,25 @@ export let myInfos = (req: Request, res: Response, next: NextFunction) => {
 
 
 export let updateUser = (req: Request, res: Response, next: NextFunction) => {
-    const userId: string = req.params.id;
-    const params: UserInterface = req.body;
-
-    const update: UpdateOptions = {
-        where: {id: userId},
-        limit: 1,
-    };
-
-    User.update(params, update)
-        .then(() => res.status(202).json({data: 'success'}))
-        .catch((err: Error) => res.status(500).json(err));
-
+    try{
+        if(req.headers.authorization != null){
+            const token = req.headers.authorization.split(' ')[1];
+            const decodedToken : any = jwt.verify(token, ''+process.env.RANDOM_TOKEN_SECRET);
+            const userId = decodedToken.userId;
+            const update: UpdateOptions = {
+                where: {id: userId},
+                limit: 1,
+            };
+            User.update(req.body, update)
+                .then(() => res.status(202).json({data: 'success'}))
+                .catch((err: Error) => res.status(500).json(err));
+        }
+        else{
+            throw new Error('No user infos, token error');
+        }
+    } catch(error){
+        res.status(500).json(error);
+    }
 };
 
 
@@ -93,6 +100,7 @@ export let signup = (req: Request, res: Response, next: NextFunction) => {
                 phone: req.body.phone,
                 password: hash,
                 address: req.body.address,
+                city: req.body.city,
                 role: req.body.role,
                 active: false
             });

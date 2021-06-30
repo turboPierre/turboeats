@@ -66,9 +66,8 @@ userRouter.get('/', AuthMiddleware.userAuth , UserController.getAllUsers)
 // GET users/myInfos
 userRouter.get('/myInfos', AuthMiddleware.userAuth, UserController.myInfos);
 
-// PUT users/:id
-// @Unused
-// userRouter.put('/:id', UserController.updateUser);
+// PUT users/updateInfos
+userRouter.put('/updateInfos', AuthMiddleware.userAuth,UserController.updateUser);
 
 // DELETE users/:id
 // @Unused
