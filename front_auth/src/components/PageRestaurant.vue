@@ -15,6 +15,8 @@
 
     <div class="mt-3">
 
+
+      <div v-if="this.$cookie.get('access_token') != null">
       <b-tabs fill>
         <b-tab title="Menus" active>
           <div class="row" style="background-color: #f5f5f5;">
@@ -39,6 +41,36 @@
           </div>
         </b-tab>
       </b-tabs>
+      </div>
+
+      <div v-else="">
+      <b-tabs fill>
+        <b-tab title="Menus" active>
+          <div class="row" style="background-color: #f5f5f5;">
+            <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
+              <div v-if="menu._restaurantId === restaurant._id">
+                <h5>{{ menu.name }}</h5>
+                <p>{{menu.describe}}</p>
+                <h5><em>{{menu.price}} €</em></h5>
+              </div>
+            </div>
+          </div>
+        </b-tab>
+        <b-tab title="Produits">
+          <div class="row" style="background-color: #f5f5f5;">
+            <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
+              <div v-if="product._restaurantId === restaurant._id">
+                <h5>{{ product.name }}</h5>
+                <p>{{product.describe}}</p>
+                <h5><em>{{product.price}} €</em></h5>
+              </div>
+            </div>
+          </div>
+        </b-tab>
+      </b-tabs>
+      </div>
+
+
     </div>
   </div>
 </template>
@@ -68,6 +100,8 @@
           appendToast: false
         })
       },
+
+
       add_menu(menu){
         this.basket_menu.push(menu);
         this.$cookie.set('basket_menu', JSON.stringify(this.basket_menu));
@@ -82,8 +116,12 @@
       },
     },
     mounted() {
-      // this.$cookie.set('basket_product', JSON.stringify(''));
-      // this.$cookie.set('basket_menu', JSON.stringify(''));
+      if(this.$cookie.get('basket_product') == null){
+        this.$cookie.set('basket_product', JSON.stringify(''));
+      }
+      if(this.$cookie.get('basket_menu') == null){
+        this.$cookie.set('basket_menu', JSON.stringify(''));
+      }
 
       //requete pour info restaurant
       this.$http.get(this.$app_api_uri + '/restaurants/'+this.$route.params.id, {

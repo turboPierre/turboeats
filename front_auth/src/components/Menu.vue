@@ -30,6 +30,10 @@
     },
     mounted() {
 
+      this.$cookie.set('basket_product', JSON.stringify(''));
+      this.$cookie.set('basket_menu', JSON.stringify(''));
+      document.getElementById("basketCount").innerHTML = 0;
+
       this.$http.get(this.$app_api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
         console.log(error);
       });
