@@ -14,7 +14,18 @@ export const getAllMenus = async(req: Request, res: Response, next: NextFunction
 
 export const getOneMenu = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.get(APP_API_IP + 'menus/' + itemID, {
+    const result = await axios.get(APP_API_IP + 'menus/id=' + itemID, {
+        headers:req.headers
+    })
+        .then(response => response.data)
+        .catch(err => res.sendStatus(err.response.status));
+
+    res.send(result)
+};
+
+export const getRestaurantMenus = async(req: Request, res: Response, next: NextFunction) => {
+    const itemID: string = req.params.id;
+    const result = await axios.get(APP_API_IP + 'menus/restaurant=' + itemID, {
         headers:req.headers
     })
         .then(response => response.data)

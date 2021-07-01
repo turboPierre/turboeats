@@ -24,6 +24,17 @@ export let getOneMenu = (req: Request, res: Response, next: NextFunction) => {
 
 };
 
+export let getRestaurantMenus = (req: Request, res: Response, next: NextFunction) => {
+
+    Menu.findOne({ _restaurantId: req.params.id })
+        .then((menu) => {
+            res.status(200).send(menu);
+        }).catch((err) => {
+        res.status(404).send(err.message);
+    });
+
+};
+
 export let createMenu = (req: Request, res: Response, next: NextFunction) => {
 
     const menuObject = req.body;

@@ -24,6 +24,17 @@ export let getOneProduct = (req: Request, res: Response, next: NextFunction) => 
 
 };
 
+export let getRestaurantProducts = (req: Request, res: Response, next: NextFunction) => {
+
+    Product.find({ _restaurantId: req.params.id })
+        .then((product) => {
+            res.status(200).send(product);
+        }).catch((err) => {
+        res.status(404).send(err.message);
+    });
+
+};
+
 export let createProduct = (req: Request, res: Response, next: NextFunction) => {
 
     const productObject = req.body;

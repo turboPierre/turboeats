@@ -98,8 +98,11 @@ menuRouter.get('/', MenuController.getAllMenus)
  *     }
  */
 
-// GET menus/:id
-menuRouter.get('/:id',AuthMiddleware.userAuth, MenuController.getOneMenu);
+// GET menus/id=:id
+menuRouter.get('/id=:id',AuthMiddleware.userAuth, MenuController.getOneMenu);
+
+// GET menus/restaurant=:id
+menuRouter.get('/restaurant=:id', MenuController.getRestaurantMenus);
 
 /**
  * @api {post} /Menu/ POST Menu information

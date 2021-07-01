@@ -6,7 +6,10 @@ export const menuRouter = express.Router();
 menuRouter.get('/', MenuController.getAllMenus);
 
 // GET menus/:id
-menuRouter.get('/:id', MenuController.getOneMenu);
+menuRouter.get('/id=:id', MenuController.getOneMenu);
+
+// GET menus/:id
+menuRouter.get('/restaurant=:id', MenuController.getRestaurantMenus);
 
 // POST menus/
 menuRouter.post('/',MenuController.createMenu);

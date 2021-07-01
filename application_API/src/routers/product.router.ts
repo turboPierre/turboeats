@@ -90,8 +90,12 @@ productRouter.get('/', ProductController.getAllProducts)
  *     }
  */
 
-// GET products/:id
-productRouter.get('/:id',AuthMiddleware.userAuth, ProductController.getOneProduct);
+// GET products/id:id
+productRouter.get('/id=:id',AuthMiddleware.userAuth, ProductController.getOneProduct);
+
+// GET products/restaurant:id
+productRouter.get('/restaurant=:id', ProductController.getRestaurantProducts);
+
 
 /**
  * @api {post} /Product/ POST Product information
