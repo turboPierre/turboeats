@@ -11,6 +11,8 @@ export const commandSchema = new Schema({
     _clientId: {type: Number, required:true},
     _restaurantId: {type: String, required:true},
     _delivererId: {type: Number, required:true},
+    address: {type: String, required:true},
+    city: {type: String, required:true},
     _menuId:[
         {type: Schema.Types.ObjectId, ref: 'Menu'}
     ],

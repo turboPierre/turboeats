@@ -7,10 +7,11 @@
 </div>
 
     <!-- afficher si le deliverer a une commande active -->
-    <div v-if="waitCommands.data != null">
+    <div v-if="waitCommands.data.length != 0 ">
       <div v-for="command in waitCommands.data" :key="command._id">
           Livraison en cours :
-          okokok
+        Numéro de commande : {{ command._id }}
+        Adresse de livraison :
       </div>
     </div>
 
@@ -74,7 +75,7 @@
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
-      }).then((result) => { this.waitCommands = result }).catch(error => {
+      }).then((result) => { this.waitCommands = result;}).catch(error => {
         console.log(error);
       });
 
@@ -92,7 +93,14 @@
               }
             }
         ).then(response => {
-          console.log(response)
+          console.log(response);
+          //this.$bvToast.toast('Livraison', {
+          // title: `La livraison a été prise en charge`,
+          //autoHideDelay: 2000,
+          //appendToast: false
+          //})
+          location.reload();
+
         }).catch(error => {
           console.log(error);
           window.alert(error);

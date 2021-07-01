@@ -114,27 +114,46 @@ export default {
 
     command(){
 
-      this.$http.post(this.$api_uri + '/commands', {
-        _delivererId: -1,
-        _restaurantId: this.$cookie.get('basket_restaurantId'),
-        _clientId: this.$cookie.get('userId'),
-        price: this.total,
-        _menuId: this.basket_menu,
-        _productId: this.basket_product
-          },{
+      this.$http.get(this.$api_uri + '/users/myInfos',{
         headers: {
-          'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
-          }
-      }
-      ).then(response => {
-        console.log(response)
-        this.$cookie.set('basket_product','');
-        this.$cookie.set('basket_menu','');
-        window.location = "/orderedhistory";
+          'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+        }
+      }).then((response) => {
+        this.userInfo = response.data;
+        console.log(this.userInfo.address);
+
+        this.$http.post(this.$api_uri + '/commands', {
+              _delivererId: -1,
+              address: this.userInfo.address,
+              city: this.userInfo.city,
+              _restaurantId: this.$cookie.get('basket_restaurantId'),
+              _clientId: this.$cookie.get('userId'),
+              price: this.total,
+              _menuId: this.basket_menu,
+              _productId: this.basket_product
+            },{
+              headers: {
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
+              }
+            }
+        ).then(response => {
+          console.log(response)
+          this.$cookie.set('basket_product','');
+          this.$cookie.set('basket_menu','');
+          window.location = "/orderedhistory";
+        }).catch(error => {
+          console.log(error);
+          window.alert(error);
+        });
+
       }).catch(error => {
         console.log(error);
-        window.alert(error);
       });
+
+      console.log(this.userInfo)
+
+
+
     },
   },
   beforeMount() {
@@ -144,7 +163,6 @@ export default {
     }
     for(let i = 0; i < this.basket_product.length; i++){
       this.total = this.basket_product[i].price + this.total;
-      console.log(this.total);
     }
   }
 }

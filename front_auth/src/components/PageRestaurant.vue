@@ -21,7 +21,7 @@
         <b-tab title="Menus" active>
           <div class="row" style="background-color: #f5f5f5;">
             <div class="case col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
-              <div v-if="menu._restaurantId === restaurant._id" @click="add_menu(menu)">
+              <div @click="add_menu(menu)">
                 <h5>{{ menu.name }}</h5>
                 <p>{{menu.describe}}</p>
                 <h5><em>{{menu.price}} €</em></h5>
@@ -32,7 +32,7 @@
         <b-tab title="Produits">
           <div class="row" style="background-color: #f5f5f5;">
             <div class="case col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
-              <div v-if="product._restaurantId === restaurant._id" @click="add_product(product)">
+              <div @click="add_product(product)">
                 <h5>{{ product.name }}</h5>
                 <p>{{product.describe}}</p>
                 <h5><em>{{product.price}} €</em></h5>
@@ -112,7 +112,6 @@
       },
     },
     mounted() {
-
 
       if(this.$cookie.get('basket_product') == null){
         this.$cookie.set('basket_product', JSON.stringify(''));
