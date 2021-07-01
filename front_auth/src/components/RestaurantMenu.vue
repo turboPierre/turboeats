@@ -74,7 +74,7 @@
       <b-button class="mt-3" type="cancel" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer le restaurant</strong></b-button>
     </b-form>
       </b-tab>
-      <b-tab title="Menu">
+      <b-tab title="Produits">
           <div class="mt-3" v-for="product in listProducts" :key="product.id">
             <b-button variant="primary" @click="deleteProduct(product)" style="background-color: #b50000; border: none; float:right"><strong>X</strong></b-button>
             <h5>{{product.name }}</h5>
@@ -84,7 +84,7 @@
           </div>
         <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un produit</strong></b-button>
       </b-tab>
-      <b-tab title="Produits">
+      <b-tab title="Menus">
         <div class="mt-3" v-for="menu in listMenus" :key="menu.id">
           <b-button variant="primary" @click="deleteMenu(menu)" style="background-color: #b50000; border: none; float:right"><strong>X</strong></b-button>
           <h5>{{menu.name }}</h5>
