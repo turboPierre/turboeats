@@ -74,6 +74,9 @@
     <br>
     <h3><strong>Produits</strong></h3><br>
           <div class="row" v-for="product in listProducts" :key="product.id">
+            <div class="col-sm-3 mt-3">
+              <b-button class="mt-3" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer</strong></b-button>
+            </div>
             <h5>{{product.name }}</h5>
             <p>{{product.describe}}</p>
             <h5><em>{{product.price}} €</em></h5>

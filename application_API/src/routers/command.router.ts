@@ -105,6 +105,9 @@ commandRouter.get('/id=:id',AuthMiddleware.userAuth, CommandController.getOneCom
 // GET commands/delivererCommand
 commandRouter.get('/delivererCommand',AuthMiddleware.userAuth, CommandController.delivererCommand);
 
+// GET commands/userCommands
+commandRouter.get('/userCommands',AuthMiddleware.userAuth, CommandController.userCommands);
+
 /**
  * @api {post} /Command/ POST Command
  * @apiName postCommand

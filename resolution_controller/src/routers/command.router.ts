@@ -9,6 +9,9 @@ commandRouter.get('/', CommandController.getAllCommands);
 // GET commands/
 commandRouter.get('/delivererCommand', CommandController.delivererCommand);
 
+// GET commands/userCommands
+commandRouter.get('/userCommands', CommandController.userCommands);
+
 // GET commands/id:id
 commandRouter.get('/id=:id', CommandController.getOneCommand);
 
