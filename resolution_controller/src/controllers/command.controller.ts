@@ -3,8 +3,7 @@ import axios from 'axios';
 import {APP_API_IP} from '../config/config';
 
 export const delivererCommand = async(req: Request, res: Response, next: NextFunction) => {
-    const itemID: string = req.params.id;
-    const result = await axios.get(APP_API_IP + 'commands/delivererCommand' + itemID, {
+    const result = await axios.get(APP_API_IP + 'commands/delivererCommand', {
         headers:req.headers
     })
         .then(response => response.data)
