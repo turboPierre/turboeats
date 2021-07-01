@@ -17,7 +17,17 @@
 
             <div v-if="logged">
               <router-link v-if="isClient" class=" btn btn-success" to="/basket" style="margin-right: 5px; margin-bottom: 5px">
-                  <div id="basketCount"> &#128722; 0</div>
+<div class="row">
+                <div class="col-sm">
+                  &#128722;
+                </div>
+
+                <div class="col-sm" id="basketCount">
+                  0
+                </div>
+</div>
+
+
               </router-link>
               <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" style="margin-bottom: 5px" variant="success">
                 <template #button-content>
