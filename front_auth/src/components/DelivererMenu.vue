@@ -7,12 +7,10 @@
 </div>
 
     <!-- afficher si le deliverer a une commande active -->
-    <div v-if="active">
-      <div v-for="command in commands.data" :key="command._id">
-        <div v-if="command._delivererId == userId">
+    <div v-if="waitCommands.data != null">
+      <div v-for="command in waitCommands.data" :key="command._id">
           Livraison en cours :
           okokok
-        </div>
       </div>
     </div>
 
@@ -49,37 +47,39 @@
 
       return {
         commands: null,
+        waitCommands: null,
         restaurants: null,
         active: 0,
         userId: this.$cookie.get('userId')
       }
     },
-    beforeMount() {
+    mounted() {
 
       //récupération de la liste des commandes
       this.$http.get(this.$api_uri + '/commands', {
           headers: {
               'Authorization': 'Bearer ' + this.$cookie.get('access_token')
           }
-      }).then((result) => { this.commands = result;console.log(result)}).catch(error => {
+      }).then((result) => { this.commands = result }).catch(error => {
       console.log(error);
       });
 
       //récupération de la liste des restaurants
-      this.$http.get(this.$api_uri + '/restaurants',).then((result) => { this.restaurants = result;console.log(result)}).catch(error => {
+      this.$http.get(this.$api_uri + '/restaurants',).then((result) => { this.restaurants = result }).catch(error => {
         console.log(error);
       });
 
-
-      console.log(this.commands);
-
-
-      //voir si le deliverer a une commande active
-      this.commands.forEach(function(element){
-        if(element._delivererId == this.$cookie.get('userId')){
-          this.active = 1;
+      //recuperation de la liste des commandes en cours de livraison du livreur
+      this.$http.get(this.$api_uri + '/commands/delivererCommand', {
+        headers: {
+          'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
+      }).then((result) => { this.waitCommands = result }).catch(error => {
+        console.log(error);
       });
+
+      console.log(this.waitCommands);
+
 
     },
     methods:{

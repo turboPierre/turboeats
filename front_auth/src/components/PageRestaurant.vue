@@ -48,22 +48,18 @@
         <b-tab title="Menus" active>
           <div class="row" style="background-color: #f5f5f5;">
             <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
-              <div v-if="menu._restaurantId === restaurant._id">
                 <h5>{{ menu.name }}</h5>
                 <p>{{menu.describe}}</p>
                 <h5><em>{{menu.price}} €</em></h5>
-              </div>
             </div>
           </div>
         </b-tab>
         <b-tab title="Produits">
           <div class="row" style="background-color: #f5f5f5;">
             <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
-              <div v-if="product._restaurantId === restaurant._id">
                 <h5>{{ product.name }}</h5>
                 <p>{{product.describe}}</p>
                 <h5><em>{{product.price}} €</em></h5>
-              </div>
             </div>
           </div>
         </b-tab>
@@ -134,11 +130,13 @@
         console.log(error);
       });
 
+      console.log(this.$route.query)
+
       //TODO Faire requetes
       //requete pour liste des produits
-      this.$http.get(this.$api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+      this.$http.get(this.$api_uri + '/products/restaurant=' + this.$route.params.id).then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
       //requete pour liste des menus
-      this.$http.get(this.$api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+      this.$http.get(this.$api_uri + '/menus/restaurant=' + this.$route.params.id).then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
 
 
 
