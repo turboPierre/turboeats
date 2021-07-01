@@ -10,8 +10,14 @@
     <div v-if="waitCommands.data.length != 0 ">
       <div v-for="command in waitCommands.data" :key="command._id">
           Livraison en cours :
+        <hr>
         Numéro de commande : {{ command._id }}
-        Adresse de livraison :
+        <br>
+        Adresse de livraison : {{ command.address }}
+        <br>
+        Ville : {{ command.city }}
+        <hr>
+        <b-button variant="success" @click="valider_livraison(command._id)">Valider la livraison</b-button>
       </div>
     </div>
 
@@ -84,6 +90,28 @@
 
     },
     methods:{
+      valider_livraison(id){
+        this.$http.put(this.$api_uri + '/commands/'+ id, {
+              delivered: 1
+            },{
+              headers: {
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
+              }
+            }
+        ).then(response => {
+          console.log(response);
+          //this.$bvToast.toast('Livraison', {
+          // title: `La livraison a été prise en charge`,
+          //autoHideDelay: 2000,
+          //appendToast: false
+          //})
+          location.reload();
+
+        }).catch(error => {
+          console.log(error);
+          window.alert(error);
+        });
+      },
       valid(id){
         this.$http.put(this.$api_uri + '/commands/'+ id, {
               _delivererId: this.$cookie.get('userId')
