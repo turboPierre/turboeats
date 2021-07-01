@@ -2,13 +2,26 @@
   <div class='mt-5'>
     <div class="row">
       <div v-for="command in commands" :key="command._id">
-        <h1>Commande {{ command._id }}</h1>
+        <h3><strong>Commande {{ command._id }}</strong></h3>
+
+
+        <div v-if="command.delivered === true && command.valid === true">
+          <h3 style="color: #5fb709"><em>La commande a été livré</em></h3>
+        </div>
+        <div v-if="command.valid === false && command. delivered === false">
+          <h3 style="color: orange"><em>La commande est en cours de préparation</em></h3>
+        </div>
+        <div v-if="command.delivered === false && command.valid === true">
+          <h3 style="color: orange"><em>La commande est en cours de livraison</em></h3>
+        </div>
+
+
         <h5>Composition de la commande :</h5>
         <div v-for="product in command._productId" :key="product._id">
-          {{ product }}<br>
+          - {{ product }}<br>
         </div>
         <div v-for="menu in command._menuId" :key="menu._id">
-          {{ menu }}<br>
+          - {{ menu }}<br>
         </div>
         <h4>Total : {{ command.price }} €</h4>
         <hr>

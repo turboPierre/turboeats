@@ -139,6 +139,7 @@ export default {
               address: this.userInfo.address,
               city: this.userInfo.city,
               delivered: false,
+              valid: false,
               _restaurantId: this.$cookie.get('basket_restaurantId'),
               _clientId: this.$cookie.get('userId'),
               price: this.total,

@@ -7,9 +7,9 @@
 </div>
 
     <!-- afficher si le deliverer a une commande active -->
-    <div v-if="waitCommands.data.length != 0 ">
+    <div v-if="waitCommands.data.length != 0">
       <div v-for="command in waitCommands.data" :key="command._id">
-        <h1>Livraison en cours :</h1>
+        <h3><strong>Livraison en cours :</strong></h3>
         <hr>
         Numéro de commande : {{ command._id }}
         <br>
@@ -22,25 +22,24 @@
     </div>
 
     <!-- afficher si le deliverer n'a pas de commande active -->
-    <div v-else>
-      <h1>Liste des commandes en attente :</h1>
+    <div class="row" v-else>
+      <h3><strong>Liste des commandes en attente :</strong></h3>
       <div class=" col-sm-3" v-for="command in commands.data" :key="command._id">
-        <div class="case" v-if="command._delivererId === -1" @click="valid(command._id)">
+        <div class="case" v-if="command._delivererId === -1 && command.valid === true" @click="valid(command._id)">
           <b-card tag="article" style="max-width: 30rem;" class="mb-2">
-            <b-card-title><h6>Numéro de commande : {{ command._id }}</h6></b-card-title>
+            <b-card-title><h5><strong>Numéro de commande : {{ command._id }}</strong></h5></b-card-title>
             <b-card-text>
               <div v-for="restaurant in restaurants.data" :key="restaurant._id">
                 <div v-if="restaurant._id === command._restaurantId">
                   Nom du restaurant : {{ restaurant.name }}
-                  <hr>
-                  Adresse : {{ restaurant.address }}, {{ restaurant.city }}
+                  <br>
+                  Adresse de livraison: {{ restaurant.address }}, {{ restaurant.city }}
                 </div>
               </div>
             </b-card-text>
           </b-card>
         </div>
       </div>
-
     </div>
 
 
@@ -86,14 +85,11 @@
         console.log(error);
       });
 
-      console.log(this.waitCommands);
-
-
     },
     methods:{
       valider_livraison(id){
         this.$http.put(this.$api_uri + '/commands/'+ id, {
-              delivered: 1
+              delivered: true
             },{
               headers: {
                 'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
