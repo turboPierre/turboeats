@@ -71,27 +71,22 @@
       <br>
       <b-button class="mt-3" type="cancel" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer le restaurant</strong></b-button>
     </b-form>
-      <b-tab title="Produits">
-        <div class="row" style="background-color: #f5f5f5;">
-          <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
+    <br>
+    <h3><strong>Produits</strong></h3><br>
+          <div class="row" v-for="product in listProducts" :key="product.id">
             <h5>{{product.name }}</h5>
             <p>{{product.describe}}</p>
             <h5><em>{{product.price}} €</em></h5>
+            <hr>
           </div>
+    <br>
+    <h3><strong>Produits</strong></h3><br>
+        <div class="row" v-for="menu in listMenus" :key="menu.id">
+          <h5>{{ menu.name }}</h5>
+          <p>{{menu.describe}}</p>
+          <h5><em>{{menu.price}} €</em></h5>
+          <hr>
         </div>
-        <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
-      </b-tab>
-      <hr>
-      <b-tab title="Menu">
-        <div class="row" style="background-color: #f5f5f5;">
-          <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
-            <h5>{{ menu.name }}</h5>
-            <p>{{menu.describe}}</p>
-            <h5><em>{{menu.price}} €</em></h5>
-          </div>
-        </div>
-        <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
-      </b-tab>
   </div>
 </template>
 
@@ -108,7 +103,7 @@
         show: true
       }
     }
-    ,beforeMount() {
+    ,mounted() {
       this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
