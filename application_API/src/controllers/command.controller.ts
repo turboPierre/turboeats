@@ -23,6 +23,16 @@ export let delivererCommand = (req: Request, res: Response, next: NextFunction) 
     }
 };
 
+export let restaurantCommand = (req: Request, res: Response, next: NextFunction) => {
+
+    Command.find({ _restaurantId: req.params.id })
+        .then((command) => {
+            res.status(200).send(command);
+        }).catch((err) => {
+        res.status(404).send(err.message);
+    });
+
+};
 export let userCommands = (req: Request, res: Response, next: NextFunction) => {
     try{
         if(req.headers.authorization != null){
