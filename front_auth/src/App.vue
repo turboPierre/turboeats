@@ -16,10 +16,10 @@
         <ul class="nav navbar-nav flex-row float-right">
 
             <div v-if="logged">
-              <router-link v-if="isClient" class=" btn btn-success" to="/basket" style="margin-right:5px">
-                  <div id="basketCount">0</div>&#128722;
+              <router-link v-if="isClient" class=" btn btn-success" to="/basket" style="margin-right: 5px; margin-bottom: 5px">
+                  <div id="basketCount"> &#128722; 0</div>
               </router-link>
-              <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" variant="success">
+              <b-dropdown id="user-dropdown" text="Mon compte" class="m-md-2" style="margin-bottom: 5px" variant="success">
                 <template #button-content>
                   <span class="sr-only" id="userButton"></span>
                 </template>
