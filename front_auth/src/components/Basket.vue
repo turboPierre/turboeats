@@ -29,7 +29,7 @@
       <hr>
       <div class="row">
         <div class="col-sm-6">
-          <b-button v-b-modal.modal-cancel class="btn btn-danger">Annuler</b-button>
+          <b-button v-b-modal.modal-cancel class="btn btn-danger">Vider</b-button>
         </div>
         <div class="col-sm-6">
           <div v-if="this.total === 0">
@@ -44,12 +44,12 @@
 
       <div>
 
-        <b-modal id="modal-cancel" centered title="vider le panier">
+        <b-modal id="modal-cancel" centered title="Vider le panier">
           <p class="my-4">Voulez-vous vider votre panier ?</p>
           <div slot="modal-footer">
             <!-- Emulate built in modal footer ok and cancel button actions -->
-            <b-button variant="success" @click="cancel_panier()">
-              Valider
+            <b-button variant="primary" style="background-color: #b50000; border: none; float:right" @click="cancel_panier()">
+              Vider le panier
             </b-button>
 
           </div>
