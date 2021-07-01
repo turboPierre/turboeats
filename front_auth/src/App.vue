@@ -187,7 +187,8 @@ export default {
     cursor: pointer;
   }
   .case:hover{
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    background: #dadada;
+      border-radius: 10px;
   }
 
   /* Container holding the image and the text */
