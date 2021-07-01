@@ -98,27 +98,62 @@
 
         <b-tabs fill>
 
-          <b-tab title="Commande en attente de validation">
+          <b-tab title="Attente">
 
             <div class="mt-3" v-for="command in commands.data" :key="command._id">
-              <h2>Commande N°{{ command._id }}</h2>
-              <h5>Composition de la commande :</h5>
-              <div v-for="product in command._productId" :key="product._id">
-                {{ product }}<br>
+              <div v-if="command.valid === false && command.delivered === false">
+                <h3><strong>Commande N°{{ command._id }}</strong></h3>
+                <h5>Composition de la commande :</h5>
+                <div v-for="product in command._productId" :key="product._id">
+                  - {{ product }}<br>
+                </div>
+                <div v-for="menu in command._menuId" :key="menu._id">
+                  - {{ menu }}<br>
+                </div>
+                <h4>Total : {{ command.price }} €</h4>
+                <b-button variant="success" @click="validation(command._id)">Valider</b-button>
+                <hr>
               </div>
-              <div v-for="menu in command._menuId" :key="menu._id">
-                {{ menu }}<br>
-              </div>
-              <h4>Total : {{ command.price }} €</h4>
-              <hr>
             </div>
 
           </b-tab>
 
-          <b-tab title="Commande en cours de livraison">
+          <b-tab title="En livraison">
+
+            <div class="mt-3" v-for="command in commands.data" :key="command._id">
+              <div v-if="command.valid === true && command.delivered === false">
+                <h3><strong>Commande N°{{ command._id }}</strong></h3>
+                <h5>Composition de la commande :</h5>
+                <div v-for="product in command._productId" :key="product._id">
+                  - {{ product }}<br>
+                </div>
+                <div v-for="menu in command._menuId" :key="menu._id">
+                  - {{ menu }}<br>
+                </div>
+                <h4>Total : {{ command.price }} €</h4>
+                <hr>
+              </div>
+            </div>
+
           </b-tab>
 
-          <b-tab title="Historique de commande">
+          <b-tab title="Historique">
+
+            <div class="mt-3" v-for="command in commands.data" :key="command._id">
+              <div v-if="command.valid === true && command.delivered === true">
+                <h3><strong>Commande N°{{ command._id }}</strong></h3>
+                <h5>Composition de la commande :</h5>
+                <div v-for="product in command._productId" :key="product._id">
+                  - {{ product }}<br>
+                </div>
+                <div v-for="menu in command._menuId" :key="menu._id">
+                  - {{ menu }}<br>
+                </div>
+                <h4>Total : {{ command.price }} €</h4>
+                <hr>
+              </div>
+            </div>
+
           </b-tab>
 
         </b-tabs>
@@ -289,6 +324,29 @@
           console.log(error);
         });
       },
+      validation(id) {
+
+        this.$http.put(this.$api_uri + '/commands/' + id, {
+              valid: true
+            }, {
+              headers: {
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token'),
+              }
+            }
+        ).then(response => {
+          console.log(response);
+          this.$bvToast.toast('Livraison', {
+           title: `La livraison a été prise en charge`,
+          autoHideDelay: 2000,
+          appendToast: false
+          })
+
+        }).catch(error => {
+          console.log(error);
+          window.alert(error);
+        });
+      }
+
     },
 
 
