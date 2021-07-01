@@ -82,7 +82,7 @@
             <h5><em>{{product.price}} €</em></h5>
             <hr>
           </div>
-        <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un produit</strong></b-button>
+        <b-button v-b-modal.add-product class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un produit</strong></b-button>
       </b-tab>
       <b-tab title="Menus">
         <div class="mt-3" v-for="menu in listMenus" :key="menu.id">
@@ -92,9 +92,18 @@
           <h5><em>{{menu.price}} €</em></h5>
           <hr>
         </div>
-        <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un menu</strong></b-button>
+        <b-button v-b-modal.add-menu class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un menu</strong></b-button>
       </b-tab>
     </b-tabs>
+
+    <b-modal id="add-product" size="lg" centered title="Ajouter un produit">
+      test
+    </b-modal>
+
+    <b-modal id="add-menu" size="lg" centered title="Ajouter un menu">
+      test
+    </b-modal>
+
   </div>
 </template>
 
