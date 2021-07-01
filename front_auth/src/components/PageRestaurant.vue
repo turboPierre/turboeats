@@ -113,7 +113,6 @@
     },
     mounted() {
 
-
       if(this.$cookie.get('basket_product') == null){
         this.$cookie.set('basket_product', JSON.stringify(''));
       }
