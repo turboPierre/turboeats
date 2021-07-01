@@ -14,10 +14,10 @@ export const commandSchema = new Schema({
     address: {type: String, required:true},
     city: {type: String, required:true},
     _menuId:[
-        {type: Schema.Types.ObjectId, ref: 'Menu'}
+        {type: String, ref: 'Menu'}
     ],
     _productId:[
-        {type: Schema.Types.ObjectId, ref: 'Product'}
+        {type: String, ref: 'Product'}
     ]
 });
 
