@@ -22,8 +22,19 @@ export const userCommands = async(req: Request, res: Response, next: NextFunctio
     res.status(201).send(result)
 };
 
+export const restaurantCommand = async(req: Request, res: Response, next: NextFunction) => {
+    const result = await axios.get(APP_API_IP + 'commands/restaurantCommand', {
+        headers:req.headers
+    })
+        .then(response => response.data)
+        .catch(err => res.sendStatus(err.response.status));
+
+    res.status(201).send(result)
+};
+
 export const getAllCommands = async(req: Request, res: Response, next: NextFunction) => {
-    const result = await axios.get(APP_API_IP + 'commands/', {
+    const itemID: string = req.params.id;
+    const result = await axios.get(APP_API_IP + 'commands/' + itemID, {
         headers:req.headers
     })
         .then(response => response.data)

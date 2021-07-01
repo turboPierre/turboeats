@@ -13,6 +13,9 @@ commandRouter.get('/delivererCommand',AuthMiddleware.userAuth, CommandController
 // GET commands/userCommands
 commandRouter.get('/userCommands',AuthMiddleware.userAuth, CommandController.userCommands);
 
+// GET commands/restaurantCommand/:id
+commandRouter.get('/restaurantCommand/:id',AuthMiddleware.userAuth, CommandController.restaurantCommand);
+
 // GET commands/id:id
 commandRouter.get('/id=:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
 
