@@ -1,7 +1,9 @@
 <template>
   <div class='container mt-5'>
+    <h3 style="text-align: center"><strong>Modifier votre restaurant</strong></h3>
+    <b-tabs fill>
+      <b-tab title="Informations" active>
     <b-form @submit="onSubmit" v-if="show">
-      <h3><strong>Modifiez votre restaurant !</strong></h3><br>
       <b-form-group class="mt-3" id="input-group-2" label="Nom: " label-for="restaurant_name">
         <b-form-input
                 id="restaurant_name"
@@ -71,25 +73,28 @@
       <br>
       <b-button class="mt-3" type="cancel" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer le restaurant</strong></b-button>
     </b-form>
-    <br>
-    <h3><strong>Produits</strong></h3><br>
-          <div class="row" v-for="product in listProducts" :key="product.id">
-            <div class="col-sm-3 mt-3">
-              <b-button class="mt-3" variant="primary" style="background-color: #b50000; border: none;"><strong>Supprimer</strong></b-button>
-            </div>
+      </b-tab>
+      <b-tab title="Produits">
+          <div class="mt-3" v-for="product in listProducts" :key="product.id">
+            <b-button variant="primary" @click="deleteProduct(product)" style="background-color: #b50000; border: none; float:right"><strong>X</strong></b-button>
             <h5>{{product.name }}</h5>
             <p>{{product.describe}}</p>
             <h5><em>{{product.price}} €</em></h5>
             <hr>
           </div>
-    <br>
-    <h3><strong>Produits</strong></h3><br>
-        <div class="row" v-for="menu in listMenus" :key="menu.id">
-          <h5>{{ menu.name }}</h5>
+        <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un produit</strong></b-button>
+      </b-tab>
+      <b-tab title="Menus">
+        <div class="mt-3" v-for="menu in listMenus" :key="menu.id">
+          <b-button variant="primary" @click="deleteMenu(menu)" style="background-color: #b50000; border: none; float:right"><strong>X</strong></b-button>
+          <h5>{{menu.name }}</h5>
           <p>{{menu.describe}}</p>
           <h5><em>{{menu.price}} €</em></h5>
           <hr>
         </div>
+        <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un menu</strong></b-button>
+      </b-tab>
+    </b-tabs>
   </div>
 </template>
 
@@ -182,6 +187,42 @@
           window.alert("Erreur : le restaurant n'a pas pu être modifié.");
         });
         event.preventDefault();
+      },
+      deleteProduct(product){
+        let productId = product._id;
+        this.listProducts.splice(this.listProducts.indexOf(product), 1);
+        this.$http.delete(this.$api_uri + '/products/' + productId, {
+          headers: {
+            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+          }
+        }).then((response) => {
+          this.$bvToast.toast(product.name, {
+            title: `Produit supprimé`,
+            autoHideDelay: 2000,
+            appendToast: false
+          })
+        }).catch(error => {
+          window.alert("Erreur : impossible de supprimer le produit.");
+          console.log(error);
+        });
+      },
+      deleteMenu(menu){
+        let menuId = menu._id;
+        this.listMenus.splice(this.listMenus.indexOf(menu), 1);
+        this.$http.delete(this.$api_uri + '/menus/' + menuId, {
+          headers: {
+            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+          }
+        }).then((response) => {
+          this.$bvToast.toast(menu.name, {
+            title: `Menu supprimé`,
+            autoHideDelay: 2000,
+            appendToast: false
+          })
+        }).catch(error => {
+          window.alert("Erreur : impossible de supprimer le menu.");
+          console.log(error);
+        });
       },
     },
 
