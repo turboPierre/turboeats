@@ -108,7 +108,7 @@ commandRouter.get('/delivererCommand', CommandController.delivererCommand);
 commandRouter.get('/userCommands', CommandController.userCommands);
 
 // GET commands/restaurantCommand/:id
-commandRouter.get('/restaurantCommand/:id',AuthMiddleware.userAuth, CommandController.restaurantCommand);
+commandRouter.get('/restaurantCommand/:id', CommandController.restaurantCommand);
 
 /**
  * @api {post} /Command/ POST Command
