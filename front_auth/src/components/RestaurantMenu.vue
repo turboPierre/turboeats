@@ -95,9 +95,41 @@
         <b-button v-b-modal.add-menu class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un menu</strong></b-button>
       </b-tab>
       <b-tab title="Liste des commandes">
-        <div class="mt-3" v-for="menu in listMenus" :key="menu.id">
 
-        </div>
+        <b-tabs fill>
+
+          <b-tab title="Commande en attente de validation">
+
+            <div class="mt-3" v-for="command in commands.data" :key="command._id">
+              <h2>Commande N°{{ command._id }}</h2>
+              <h5>Composition de la commande :</h5>
+              <div v-for="product in command._productId" :key="product._id">
+                {{ product }}<br>
+              </div>
+              <div v-for="menu in command._menuId" :key="menu._id">
+                {{ menu }}<br>
+              </div>
+              <h4>Total : {{ command.price }} €</h4>
+              <hr>
+            </div>
+
+          </b-tab>
+
+          <b-tab title="Commande en cours de livraison">
+          </b-tab>
+
+          <b-tab title="Historique de commande">
+          </b-tab>
+
+        </b-tabs>
+
+
+
+
+
+
+
+
       </b-tab>
     </b-tabs>
 
@@ -117,6 +149,7 @@
   export default {
     data() {
       return {
+        commands: null,
         restaurant: null,
         listProducts:null,
         listMenus: null,
@@ -155,17 +188,24 @@
             this.$router.push({name: "restaurantAdd"});
           } else {
             this.restaurant = result.data;
+
+            //requete pour affichage liste des commandes
+            this.$http.get(this.$api_uri + '/commands/restaurantCommand/' + this.restaurant._id , {
+              headers: {
+                'Authorization': 'Bearer ' + this.$cookie.get('access_token')}})
+                .then((response) => { this.commands = response})
+                .catch(error => {console.log(error);});
+
             //requete pour liste des produits
             this.$http.get(this.$api_uri + '/products/restaurant=' + this.restaurant._id)
-                    .then((result) => { this.listProducts = result.data; console.log(result)})
+                    .then((result) => { this.listProducts = result.data })
                     .catch(error => {console.log(error);});
 
             // requete pour liste des menus
             this.$http.get(this.$api_uri + '/menus/restaurant=' + this.restaurant._id)
-                    .then((result) => { this.listMenus = result.data; console.log(result)})
+                    .then((result) => { this.listMenus = result.data })
                     .catch(error => {console.log(error);});
           }
-          console.log(result);
         }).catch(error => {
           if (error.response.status === 404) {
             this.$router.push({name: "restaurantAdd"});
@@ -174,6 +214,9 @@
             this.$router.push({name: "login"});
           }
         });
+
+
+
 
     },
 
