@@ -121,18 +121,18 @@
       }
     },
     beforeMount() {
-      this.$http.get(this.$api_uri + '/userRestaurant', {
+      this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
       }).then((response) => {
         var data = response.data;
-        document.getElementById('restaurant_name').setAttribute("value",data.restaurant_name);
-        document.getElementById('restaurant_description').setAttribute("value",data.restaurant_description);
-        document.getElementById('restaurant_picture').setAttribute("value",data.restaurant_picture);
-        document.getElementById('restaurant_address').setAttribute("value",data.restaurant_address);
-        document.getElementById('restaurant_city').setAttribute("value",data.restaurant_city);
-        document.getElementById('restaurant_phone').setAttribute("value",data.restaurant_phone);
+        document.getElementById('restaurant_name').setAttribute("value",data.name);
+        document.getElementById('restaurant_description').setAttribute("value",data.describe);
+        document.getElementById('restaurant_picture').setAttribute("value",data.picture);
+        document.getElementById('restaurant_address').setAttribute("value",data.address);
+        document.getElementById('restaurant_city').setAttribute("value",data.city);
+        document.getElementById('restaurant_phone').setAttribute("value",data.phone);
         document.getElementById('open_hour').setAttribute("value",data.open_hour);
         document.getElementById('close_hour').setAttribute("value",data.close_hour);
       }).catch(error => {

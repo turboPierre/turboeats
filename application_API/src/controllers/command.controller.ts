@@ -1,6 +1,10 @@
 import Command, { CommandInterface } from '../models/command.model';
 import { Request, Response, NextFunction} from 'express';
 
+export let delivererCommand = (req: Request, res: Response, next: NextFunction) => {
+
+}
+
 
 export let getAllCommands = (req: Request, res: Response, next: NextFunction) => {
 

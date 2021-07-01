@@ -100,7 +100,10 @@ commandRouter.get('/', AuthMiddleware.userAuth, CommandController.getAllCommands
  */
 
 // GET commands/:id
-commandRouter.get('/:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
+commandRouter.get('/id=:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
+
+// GET commands/:id
+commandRouter.get('/delivererCommand',AuthMiddleware.userAuth, CommandController.delivererCommand);
 
 /**
  * @api {post} /Command/ POST Command
