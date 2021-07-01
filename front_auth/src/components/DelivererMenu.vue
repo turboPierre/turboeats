@@ -9,7 +9,7 @@
     <!-- afficher si le deliverer a une commande active -->
     <div v-if="waitCommands.data.length != 0 ">
       <div v-for="command in waitCommands.data" :key="command._id">
-          Livraison en cours :
+        <h1>Livraison en cours :</h1>
         <hr>
         Numéro de commande : {{ command._id }}
         <br>
@@ -40,6 +40,7 @@
           </b-card>
         </div>
       </div>
+
     </div>
 
 

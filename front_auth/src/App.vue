@@ -24,7 +24,7 @@
                   <span class="sr-only" id="userButton"></span>
                 </template>
                   <router-link to="/myaccount" tag="b-dropdown-item"><span class="dropItem">Mon compte</span></router-link>
-                  <b-dropdown-item v-if="isClient"><span class="dropItem">Mes commandes</span></b-dropdown-item>
+                  <router-link to="/orderedHistory" tag="b-dropdown-item" v-if="isClient"><span class="dropItem">Mes commandes</span></router-link>
                 <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item v-on:click="disconnect" ><span class="redDropItem">Se déconnecter</span></b-dropdown-item>
               </b-dropdown>
