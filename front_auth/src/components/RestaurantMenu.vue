@@ -94,7 +94,7 @@
         </div>
         <b-button v-b-modal.add-menu class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un menu</strong></b-button>
       </b-tab>
-      <b-tab title="Liste des commandes">
+      <b-tab title="Commandes">
 
         <b-tabs fill>
 
@@ -122,13 +122,6 @@
           </b-tab>
 
         </b-tabs>
-
-
-
-
-
-
-
 
       </b-tab>
     </b-tabs>
@@ -164,16 +157,15 @@
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
       }).then((response) => {
-        var data = response.data;
-          console.log(data._id);
-          document.getElementById('restaurant_name').setAttribute("value", data.name);
-          document.getElementById('restaurant_description').setAttribute("value", data.describe);
-          document.getElementById('restaurant_picture').setAttribute("value", data.picture);
-          document.getElementById('restaurant_address').setAttribute("value", data.address);
-          document.getElementById('restaurant_city').setAttribute("value", data.city);
-          document.getElementById('restaurant_phone').setAttribute("value", data.phone);
-          document.getElementById('open_hour').setAttribute("value", data.open_hour);
-          document.getElementById('close_hour').setAttribute("value", data.close_hour);
+          var data = response.data;
+          this.form.restaurant_name = data.name;
+          this.form.restaurant_description = data.describe;
+          this.form.restaurant_picture = data.picture;
+          this.form.restaurant_address = data.address;
+          this.form.restaurant_city = data.city;
+          this.form.restaurant_phone = data.phone;
+          this.form.open_hour = data.open_hour;
+          this.form.close_hour = data.close_hour;
         }).catch(error => {
           console.log(error);
         });
@@ -214,9 +206,6 @@
             this.$router.push({name: "login"});
           }
         });
-
-
-
 
     },
 
@@ -262,6 +251,25 @@
           window.alert("Erreur : impossible de supprimer le produit.");
           console.log(error);
         });
+      },
+      addProduct(){
+        /*
+        let productId = product._id;
+        this.listProducts.add(this.listProducts.indexOf(product), 1);
+        this.$http.delete(this.$api_uri + '/products/' + productId, {
+          headers: {
+            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+          }
+        }).then((response) => {
+          this.$bvToast.toast(product.name, {
+            title: `Produit supprimé`,
+            autoHideDelay: 2000,
+            appendToast: false
+          })
+        }).catch(error => {
+          window.alert("Erreur : impossible de supprimer le produit.");
+          console.log(error);
+        });*/
       },
       deleteMenu(menu){
         let menuId = menu._id;
