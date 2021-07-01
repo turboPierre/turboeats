@@ -26,7 +26,7 @@ export let getOneMenu = (req: Request, res: Response, next: NextFunction) => {
 
 export let getRestaurantMenus = (req: Request, res: Response, next: NextFunction) => {
 
-    Menu.findOne({ _restaurantId: req.params.id })
+    Menu.find({ _restaurantId: req.params.id })
         .then((menu) => {
             res.status(200).send(menu);
         }).catch((err) => {
