@@ -4,7 +4,6 @@
 
 import express from 'express';
 import * as CommandController from '../controllers/command.controller';
-import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -58,7 +57,7 @@ export const commandRouter = express.Router();
 
 
 // GET commands/
-commandRouter.get('/', AuthMiddleware.userAuth, CommandController.getAllCommands)
+commandRouter.get('/', CommandController.getAllCommands)
 
 /**
  * @api {get} /Command/:id GET unique Command information
@@ -100,13 +99,13 @@ commandRouter.get('/', AuthMiddleware.userAuth, CommandController.getAllCommands
  */
 
 // GET commands/:id
-commandRouter.get('/id=:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
+commandRouter.get('/id=:id', CommandController.getOneCommand);
 
 // GET commands/delivererCommand
-commandRouter.get('/delivererCommand',AuthMiddleware.userAuth, CommandController.delivererCommand);
+commandRouter.get('/delivererCommand', CommandController.delivererCommand);
 
 // GET commands/userCommands
-commandRouter.get('/userCommands',AuthMiddleware.userAuth, CommandController.userCommands);
+commandRouter.get('/userCommands', CommandController.userCommands);
 
 /**
  * @api {post} /Command/ POST Command
@@ -148,7 +147,7 @@ commandRouter.get('/userCommands',AuthMiddleware.userAuth, CommandController.use
  */
 
 // POST commands/
-commandRouter.post('/',AuthMiddleware.userAuth, CommandController.createCommand);
+commandRouter.post('/', CommandController.createCommand);
 
 /**
  * @api {post} /Command/:id POST unique Command
@@ -190,7 +189,7 @@ commandRouter.post('/',AuthMiddleware.userAuth, CommandController.createCommand)
  */
 
 // PUT commands/:id
-commandRouter.put('/:id',AuthMiddleware.userAuth, CommandController.updateCommand);
+commandRouter.put('/:id', CommandController.updateCommand);
 
 
 /**
@@ -223,4 +222,4 @@ commandRouter.put('/:id',AuthMiddleware.userAuth, CommandController.updateComman
  */
 
 // DELETE commands/:id
-commandRouter.delete('/:id',AuthMiddleware.userAuth, CommandController.deleteCommand);
+commandRouter.delete('/:id', CommandController.deleteCommand);

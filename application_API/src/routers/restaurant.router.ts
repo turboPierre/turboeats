@@ -4,7 +4,6 @@
 
 import express from 'express';
 import * as RestaurantController from '../controllers/restaurant.controller';
-import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -107,7 +106,7 @@ restaurantRouter.get('/', RestaurantController.getAllRestaurants);
 restaurantRouter.get('/id=:id', RestaurantController.getOneRestaurant);
 
 // GET restaurants/userRestaurant
-restaurantRouter.get('/userRestaurant',AuthMiddleware.userAuth, RestaurantController.getUserRestaurant);
+restaurantRouter.get('/userRestaurant', RestaurantController.getUserRestaurant);
 
 /**
  * @api {post} /Restaurant/ POST Restaurant information
@@ -151,7 +150,7 @@ restaurantRouter.get('/userRestaurant',AuthMiddleware.userAuth, RestaurantContro
  */
 
 // POST restaurants/
-restaurantRouter.post('/', AuthMiddleware.userAuth,  RestaurantController.createRestaurant);
+restaurantRouter.post('/',  RestaurantController.createRestaurant);
 
 /**
  * @api {put} /Restaurant/:id PUT Restaurant information
@@ -195,7 +194,7 @@ restaurantRouter.post('/', AuthMiddleware.userAuth,  RestaurantController.create
  */
 
 // PUT restaurants/:id
-restaurantRouter.put('/:id',AuthMiddleware.userAuth, RestaurantController.updateRestaurant);
+restaurantRouter.put('/:id', RestaurantController.updateRestaurant);
 
 /**
  * @api {delete} /Restaurant/:id DELETE Restaurant information
@@ -228,4 +227,4 @@ restaurantRouter.put('/:id',AuthMiddleware.userAuth, RestaurantController.update
  */
 
 // DELETE restaurants/:id
-restaurantRouter.delete('/:id',AuthMiddleware.userAuth, RestaurantController.deleteRestaurant);
+restaurantRouter.delete('/:id', RestaurantController.deleteRestaurant);

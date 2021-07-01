@@ -4,7 +4,6 @@
 
 import express from 'express';
 import * as ProductController from '../controllers/product.controller';
-import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -91,7 +90,7 @@ productRouter.get('/', ProductController.getAllProducts)
  */
 
 // GET products/id:id
-productRouter.get('/id=:id',AuthMiddleware.userAuth, ProductController.getOneProduct);
+productRouter.get('/id=:id', ProductController.getOneProduct);
 
 // GET products/restaurant:id
 productRouter.get('/restaurant=:id', ProductController.getRestaurantProducts);
@@ -133,7 +132,7 @@ productRouter.get('/restaurant=:id', ProductController.getRestaurantProducts);
  */
 
 // POST products/
-productRouter.post('/',AuthMiddleware.userAuth, ProductController.createProduct);
+productRouter.post('/', ProductController.createProduct);
 
 /**
  * @api {put} /Product/:id PUT Product information
@@ -171,7 +170,7 @@ productRouter.post('/',AuthMiddleware.userAuth, ProductController.createProduct)
  */
 
 // PUT products/:id
-productRouter.put('/:id',AuthMiddleware.userAuth, ProductController.updateProduct);
+productRouter.put('/:id', ProductController.updateProduct);
 
 /**
  * @api {delete} /Product/:id DELETE Product information
@@ -201,4 +200,4 @@ productRouter.put('/:id',AuthMiddleware.userAuth, ProductController.updateProduc
  */
 
 // DELETE products/:id
-productRouter.delete('/:id',AuthMiddleware.userAuth, ProductController.deleteProduct);
+productRouter.delete('/:id', ProductController.deleteProduct);

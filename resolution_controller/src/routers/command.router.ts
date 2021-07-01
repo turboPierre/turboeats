@@ -1,25 +1,26 @@
 import express from 'express';
 import * as CommandController from '../controllers/command.controller';
+import * as AuthMiddleware from '../../../resolution_controller/src/middleware/auth';
 
 export const commandRouter = express.Router();
 
 // GET commands/
-commandRouter.get('/', CommandController.getAllCommands);
+commandRouter.get('/',AuthMiddleware.userAuth, CommandController.getAllCommands);
 
 // GET commands/
-commandRouter.get('/delivererCommand', CommandController.delivererCommand);
+commandRouter.get('/delivererCommand',AuthMiddleware.userAuth, CommandController.delivererCommand);
 
 // GET commands/userCommands
-commandRouter.get('/userCommands', CommandController.userCommands);
+commandRouter.get('/userCommands',AuthMiddleware.userAuth, CommandController.userCommands);
 
 // GET commands/id:id
-commandRouter.get('/id=:id', CommandController.getOneCommand);
+commandRouter.get('/id=:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
 
 // POST commands/
-commandRouter.post('/', CommandController.createCommand);
+commandRouter.post('/',AuthMiddleware.userAuth, CommandController.createCommand);
 
 // PUT commands/:id
-commandRouter.put('/:id', CommandController.updateCommand);
+commandRouter.put('/:id',AuthMiddleware.userAuth, CommandController.updateCommand);
 
 // DELETE commands/:id
-commandRouter.delete('/:id', CommandController.deleteCommand);
+commandRouter.delete('/:id',AuthMiddleware.userAuth, CommandController.deleteCommand);

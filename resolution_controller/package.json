@@ -14,7 +14,8 @@
 	"nodemonConfig": {
 		"env": {
 			"NODE_ENV": "development",
-			"PORT": "8082"
+			"PORT": "8082",
+			"RANDOM_TOKEN_SECRET": "aPdSgVkYp3s6v9y$B&E)H@MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r5u8x/A?D("
 		}
 	},
 	"dependencies": {
@@ -23,7 +24,8 @@
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
 		"axios": "latest",
-		"cors": "latest"
+		"cors": "latest",
+		"jsonwebtoken": "latest"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.10",

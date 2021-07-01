@@ -4,7 +4,6 @@
 
 import express from 'express';
 import * as MenuController from '../controllers/menu.controller';
-import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -99,7 +98,7 @@ menuRouter.get('/', MenuController.getAllMenus)
  */
 
 // GET menus/id=:id
-menuRouter.get('/id=:id',AuthMiddleware.userAuth, MenuController.getOneMenu);
+menuRouter.get('/id=:id', MenuController.getOneMenu);
 
 // GET menus/restaurant=:id
 menuRouter.get('/restaurant=:id', MenuController.getRestaurantMenus);
@@ -142,7 +141,7 @@ menuRouter.get('/restaurant=:id', MenuController.getRestaurantMenus);
  */
 
 // POST menus/
-menuRouter.post('/',AuthMiddleware.userAuth, MenuController.createMenu);
+menuRouter.post('/', MenuController.createMenu);
 
 /**
  * @api {put} /Menu/:id PUT Menu information
@@ -182,7 +181,7 @@ menuRouter.post('/',AuthMiddleware.userAuth, MenuController.createMenu);
  */
 
 // PUT menus/:id
-menuRouter.put('/:id',AuthMiddleware.userAuth, MenuController.updateMenu);
+menuRouter.put('/:id', MenuController.updateMenu);
 
 /**
  * @api {delete} /Menu/:id DELETE unique Menu information
@@ -213,4 +212,4 @@ menuRouter.put('/:id',AuthMiddleware.userAuth, MenuController.updateMenu);
  */
 
 // DELETE menus/:id
-menuRouter.delete('/:id',AuthMiddleware.userAuth, MenuController.deleteMenu);
+menuRouter.delete('/:id', MenuController.deleteMenu);

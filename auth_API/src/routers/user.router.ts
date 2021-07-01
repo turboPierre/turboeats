@@ -4,7 +4,6 @@
 
 import express from 'express';
 import * as UserController from '../controllers/user.controller';
-import * as AuthMiddleware from '../middleware/auth';
 
 /**
  * Router Definition
@@ -57,7 +56,7 @@ export const userRouter = express.Router();
  */
 
 // GET users/
-userRouter.get('/', AuthMiddleware.userAuth , UserController.getAllUsers)
+userRouter.get('/', UserController.getAllUsers)
 
 // GET users/:id
 // @Unused
@@ -104,7 +103,7 @@ userRouter.get('/', AuthMiddleware.userAuth , UserController.getAllUsers)
  */
 
 // GET users/myInfos
-userRouter.get('/myInfos', AuthMiddleware.userAuth, UserController.myInfos);
+userRouter.get('/myInfos', UserController.myInfos);
 
 
 /**
@@ -148,7 +147,7 @@ userRouter.get('/myInfos', AuthMiddleware.userAuth, UserController.myInfos);
  */
 
 // PUT users/updateInfos
-userRouter.put('/updateInfos', AuthMiddleware.userAuth,UserController.updateUser);
+userRouter.put('/updateInfos',UserController.updateUser);
 
 // DELETE users/:id
 // @Unused
