@@ -102,7 +102,7 @@ commandRouter.get('/', AuthMiddleware.userAuth, CommandController.getAllCommands
 // GET commands/:id
 commandRouter.get('/id=:id',AuthMiddleware.userAuth, CommandController.getOneCommand);
 
-// GET commands/:id
+// GET commands/delivererCommand
 commandRouter.get('/delivererCommand',AuthMiddleware.userAuth, CommandController.delivererCommand);
 
 /**

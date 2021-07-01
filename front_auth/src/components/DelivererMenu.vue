@@ -28,7 +28,7 @@
                 <div v-if="restaurant._id === command._restaurantId">
                   Nom du restaurant : {{ restaurant.name }}
                   <hr>
-                  Adresse : {{ restaurant.adress }}, {{ restaurant.city }}
+                  Adresse : {{ restaurant.address }}, {{ restaurant.city }}
                 </div>
               </div>
             </b-card-text>
@@ -70,11 +70,14 @@
         console.log(error);
       });
 
-      //voir si le deliverer a une commande active
 
+      console.log(this.commands);
+
+
+      //voir si le deliverer a une commande active
       this.commands.forEach(function(element){
-        if(element._delivererId == this.userId){
-          this.active = 1
+        if(element._delivererId == this.$cookie.get('userId')){
+          this.active = 1;
         }
       });
 
