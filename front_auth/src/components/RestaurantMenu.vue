@@ -82,6 +82,7 @@
             <h5><em>{{product.price}} €</em></h5>
             <hr>
           </div>
+        <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un produit</strong></b-button>
       </b-tab>
       <b-tab title="Produits">
         <div class="mt-3" v-for="menu in listMenus" :key="menu.id">
@@ -91,6 +92,7 @@
           <h5><em>{{menu.price}} €</em></h5>
           <hr>
         </div>
+        <b-button class="mt-3" variant="primary" style="background-color: #5FB709; border: none;"><strong>Ajouter un menu</strong></b-button>
       </b-tab>
     </b-tabs>
   </div>
