@@ -143,15 +143,6 @@
 </script>
 
 <style>
-/* Container holding the image and the text */
-.toast {
-  opacity: 1 !important;
-  color : #5FB709 !important;
-  font-weight: bold !important;
-}
-.b-toaster-slot{
-  margin-top: 75px !important;
-}
 
 .cont {
   position: relative;
