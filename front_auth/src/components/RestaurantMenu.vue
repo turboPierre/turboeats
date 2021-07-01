@@ -111,7 +111,7 @@
                   - {{ menu }}<br>
                 </div>
                 <h4>Total : {{ command.price }} €</h4>
-                <b-button variant="success" @click="validation(command._id)">Valider</b-button>
+                <b-button variant="success" @click="validation(command)">Valider</b-button>
                 <hr>
               </div>
             </div>
@@ -120,7 +120,7 @@
 
           <b-tab title="En livraison">
 
-            <div class="mt-3" v-for="command in commands.data" :key="command._id">
+            <div class="mt-3" v-for="command in commands_livraison.data" :key="command._id">
               <div v-if="command.valid === true && command.delivered === false">
                 <h3><strong>Commande N°{{ command._id }}</strong></h3>
                 <h5>Composition de la commande :</h5>
@@ -208,6 +208,7 @@
     data() {
       return {
         commands: null,
+        commands_livraison: null,
         restaurant: null,
         listProducts:null,
         listMenus: null,
@@ -256,7 +257,7 @@
             this.$http.get(this.$api_uri + '/commands/restaurantCommand/' + this.restaurant._id , {
               headers: {
                 'Authorization': 'Bearer ' + this.$cookie.get('access_token')}})
-                .then((response) => { this.commands = response})
+                .then((response) => { this.commands = response; this.commands_livraison = response})
                 .catch(error => {console.log(error);});
 
             //requete pour liste des produits
@@ -277,6 +278,7 @@
             this.$router.push({name: "login"});
           }
         });
+
 
     },
 
@@ -393,7 +395,13 @@
           console.log(error);
         });
       },
-      validation(id) {
+      validation(command) {
+
+        let id = command._id;
+        this.commands.data.splice(this.commands.data.indexOf(command), 1);
+        console.log(this.commands_livraison.data);
+        this.commands_livraison.data.push({ _id: command._id, _productId: command._productId, _menuId: command._menuId, price: command.price });
+        console.log(this.commands_livraison.data);
 
         this.$http.put(this.$api_uri + '/commands/' + id, {
               valid: true
