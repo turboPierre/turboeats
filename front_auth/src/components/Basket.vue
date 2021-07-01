@@ -101,6 +101,8 @@ export default {
     this.total = 0;
     this.basket_product = JSON.parse(this.$cookie.get('basket_product'));
     this.basket_menu = JSON.parse(this.$cookie.get('basket_menu'));
+    this.basket_product_name = [];
+    this.basket_menu_name = [];
     return {
     }
   },
@@ -122,6 +124,16 @@ export default {
         this.userInfo = response.data;
         console.log(this.userInfo.address);
 
+        //traitement transformation basket product et menu en array de noms
+
+        for(let i=0; i < this.basket_product.length; i++){
+          this.basket_product_name[i] = this.basket_product[i].name;
+        }
+
+        for(let i=0; i < this.basket_menu.length; i++){
+          this.basket_menu_name[i] = this.basket_menu[i].name;
+        }
+
         this.$http.post(this.$api_uri + '/commands', {
               _delivererId: -1,
               address: this.userInfo.address,
@@ -130,8 +142,8 @@ export default {
               _restaurantId: this.$cookie.get('basket_restaurantId'),
               _clientId: this.$cookie.get('userId'),
               price: this.total,
-              _menuId: this.basket_menu,
-              _productId: this.basket_product
+              _menuId: this.basket_menu_name,
+              _productId: this.basket_product_name
             },{
               headers: {
                 'Authorization': 'Bearer ' + this.$cookie.get('access_token'),

@@ -1,16 +1,19 @@
 <template>
-  <div class='container'>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-        <h4><strong>Mon Compte</strong></h4>
-        <b-form-group
-        id="input-group-1"
-        label="User Name"
-        label-for="input-1"
-        ></b-form-group>
-        
-
-    </b-form>
-
+  <div class='mt-5'>
+    <div class="row">
+      <div v-for="command in commands" :key="command._id">
+        <h1>Commande {{ command._id }}</h1>
+        <h5>Composition de la commande :</h5>
+        <div v-for="product in command._productId" :key="product._id">
+          {{ product }}<br>
+        </div>
+        <div v-for="menu in command._menuId" :key="menu._id">
+          {{ menu }}<br>
+        </div>
+        <h4>Total : {{ command.price }} €</h4>
+        <hr>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -18,10 +21,19 @@
   export default {
     data() {
       return {
-
+          commands: null
         }
     },
     mounted(){
+      //récupération de la liste des commandes
+      this.$http.get(this.$api_uri + '/commands/userCommands', {
+        headers: {
+          'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+        }
+      }).then((result) => { this.commands = result.data; console.log(result.data) }).catch(error => {
+        console.log(error);
+      });
+
 
     },
     methods: {
