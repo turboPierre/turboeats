@@ -88,6 +88,8 @@
 </template>
 
 <script>
+  import bcrypt from 'bcryptjs';
+
   export default {
     data() {
 
@@ -98,7 +100,8 @@
       }
     },
     methods: {
-      onSubmit(event) {if(this.form.password1 !== this.form.password2){
+      onSubmit(event) {
+        if(this.form.password1 !== this.form.password2){
         window.alert("Les mots de passes ne correspondent pas.")
       } else {
           this.$http.put(this.$api_uri + '/users/updateInfos', {
@@ -106,7 +109,7 @@
             lastName: this.form.lastname,
             email: this.form.email,
             phone: this.form.phone,
-            password: this.form.password1,
+            password: bcrypt.hashSync(this.form.password1,bcrypt.genSaltSync(10)),
             address: this.form.address,
             city: this.form.city,
             role: "client",
