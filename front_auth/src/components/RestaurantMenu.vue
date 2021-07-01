@@ -104,29 +104,23 @@
   export default {
     data() {
       return {
+        _idRestaurant:'',
         restaurant: null,
         listProducts:null,
         listMenus: null,
         form: {
-          restaurant_name: '',
-          restaurant_description: '',
-          restaurant_picture: '',
-          restaurant_address: '',
-          restaurant_city:'',
-          restaurant_phone: '',
-          open_hour: '',
-          close_hour: '',
         },
         show: true
       }
     },
-    beforeMount() {
+    mounted() {
       this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
       }).then((response) => {
         var data = response.data;
+        this._idRestaurant = response.data._id;
         document.getElementById('restaurant_name').setAttribute("value",data.name);
         document.getElementById('restaurant_description').setAttribute("value",data.describe);
         document.getElementById('restaurant_picture').setAttribute("value",data.picture);
@@ -160,50 +154,42 @@
             }
         });
 
-        //TODO Faire requetes
         //requete pour liste des produits
-        this.$http.get(this.$api_uri + '/products').then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
+        this.$http.get(this.$api_uri + '/products/restaurant=' + this._idRestaurant)
+                .then((result) => { this.listProducts = result.data; console.log(result)})
+                .catch(error => {console.log(error);});
         // requete pour liste des menus
-        this.$http.get(this.$api_uri + '/menus').then((result) => { this.listMenus = result.data; console.log(result)}).catch(error => {console.log(error);});
+        this.$http.get(this.$api_uri + '/menus/restaurant=' +this._idRestaurant)
+                .then((result) => { this.listMenus = result.data; console.log(result)})
+                .catch(error => {console.log(error);});
 
     },
 
     methods: {
       onSubmit(event) {
-        // this.$http.post(this.$auth_api_uri + '/restaurants', {
-        //   headers: {
-        //     'Authorization': 'Bearer ' + this.$cookie.post('access_token')
-        //   }
-        // }).then((response) => {
-        //   var data = response.data;
-        //   document.getElementById('name').setAttribute("value",data.name);
-        //   document.getElementById('price').setAttribute("value",data.price);
-        //   document.getElementById('describe').setAttribute("value",data.describe);
-        //   document.getElementById('picture').setAttribute("value",data.picture);
-        // }).catch(error => {
-        //   console.log(error);
-        //   //TODO Erreur ?
-        //   // this.$router.push({ name: "login"});
-        //   // location.reload();
-        // });
-        // event.preventDefault();
+        this.$http.put(this.$api_uri + '/restaurants/' + this._idRestaurant, {
+          name: this.form.restaurant_name,
+          describe: this.form.restaurant_description,
+          picture: this.form.restaurant_picture,
+          address: this.form.restaurant_address,
+          city: this.form.restaurant_city,
+          phone: this.form.restaurant_phone,
+          open_hour: this.form.open_hour,
+          close_hour: this.form.close_hour,
+        }, {
+          headers: {
+            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+          }
+        }).then((response) => {
+          console.log(response);
+          window.alert("Restaurant modifié.");
+          location.reload();
+        }).catch(error => {
+          console.log(error);
+          window.alert("Erreur : le restaurant n'a pas pu être modifié.");
+        });
+        event.preventDefault();
       },
-
-      // mounted() {
-      //   this.$http.get(this.$auth_api_uri + '/restaurants', {
-      //   headers: {
-      //     'Authorization': 'Bearer ' + this.$cookie.get('access_token')
-      //   }
-      // }).then((response) => {
-      //     this.data = response.data;
-      //   }).catch(error => {
-      //     console.log(error);
-      //     //TODO Erreur ?
-      //     // this.$router.push({ name: "login"});
-      //     // location.reload();
-      //   });
-      //   event.preventDefault();
-      // },
     },
 
 
