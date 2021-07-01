@@ -131,7 +131,6 @@
 
       console.log(this.$route.query)
 
-      //TODO Faire requetes
       //requete pour liste des produits
       this.$http.get(this.$api_uri + '/products/restaurant=' + this.$route.params.id).then((result) => { this.listProducts = result.data; console.log(result)}).catch(error => {console.log(error);});
       //requete pour liste des menus

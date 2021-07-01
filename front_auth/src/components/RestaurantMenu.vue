@@ -74,11 +74,9 @@
       <b-tab title="Produits">
         <div class="row" style="background-color: #f5f5f5;">
           <div class="col-sm-3 mt-3" v-for="product in listProducts" :key="product.id">
-            <div v-if="product._restaurantId === restaurant._id">
-              <h5>{{ product.name }}</h5>
-              <p>{{product.describe}}</p>
-              <h5><em>{{product.price}} €</em></h5>
-            </div>
+            <h5>{{product.name }}</h5>
+            <p>{{product.describe}}</p>
+            <h5><em>{{product.price}} €</em></h5>
           </div>
         </div>
         <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
@@ -87,11 +85,9 @@
       <b-tab title="Menu">
         <div class="row" style="background-color: #f5f5f5;">
           <div class="col-sm-3 mt-3" v-for="menu in listMenus" :key="menu.id">
-            <div v-if="menu._restaurantId === restaurant._id">
-              <h5>{{ menu.name }}</h5>
-              <p>{{menu.describe}}</p>
-              <h5><em>{{menu.price}} €</em></h5>
-            </div>
+            <h5>{{ menu.name }}</h5>
+            <p>{{menu.describe}}</p>
+            <h5><em>{{menu.price}} €</em></h5>
           </div>
         </div>
         <b-button class="mt-3" type="submit" variant="primary" style="background-color: #b50000; border: none;"><strong> - </strong></b-button>
@@ -104,7 +100,6 @@
   export default {
     data() {
       return {
-        _idRestaurant:'',
         restaurant: null,
         listProducts:null,
         listMenus: null,
@@ -112,62 +107,62 @@
         },
         show: true
       }
-    },
-    mounted() {
+    }
+    ,beforeMount() {
       this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
         headers: {
           'Authorization': 'Bearer ' + this.$cookie.get('access_token')
         }
       }).then((response) => {
         var data = response.data;
-        this._idRestaurant = response.data._id;
-        document.getElementById('restaurant_name').setAttribute("value",data.name);
-        document.getElementById('restaurant_description').setAttribute("value",data.describe);
-        document.getElementById('restaurant_picture').setAttribute("value",data.picture);
-        document.getElementById('restaurant_address').setAttribute("value",data.address);
-        document.getElementById('restaurant_city').setAttribute("value",data.city);
-        document.getElementById('restaurant_phone').setAttribute("value",data.phone);
-        document.getElementById('open_hour').setAttribute("value",data.open_hour);
-        document.getElementById('close_hour').setAttribute("value",data.close_hour);
-      }).catch(error => {
-        console.log(error);
-      });
+          console.log(data._id);
+          document.getElementById('restaurant_name').setAttribute("value", data.name);
+          document.getElementById('restaurant_description').setAttribute("value", data.describe);
+          document.getElementById('restaurant_picture').setAttribute("value", data.picture);
+          document.getElementById('restaurant_address').setAttribute("value", data.address);
+          document.getElementById('restaurant_city').setAttribute("value", data.city);
+          document.getElementById('restaurant_phone').setAttribute("value", data.phone);
+          document.getElementById('open_hour').setAttribute("value", data.open_hour);
+          document.getElementById('close_hour').setAttribute("value", data.close_hour);
+        }).catch(error => {
+          console.log(error);
+        });
 
         //requete pour info restaurant
         this.$http.get(this.$api_uri + '/restaurants/userRestaurant', {
-            headers: {
-                'Authorization': 'Bearer ' + this.$cookie.get('access_token')
-            }
+          headers: {
+            'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+          }
         }).then((result) => {
-          if(result.data === ""){
-            this.$router.push({ name: "restaurantAdd"});
-          }else{
+          if (result.data === "") {
+            this.$router.push({name: "restaurantAdd"});
+          } else {
             this.restaurant = result.data;
+            //requete pour liste des produits
+            this.$http.get(this.$api_uri + '/products/restaurant=' + this.restaurant._id)
+                    .then((result) => { this.listProducts = result.data; console.log(result)})
+                    .catch(error => {console.log(error);});
+
+            // requete pour liste des menus
+            this.$http.get(this.$api_uri + '/menus/restaurant=' + this.restaurant._id)
+                    .then((result) => { this.listMenus = result.data; console.log(result)})
+                    .catch(error => {console.log(error);});
           }
           console.log(result);
         }).catch(error => {
-            if(error.response.status === 404){
-              this.$router.push({ name: "restaurantAdd"});
-            }
-            if(error.response.status === 401 || error.response.status === 500){
-                this.$router.push({ name: "login"});
-            }
+          if (error.response.status === 404) {
+            this.$router.push({name: "restaurantAdd"});
+          }
+          if (error.response.status === 401 || error.response.status === 500) {
+            this.$router.push({name: "login"});
+          }
         });
-
-        //requete pour liste des produits
-        this.$http.get(this.$api_uri + '/products/restaurant=' + this._idRestaurant)
-                .then((result) => { this.listProducts = result.data; console.log(result)})
-                .catch(error => {console.log(error);});
-        // requete pour liste des menus
-        this.$http.get(this.$api_uri + '/menus/restaurant=' +this._idRestaurant)
-                .then((result) => { this.listMenus = result.data; console.log(result)})
-                .catch(error => {console.log(error);});
 
     },
 
     methods: {
       onSubmit(event) {
-        this.$http.put(this.$api_uri + '/restaurants/' + this._idRestaurant, {
+        this.$http.put(this.$api_uri + '/restaurants/' + this.restaurant._id, {
           name: this.form.restaurant_name,
           describe: this.form.restaurant_description,
           picture: this.form.restaurant_picture,
