@@ -8,7 +8,7 @@ export let delivererCommand = (req: Request, res: Response, next: NextFunction) 
             const token = req.headers.authorization.split(' ')[1];
             const decodedToken : any = jwt.verify(token, ''+process.env.RANDOM_TOKEN_SECRET);
             const userId = decodedToken.userId;
-            Command.findOne({ _delivererId: userId })
+            Command.findOne({ _delivererId: userId, delivered:false})
                 .then((command) => {
                     res.status(200).send(command);
                 }).catch((err) => {
