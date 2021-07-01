@@ -190,6 +190,14 @@ export default {
     box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   }
 
+  .rCase{
+      cursor: pointer;
+  }
+  .rCase:hover{
+      background: #dadada;
+      border-radius: 10px;
+  }
+
   /* Container holding the image and the text */
   .toast {
       opacity: 1 !important;
