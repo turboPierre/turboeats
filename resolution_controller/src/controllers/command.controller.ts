@@ -2,6 +2,17 @@ import { Request, Response, NextFunction} from 'express';
 import axios from 'axios';
 import {APP_API_IP} from '../config/config';
 
+export const delivererCommand = async(req: Request, res: Response, next: NextFunction) => {
+    const itemID: string = req.params.id;
+    const result = await axios.get(APP_API_IP + 'commands/delivererCommand' + itemID, {
+        headers:req.headers
+    })
+        .then(response => response.data)
+        .catch(err => res.sendStatus(err.response.status));
+
+    res.status(201).send(result)
+};
+
 export const getAllCommands = async(req: Request, res: Response, next: NextFunction) => {
     const result = await axios.get(APP_API_IP + 'commands/', {
         headers:req.headers
@@ -14,7 +25,7 @@ export const getAllCommands = async(req: Request, res: Response, next: NextFunct
 
 export const getOneCommand = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.get(APP_API_IP + 'commands/' + itemID, {
+    const result = await axios.get(APP_API_IP + 'commands/id=' + itemID, {
         headers:req.headers
     })
         .then(response => response.data)

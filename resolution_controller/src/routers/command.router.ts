@@ -4,10 +4,13 @@ import * as CommandController from '../controllers/command.controller';
 export const commandRouter = express.Router();
 
 // GET commands/
-commandRouter.get('/', CommandController.getAllCommands)
+commandRouter.get('/', CommandController.getAllCommands);
 
-// GET commands/:id
-commandRouter.get('/:id', CommandController.getOneCommand);
+// GET commands/
+commandRouter.get('/delivererCommand', CommandController.delivererCommand);
+
+// GET commands/id:id
+commandRouter.get('/id=:id', CommandController.getOneCommand);
 
 // POST commands/
 commandRouter.post('/', CommandController.createCommand);
