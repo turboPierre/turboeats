@@ -24,7 +24,7 @@ export const userCommands = async(req: Request, res: Response, next: NextFunctio
 
 export const restaurantCommand = async(req: Request, res: Response, next: NextFunction) => {
     const itemID: string = req.params.id;
-    const result = await axios.get(APP_API_IP + 'commands/restaurantCommand' + itemID, {
+    const result = await axios.get(APP_API_IP + 'commands/restaurantCommand/' + itemID, {
         headers:req.headers
     })
         .then(response => response.data)
