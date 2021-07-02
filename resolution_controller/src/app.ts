@@ -25,6 +25,21 @@ const PORT: number = parseInt(process.env.PORT as string, 10);
 const app = express();
 app.use(express.static('public'));
 
+
+// metrics
+const expressMetrics = require('express-metrics');
+app.use(expressMetrics({
+    port:8083,
+    cluster: false,
+    decimals: false,
+    header: false
+}));
+
+
+
+
+
+
 // App Configuration
 app.use(helmet());
 

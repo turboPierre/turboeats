@@ -32,6 +32,7 @@
 		"@types/express": "^4.17.6",
 		"@types/jsonwebtoken": "latest",
 		"@types/node": "^14.0.14",
+		"express-metrics": "latest",
 		"nodemon": "^2.0.4",
 		"ts-node": "^8.10.2",
 		"tslint": "^6.1.2",
