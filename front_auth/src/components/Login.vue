@@ -17,6 +17,7 @@
       <hr>
       <p>Vous êtes livreur ?<router-link style="color:#5FB709" to="/deliverer_register"> Créez votre compte livreur !</router-link></p>
       <p>Vous êtes restaurateur ?<router-link style="color:#5FB709" to="/restaurant_register"> Créez votre compte restaurant !</router-link></p>
+      <p>Vous êtes développeur ?<router-link style="color:#5FB709" to="/developer_register"> Créez votre compte développeur !</router-link></p>
     </b-form>
   </div>
 </template>
@@ -54,6 +55,9 @@
                     }
                     if (role === "livreur") {
                       this.$router.push({ name: "delivererMenu"});
+                    }
+                    if (role === "developpeur") {
+                      this.$router.push({ name: "developpeurMenu"});
                     }
                   location.reload();
         }).catch(error => {

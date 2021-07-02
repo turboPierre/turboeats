@@ -161,12 +161,42 @@
       </b-tab>
     </b-tabs>
 
-    <b-modal id="add-product" size="lg" centered title="Ajouter un produit">
-      test
+    <b-modal id="add-product" size="sm" centered title="Ajouter un produit">
+      <div class="row">
+        <form ref="form">
+          <b-form-group class="my-2" label="Nom :" label-for="pname" invalid-feedback="Le champ est vide.">
+            <b-form-input id="pname" v-model="pform.name" required></b-form-input>
+          </b-form-group>
+          <b-form-group class="my-2" label="Description :" label-for="pdescription-input" invalid-feedback="Le champ est vide.">
+            <b-form-input id="pdescription-input" v-model="pform.describe" required></b-form-input>
+          </b-form-group>
+          <b-form-group class="my-2" label="Prix : (en €)" label-for="pprice-input" invalid-feedback="Le champ est vide.">
+            <b-form-input id="pprice-input" v-model="pform.price" required></b-form-input>
+          </b-form-group>
+        </form>
+      </div>
+      <div slot="modal-footer">
+          <b-button variant="success" @click="addProduct()">Ajouter ce produit</b-button>
+      </div>
     </b-modal>
 
-    <b-modal id="add-menu" size="lg" centered title="Ajouter un menu">
-      test
+    <b-modal id="add-menu" size="sm" centered title="Ajouter un menu">
+      <div class="row">
+        <form ref="form">
+          <b-form-group class="my-2" label="Nom :" label-for="mname" invalid-feedback="Le champ est vide.">
+            <b-form-input id="mname" v-model="mform.name" required></b-form-input>
+          </b-form-group>
+          <b-form-group class="my-2" label="Description :" label-for="mdescription-input" invalid-feedback="Le champ est vide.">
+            <b-form-input id="mdescription-input" v-model="mform.describe" required></b-form-input>
+          </b-form-group>
+          <b-form-group class="my-2" label="Prix : (en €)" label-for="mprice-input" invalid-feedback="Le champ est vide.">
+            <b-form-input id="mprice-input" v-model="mform.price" required></b-form-input>
+          </b-form-group>
+        </form>
+      </div>
+      <div slot="modal-footer">
+        <b-button variant="success" @click="addMenu()">Ajouter ce menu</b-button>
+      </div>
     </b-modal>
 
   </div>
@@ -183,6 +213,12 @@
         listProducts:null,
         listMenus: null,
         form: {
+        },
+        pform : {
+
+        },
+        mform : {
+
         },
         show: true
       }
@@ -273,12 +309,12 @@
       },
       deleteProduct(product){
         let productId = product._id;
-        this.listProducts.splice(this.listProducts.indexOf(product), 1);
         this.$http.delete(this.$api_uri + '/products/' + productId, {
           headers: {
             'Authorization': 'Bearer ' + this.$cookie.get('access_token')
           }
         }).then((response) => {
+          this.listProducts.splice(this.listProducts.indexOf(product), 1);
           this.$bvToast.toast(product.name, {
             title: `Produit supprimé`,
             autoHideDelay: 2000,
@@ -290,32 +326,65 @@
         });
       },
       addProduct(){
-        /*
-        let productId = product._id;
-        this.listProducts.add(this.listProducts.indexOf(product), 1);
-        this.$http.delete(this.$api_uri + '/products/' + productId, {
+        let product = {
+          name: this.pform.name,
+          price: this.pform.price,
+          describe: this.pform.describe,
+          _restaurantId: this.restaurant._id,
+        };
+        this.$http.post(this.$api_uri + '/products/',product
+        ,{
           headers: {
             'Authorization': 'Bearer ' + this.$cookie.get('access_token')
           }
         }).then((response) => {
-          this.$bvToast.toast(product.name, {
-            title: `Produit supprimé`,
+          console.log(response);
+          this.listProducts.push(product);
+          this.$bvToast.toast(this.pform.name, {
+            title: `Produit ajouté`,
             autoHideDelay: 2000,
             appendToast: false
-          })
+          });
+          this.$bvModal.hide('add-product');
         }).catch(error => {
-          window.alert("Erreur : impossible de supprimer le produit.");
+          window.alert("Erreur : impossible d'ajouter le produit, veuillez vérifier les champs.");
           console.log(error);
-        });*/
+        });
+      },
+      addMenu(){
+        let menu = {
+          name: this.mform.name,
+          price: this.mform.price,
+          describe: this.mform.describe,
+          _restaurantId: this.restaurant._id,
+        };
+        this.$http.post(this.$api_uri + '/menus/',menu
+          ,{
+            headers: {
+              'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+            }
+          }).then((response) => {
+          console.log(response);
+          this.listMenus.push(menu);
+          this.$bvToast.toast(this.mform.name, {
+            title: `Menu ajouté`,
+            autoHideDelay: 2000,
+            appendToast: false
+          });
+          this.$bvModal.hide('add-menu');
+        }).catch(error => {
+          window.alert("Erreur : impossible d'ajouter le menu, veuillez vérifier les champs.");
+          console.log(error);
+        });
       },
       deleteMenu(menu){
         let menuId = menu._id;
-        this.listMenus.splice(this.listMenus.indexOf(menu), 1);
         this.$http.delete(this.$api_uri + '/menus/' + menuId, {
           headers: {
             'Authorization': 'Bearer ' + this.$cookie.get('access_token')
           }
         }).then((response) => {
+          this.listMenus.splice(this.listMenus.indexOf(menu), 1);
           this.$bvToast.toast(menu.name, {
             title: `Menu supprimé`,
             autoHideDelay: 2000,

@@ -9,6 +9,9 @@
           <div v-else-if="isDeliverer">
               <router-link class="navbar-brand float-left" to="/delivererMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
+          <div v-else-if="isDeveloper">
+              <router-link class="navbar-brand float-left" to="/developerMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+          </div>
           <div v-else>
               <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
@@ -68,6 +71,7 @@ export default {
         let isClient = false;
         let isRestaurant = false;
         let isDeliverer = false;
+        let isDeveloper = false;
         if (this.$cookie.get('access_token') != null) {
             logged = true;
             this.$http.get(this.$api_uri + '/users/myInfos', {
@@ -90,12 +94,16 @@ export default {
             if (role === "livreur") {
                 isDeliverer = true
             }
+            if (role === "developpeur") {
+                isDeveloper = true
+            }
         }
         return {
             logged: logged,
             isClient: isClient,
             isRestaurant: isRestaurant,
             isDeliverer: isDeliverer,
+            isDeveloper: isDeveloper,
         }
     },
   methods: {

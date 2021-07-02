@@ -20,11 +20,11 @@
 	},
 	"dependencies": {
 		"apidoc": "^0.28.1",
+		"axios": "latest",
+		"cors": "latest",
 		"dotenv": "^10.0.0",
 		"express": "^4.17.1",
 		"helmet": "^4.6.0",
-		"axios": "latest",
-		"cors": "latest",
 		"jsonwebtoken": "latest"
 	},
 	"devDependencies": {
