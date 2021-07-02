@@ -12,6 +12,12 @@
           <div v-else-if="isDeveloper">
               <router-link class="navbar-brand float-left" to="/developerMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
+        <div v-else-if="isTechnicien">
+          <router-link class="navbar-brand float-left" to="/technicienMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+        </div>
+        <div v-else-if="isCommercial">
+          <router-link class="navbar-brand float-left" to="/commercialMenu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
+        </div>
           <div v-else>
               <router-link class="navbar-brand float-left" to="/menu"><img width="200px" alt="Vue logo" src="./assets/logo.svg"></router-link>
           </div>
@@ -72,6 +78,8 @@ export default {
         let isRestaurant = false;
         let isDeliverer = false;
         let isDeveloper = false;
+        let isTechnicien = false;
+        let isCommercial = false;
         if (this.$cookie.get('access_token') != null) {
             logged = true;
             this.$http.get(this.$api_uri + '/users/myInfos', {
@@ -97,13 +105,21 @@ export default {
             if (role === "developpeur") {
                 isDeveloper = true
             }
+            if (role === "technicien") {
+                isTechnicien = true
+            }
+            if (role === "commercial") {
+                isCommercial = true
+            }
         }
         return {
-            logged: logged,
-            isClient: isClient,
-            isRestaurant: isRestaurant,
-            isDeliverer: isDeliverer,
-            isDeveloper: isDeveloper,
+          logged: logged,
+          isClient: isClient,
+          isRestaurant: isRestaurant,
+          isDeliverer: isDeliverer,
+          isDeveloper: isDeveloper,
+          isCommercial: isCommercial,
+          isTechnicien: isTechnicien,
         }
     },
   methods: {

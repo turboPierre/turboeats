@@ -59,6 +59,12 @@
                     if (role === "developpeur") {
                       this.$router.push({ name: "developpeurMenu"});
                     }
+                    if (role === "technicien") {
+                      this.$router.push({ name: "technicienMenu"});
+                    }
+                    if (role === "commercial") {
+                      this.$router.push({ name: "commercialMenu"});
+                    }
                   location.reload();
         }).catch(error => {
                   console.log(error);

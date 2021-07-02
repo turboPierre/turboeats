@@ -23,6 +23,8 @@ import RestaurantAdd from "./components/RestaurantAdd.vue";
 import DelivererMenu from "./components/DelivererMenu.vue";
 import DelivererCommand from "./components/DelivererCommand.vue";
 import DeveloperMenu from "./components/DeveloperMenu.vue";
+import TechnicienMenu from "./components/TechnicienMenu";
+import CommercialMenu from "./components/CommercialMenu";
 
 Vue.prototype.$http = axios;
 
@@ -108,6 +110,16 @@ const router = new VueRouter({
       path: '/developerMenu',
       component: DeveloperMenu,
       name: 'developerMenu'
+    },
+    {
+      path: '/technicienMenu',
+      component: TechnicienMenu,
+      name: 'technicienMenu'
+    },
+    {
+      path: '/commercialMenu',
+      component: CommercialMenu,
+      name: 'commercialMenu'
     },
     { path: '*', redirect: '/menu' }
   ]
