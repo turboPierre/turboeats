@@ -206,7 +206,7 @@ restaurantRouter.post('/',AuthMiddleware.userAuth, RestaurantController.createRe
 restaurantRouter.put('/:id',AuthMiddleware.userAuth, RestaurantController.updateRestaurant);
 
 /**
- * @api {delete} /Restaurant/ Delete Specific Restaurant information
+ * @api {delete} /Restaurant/ DELETE Specific Restaurant information
  * @apiName DeleteRestaurant
  * @apiGroup Restaurant
  * @apiVersion 0.1.0

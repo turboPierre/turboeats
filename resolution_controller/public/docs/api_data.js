@@ -1794,7 +1794,7 @@ define({ "api": [
   {
     "type": "delete",
     "url": "/Restaurant/",
-    "title": "Delete Specific Restaurant information",
+    "title": "DELETE Specific Restaurant information",
     "name": "DeleteRestaurant",
     "group": "Restaurant",
     "version": "0.1.0",
