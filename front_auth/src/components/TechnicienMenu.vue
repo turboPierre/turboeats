@@ -1,8 +1,8 @@
 <template>
   <div class='container' style="width: 1700px; height: 800px">
 
-    <b-tabs fill>
-      <b-tab title="Metrics controleur de résolution">
+    <h3><strong>Metrics controleur de résolution</strong></h3>
+
         <b-embed
             type="iframe"
             :src="APILink"
@@ -12,15 +12,6 @@
                       width: 100%;
                       height: 800px;"
         ></b-embed>
-      </b-tab>
-      <b-tab title="auth">
-
-      </b-tab>
-      <b-tab title="app">
-
-      </b-tab>
-    </b-tabs>
-
 
   </div>
 </template>
