@@ -24,8 +24,8 @@
     <!-- afficher si le deliverer n'a pas de commande active -->
     <div class="row" v-else>
       <h3><strong>Liste des commandes en attente :</strong></h3>
-      <div class=" col-sm-3" v-for="command in commands.data" :key="command._id">
-        <div class="case" v-if="command._delivererId === -1 && command.valid === true" @click="valid(command._id)">
+      <div class="col-sm-3" v-for="command in commands.data" :key="command._id">
+        <div class="case" @click="valid(command._id)">
           <b-card tag="article" style="max-width: 30rem;" class="mb-2">
             <b-card-title><h5><strong>Numéro de commande : {{ command._id }}</strong></h5></b-card-title>
             <b-card-text>
@@ -67,7 +67,16 @@
           headers: {
               'Authorization': 'Bearer ' + this.$cookie.get('access_token')
           }
-      }).then((result) => { this.commands = result }).catch(error => {
+      }).then((result) => {
+        this.commands = result;
+        let commandsResult = [];
+        for(let i=0; i < this.commands.data.length; i++){
+          if(!(this.commands.data[i].valid === false || (this.commands.data[i].valid === true && this.commands.data[i].delivered === true))){
+            commandsResult.push(this.commands.data[i]);
+          }
+        }
+        this.commands.data = commandsResult;
+      }).catch(error => {
       console.log(error);
       });
 
@@ -110,6 +119,9 @@
         });
       },
       valid(id){
+
+        console.log('ok')
+
         this.$http.put(this.$api_uri + '/commands/'+ id, {
               _delivererId: this.$cookie.get('userId')
             },{
