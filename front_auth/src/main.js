@@ -11,6 +11,7 @@ import Register from './components/Register.vue';
 import Menu from './components/Menu.vue'
 import DelivererRegister from './components/DelivererRegister.vue';
 import RestaurantRegister from './components/RestaurantRegister.vue';
+import DeveloperRegister from './components/DeveloperRegister.vue';
 import VueCookie from 'vue-cookie';
 
 import MyAccount from './components/MyAccount.vue';
@@ -21,6 +22,7 @@ import RestaurantMenu from "./components/RestaurantMenu.vue";
 import RestaurantAdd from "./components/RestaurantAdd.vue";
 import DelivererMenu from "./components/DelivererMenu.vue";
 import DelivererCommand from "./components/DelivererCommand.vue";
+import DeveloperMenu from "./components/DeveloperMenu.vue";
 
 Vue.prototype.$http = axios;
 
@@ -63,6 +65,11 @@ const router = new VueRouter({
       name: 'restaurant_register'
     },
     {
+      path: '/developer_register',
+      component: DeveloperRegister,
+      name: 'developer_register'
+    },
+    {
       path: '/myaccount',
       component: MyAccount,
       name: 'MyAccount'
@@ -96,6 +103,11 @@ const router = new VueRouter({
       path: '/delivererCommand',
       component: DelivererCommand,
       name: 'delivererCommand'
+    },
+    {
+      path: '/developerMenu',
+      component: DeveloperMenu,
+      name: 'developerMenu'
     },
     { path: '*', redirect: '/menu' }
   ]

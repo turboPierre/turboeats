@@ -1,7 +1,7 @@
 <template>
   <div class='container mt-5'>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <h3><strong>Créez votre compte restaurant !</strong></h3><br>
+      <h3><strong>Créez votre compte développeur !</strong></h3><br>
       <b-form-group
               id="input-group-1"
               label="Email :"
@@ -72,6 +72,7 @@
                 required
         ></b-form-input>
       </b-form-group>
+
       <br>
       <b-button class="mt-3" type="submit" variant="primary" style="background-color: #5FB709; border: none"><strong>S'enregistrer</strong></b-button>
     </b-form>
@@ -97,6 +98,7 @@
           phone: '',
           address: '',
           city: '',
+
         },
         show: true
       }
@@ -117,18 +119,18 @@
                     password: this.form.password1,
                     address: this.form.address,
                     city: this.form.city,
-                    role: "restaurant",
+                    role: "developpeur",
                   }
           ).then(response => {
             console.log(response);
-            window.alert("Compte restaurant créé.");
+            window.alert("Compte developpeur créé.");
             setTimeout(() => {
               this.$router.push({ name: "login"});
               location.reload();
             }, 1000);
           }).catch(error => {
             console.log(error);
-            window.alert("Erreur lors de la création du compte restaurant.");
+            window.alert("Erreur lors de la création du compte developpeur.");
           });
 
         }
